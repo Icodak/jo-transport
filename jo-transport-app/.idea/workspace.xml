@@ -5,13 +5,29 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="28a9f81b-d715-41fd-aa28-e844a39e83bf" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/fr/isep/jotransportapp/Domain/MainViewModel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/fr/isep/jotransportapp/Domain/MainViewModelImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/fr/isep/jotransportapp/Presentation/MainController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/fr/isep/jotransportapp/Styles/Main.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/fr/isep/jotransportapp/Application.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/isep/jotransportapp/Application.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/fr/isep/jotransportapp/HelloController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/fr/isep/jotransportapp/hello-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/fr/isep/jotransportapp/Views/MainWindow.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="CSS File" />
+        <option value="Class" />
+        <option value="Interface" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
@@ -35,9 +51,18 @@
     "ASKED_ADD_EXTERNAL_FILES": "true",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false"
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "list.type.of.created.stylesheet": "CSS",
+    "run.code.analysis.last.selected.profile": "pProject Default"
   }
 }]]></component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="F:\Documents\prog\jo-transport\jo-transport\jo-transport-app\src\main\resources\fr\isep\jotransportapp\" />
+      <recent name="F:\Documents\prog\jo-transport\jo-transport\jo-transport-app\src\main\resources\fr\isep\jotransportapp\Views" />
+    </key>
+  </component>
   <component name="RunManager">
     <configuration name="Application" type="Application" factoryName="Application">
       <option name="ALTERNATIVE_JRE_PATH" value="corretto-17" />
@@ -66,7 +91,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1690103426717</updated>
-      <workItem from="1690103429233" duration="228000" />
+      <workItem from="1690103429233" duration="7304000" />
     </task>
     <servers />
   </component>

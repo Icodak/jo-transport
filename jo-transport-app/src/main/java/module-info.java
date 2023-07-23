@@ -5,4 +5,6 @@ module fr.isep.jotransportapp {
 
     opens fr.isep.jotransportapp to javafx.fxml;
     exports fr.isep.jotransportapp;
+    exports fr.isep.jotransportapp.Presentation;
+    opens fr.isep.jotransportapp.Presentation to javafx.fxml;
 }
