@@ -13,8 +13,8 @@ public class MainController {
     private Button btn;
 
     public void bind(MainViewModel viewModel) {
-    label.textProperty().bind(viewModel.labelTitle);
-    btn.setOnAction(viewModel::onTap);
-    btn.textProperty().setValue(viewModel.btnTitle);
+        label.textProperty().bind(viewModel.labelTitle);
+        btn.setOnAction(viewModel::onTap);
+        btn.textProperty().setValue(viewModel.btnTitle);
     }
 }
