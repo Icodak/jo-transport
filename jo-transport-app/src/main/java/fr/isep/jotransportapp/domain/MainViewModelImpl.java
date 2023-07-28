@@ -1,4 +1,4 @@
-package fr.isep.jotransportapp.Domain;
+package fr.isep.jotransportapp.domain;
 
 import javafx.event.ActionEvent;
 

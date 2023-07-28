@@ -1,0 +1,10 @@
+.root {
+    -fx-background-color: white;
+}
+
+.text-field {
+    -fx-background-color: transparent;
+    -fx-background-insets: 0;
+    -fx-background-radius: 0;
+    -fx-border-color: transparent;
+}

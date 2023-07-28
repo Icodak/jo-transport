@@ -5,15 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="28a9f81b-d715-41fd-aa28-e844a39e83bf" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/fr/isep/jotransportapp/Domain/MainViewModel.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/fr/isep/jotransportapp/Domain/MainViewModelImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/fr/isep/jotransportapp/Presentation/MainController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/fr/isep/jotransportapp/Styles/Main.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/fr/isep/jotransportapp/components/TitleTextField.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/fr/isep/jotransportapp/components/TitleTextField.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/fr/isep/jotransportapp/Application.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/isep/jotransportapp/Application.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/fr/isep/jotransportapp/HelloController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/fr/isep/jotransportapp/Domain/MainViewModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/isep/jotransportapp/domain/MainViewModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/fr/isep/jotransportapp/Domain/MainViewModelImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/isep/jotransportapp/domain/MainViewModelImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/fr/isep/jotransportapp/Presentation/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/isep/jotransportapp/components/MainController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/fr/isep/jotransportapp/hello-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/fr/isep/jotransportapp/Views/MainWindow.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/fr/isep/jotransportapp/Styles/Main.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/fr/isep/jotransportapp/styles/Main.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/fr/isep/jotransportapp/Views/MainWindow.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/fr/isep/jotransportapp/components/MainWindow.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -24,8 +25,9 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="CSS File" />
-        <option value="Class" />
         <option value="Interface" />
+        <option value="FxmlFile" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -54,13 +56,20 @@
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
     "list.type.of.created.stylesheet": "CSS",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Problems",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.2",
     "run.code.analysis.last.selected.profile": "pProject Default"
   }
 }]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="F:\Documents\prog\jo-transport\jo-transport\jo-transport-app\src\main\resources\fr\isep\jotransportapp\" />
-      <recent name="F:\Documents\prog\jo-transport\jo-transport\jo-transport-app\src\main\resources\fr\isep\jotransportapp\Views" />
+      <recent name="F:\Documents\prog\jo-transport\jo-transport\jo-transport-app\src\main\resources\fr\isep\jotransportapp\components" />
+      <recent name="F:\Documents\prog\jo-transport\jo-transport\jo-transport-app\src\main\resources\fr\isep\jotransportapp" />
+      <recent name="F:\Documents\prog\jo-transport\jo-transport\jo-transport-app\src\main\resources\fr\isep\jotransportapp\Components" />
+      <recent name="F:\Documents\prog\jo-transport\jo-transport\jo-transport-app\src\main\java\fr\isep\jotransportapp\Components" />
+      <recent name="F:\Documents\prog\jo-transport\jo-transport\jo-transport-app\src\main\resources\Components" />
     </key>
   </component>
   <component name="RunManager">
@@ -92,6 +101,8 @@
       <option name="presentableId" value="Default" />
       <updated>1690103426717</updated>
       <workItem from="1690103429233" duration="7304000" />
+      <workItem from="1690562230630" duration="7288000" />
+      <workItem from="1690577369920" duration="4073000" />
     </task>
     <servers />
   </component>
@@ -111,5 +122,16 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/fr/isep/jotransportapp/components/TitleTextField.java</url>
+          <line>21</line>
+          <option name="timeStamp" value="10" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
