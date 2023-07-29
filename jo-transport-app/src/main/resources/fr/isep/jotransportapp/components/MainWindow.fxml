@@ -7,30 +7,42 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Line?>
+<?import javafx.scene.control.Button?>
+<?import java.lang.String?>
+<?import javafx.scene.control.Label?>
 <AnchorPane xmlns:fx="http://javafx.com/fxml"
             fx:controller="fr.isep.jotransportapp.components.MainController"
             stylesheets="@../styles/Main.css">
+    <!-- Header section -->
     <AnchorPane styleClass="headerSection" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
-
         <HBox alignment="CENTER" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
 
-
+            <!-- Blue vertical line -->
             <VBox spacing="20.0" alignment="CENTER">
                 <padding>
                     <Insets bottom="85.0" left="20.0" right="20.0" top="85.0"/>
                 </padding>
-                <Pane styleClass="highlight" prefWidth="16" VBox.vgrow="ALWAYS" />
+                <Pane styleClass="highlighted" prefWidth="16" VBox.vgrow="ALWAYS" />
             </VBox>
 
-
-            <VBox alignment="CENTER" spacing="32.0">
+            <!-- Text Field section -->
+            <VBox alignment="CENTER" spacing="16.0">
                 <padding>
                     <Insets bottom="62.0" left="20.0" right="20.0" top="20.0"/>
                 </padding>
-
                 <TitleTextField fx:id="departure"/>
+                <Button fx:id="addStep">
+                    <styleClass>
+                    <String fx:value="highlighted" />
+                    <String fx:value="button" />
+                    </styleClass>
+                </Button>
                 <TitleTextField fx:id="arrival"/>
+                <HBox>
+                    <Label fx:id="hint" styleClass="smallText"/>
+                </HBox>
             </VBox>
+
         </HBox>
     </AnchorPane>
 </AnchorPane>

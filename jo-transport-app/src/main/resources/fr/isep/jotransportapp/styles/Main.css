@@ -16,15 +16,18 @@
 .root {
     -fx-font-family: 'Quicksand-Regular';
     -fx-background-color: #2F2137;
+    -fx-font-size: 20;
 }
 
 .text-field {
     -fx-font-family: 'Quicksand-Regular';
+    -fx-font-size: 20;
     -fx-background-color: transparent;
+    -fx-padding: 8px 32px;
     -fx-background-insets: 0;
     -fx-background-radius: 0;
     -fx-border-color: transparent;
-    -fx-prompt-text-fill: #525252; /* Couleur du texte de l'invite */
+    -fx-prompt-text-fill: #525252;
     -fx-text-fill: black;
 }
 
@@ -34,9 +37,36 @@
     -fx-font-size: 24;
 }
 
-.highlight {
+.highlighted {
+    -fx-background-color: #0FF9CE;
+    -fx-background-radius: 32;
+    -fx-text-fill: black;
+}
+
+.smallText {
+    -fx-font-size: 16;
+    -fx-text-fill: white;
+}
+
+.button {
     -fx-background-color: #0FF9CE;
     -fx-background-radius: 24;
+    -fx-font-size: 16;
+    -fx-text-fill: black;
+    -fx-padding: 8px 32px;
+    -fx-cursor: hand;
+    -fx-border-width: 2;
+    -fx-border-radius: 24;
+    -fx-border-color: #FFFFFF00;
+
+}
+
+.button:hover {
+    -fx-border-color: white;
+}
+
+.button:pressed {
+    -fx-background-color: #04bdce;
 }
 
 .headerSection {
@@ -45,6 +75,12 @@
 
 #textFieldContainer {
     -fx-background-color: white;
-    -fx-background-radius: 24px;
+    -fx-background-radius: 32px;
+    -fx-border-radius: 32;
+    -fx-border-width: 2;
+    -fx-border-color: white;
 }
 
+#textFieldContainer:hover {
+    -fx-border-color: #0FF9CE;
+}

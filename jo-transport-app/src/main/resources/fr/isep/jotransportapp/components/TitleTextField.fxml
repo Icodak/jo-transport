@@ -10,16 +10,13 @@
 <fx:root type="Pane"
          xmlns:fx="http://javafx.com/fxml/1"
          xmlns="http://javafx.com/javafx/19">
-    <VBox spacing="16" prefWidth="960">
+    <VBox spacing="16" prefWidth="960" >
         <Label fx:id="label" text="Title text" styleClass="header">
             <padding>
                 <Insets left="32" />
             </padding>
         </Label>
     <StackPane fx:id="textFieldContainer">
-        <padding>
-            <Insets top="12" right="32" bottom="12" left="32" />
-        </padding>
         <TextField fx:id="textField" promptText="Gare, station, arrêt ..." />
     </StackPane>
     </VBox>
