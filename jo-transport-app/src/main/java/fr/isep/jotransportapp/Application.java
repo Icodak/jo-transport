@@ -1,8 +1,7 @@
 package fr.isep.jotransportapp;
 
 import fr.isep.jotransportapp.components.MainController;
-import fr.isep.jotransportapp.viewModels.MainViewModel;
-import fr.isep.jotransportapp.viewModels.MainViewModelImpl;
+import fr.isep.jotransportapp.viewModels.MainVM;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
@@ -23,7 +22,7 @@ public class Application extends javafx.application.Application {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/fr/isep/jotransportapp/components/MainWindow.fxml"));
         Scene scene = new Scene(loader.load(), WIDTH, HEIGHT);
 
-        MainViewModel viewModel = new MainViewModelImpl();
+        MainVM viewModel = new MainVM();
         MainController mainController = loader.getController();
         mainController.bind(viewModel);
         stage.setTitle(APP_NAME);

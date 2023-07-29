@@ -1,5 +1,6 @@
 package fr.isep.jotransportapp.components;
 
+import fr.isep.jotransportapp.viewModels.TitleTextFieldVM;
 import javafx.beans.property.StringProperty;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -29,15 +30,9 @@ public class TitleTextField extends Pane {
         }
     }
 
-    public void setTitle(String title) {
-        label.setText(title);
-    }
-
-    public void setPlaceholder(String placeholder) {
-        textField.setPromptText(placeholder);
-    }
-
-    public StringProperty getTextProperty() {
-        return textField.textProperty();
+    public void bind(TitleTextFieldVM viewModel) {
+        label.setText(viewModel.title.get());
+        textField.setPromptText(viewModel.placeholder.get());
+        viewModel.search.bind(textField.textProperty());
     }
 }

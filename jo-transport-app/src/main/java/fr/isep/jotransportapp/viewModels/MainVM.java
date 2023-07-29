@@ -3,36 +3,40 @@ package fr.isep.jotransportapp.viewModels;
 import fr.isep.jotransportapp.model.parameters.SearchParameters;
 import fr.isep.jotransportapp.services.SearchService;
 import fr.isep.jotransportapp.services.SearchServiceImpl;
+import javafx.beans.property.SimpleStringProperty;
 
-public class MainViewModelImpl implements MainViewModel {
+public class MainVM {
+    public TitleTextFieldVM departureVM = new TitleTextFieldVM("Départ","Gare, station, arrêt ...");
+    public TitleTextFieldVM arrivalVM = new TitleTextFieldVM("Arrivée","Gare, station, arrêt ...");
+    public final SimpleStringProperty stepTitle = new SimpleStringProperty("");
+    public final SimpleStringProperty stepButtonTitle = new SimpleStringProperty("");
+    public final SimpleStringProperty hint = new SimpleStringProperty("");
 
     SearchService searchService = new SearchServiceImpl();
 
-    public MainViewModelImpl() {
+    public MainVM() {
         setupStrings();
         setupBindings();
     }
 
-    void setupBindings() {
-        departureSearch.addListener((e, oldValue, newValue) -> {
-            searchService.getResults(new SearchParameters(newValue));
-        });
-
-        arrivalSearch.addListener((e, oldValue, newValue) -> {
-            searchService.getResults(new SearchParameters(newValue));
-        });
-    }
-
     void setupStrings() {
-        departureTitle.set("Départ");
         stepTitle.set("Étape");
         stepButtonTitle.set("+ Ajouter une étape");
-        arrivalTitle.set("Arrivée");
-        placeholder.set("Gare, station, arrêt ...");
         hint.set("Saisissez au moins un départ et une arrivée");
     }
 
-    @Override
+    void setupBindings() {
+        departureVM.search.addListener((e, oldValue, newValue) -> {
+            searchService.getResults(new SearchParameters(newValue));
+        });
+
+        arrivalVM.search.addListener((e, oldValue, newValue) -> {
+            searchService.getResults(new SearchParameters(newValue));
+        });
+    }
+
+
+
     public void onAddStep() {
         System.out.println("tapped");
 //        TitleTextField newTextField = new TitleTextField();
@@ -42,5 +46,4 @@ public class MainViewModelImpl implements MainViewModel {
 //        stepBox.getChildren().add(newTextField);
 
     }
-
 }

@@ -1,6 +1,6 @@
 package fr.isep.jotransportapp.components;
 
-import fr.isep.jotransportapp.viewModels.MainViewModel;
+import fr.isep.jotransportapp.viewModels.MainVM;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -23,14 +23,9 @@ public class MainController {
     @FXML
     private TitleTextField arrival;
 
-    public void bind(MainViewModel viewModel) {
-        departure.setTitle(viewModel.departureTitle.get());
-        departure.setPlaceholder(viewModel.placeholder.get());
-        viewModel.departureSearch.bind(departure.getTextProperty());
-
-        arrival.setTitle(viewModel.arrivalTitle.get());
-        arrival.setPlaceholder(viewModel.placeholder.get());
-        viewModel.arrivalSearch.bind(arrival.getTextProperty());
+    public void bind(MainVM viewModel) {
+        departure.bind(viewModel.departureVM);
+        arrival.bind(viewModel.arrivalVM);
 
         hint.setText(viewModel.hint.get());
 
