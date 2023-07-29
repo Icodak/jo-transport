@@ -4,25 +4,19 @@ import fr.isep.jotransportapp.models.parameters.SearchParameters;
 import fr.isep.jotransportapp.services.SearchService;
 import fr.isep.jotransportapp.services.SearchServiceImpl;
 import javafx.beans.property.SimpleStringProperty;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
 public class MainVM {
-    public TitleTextFieldVM departureVM = new TitleTextFieldVM("Départ","Gare, station, arrêt ...");
-    public TitleTextFieldVM arrivalVM = new TitleTextFieldVM("Arrivée","Gare, station, arrêt ...");
-    public final SimpleStringProperty stepTitle = new SimpleStringProperty("");
-    public final SimpleStringProperty stepButtonTitle = new SimpleStringProperty("");
-    public final SimpleStringProperty hint = new SimpleStringProperty("");
-
+    public final SimpleStringProperty stepButtonTitle = new SimpleStringProperty("+ Ajouter une étape");
+    public final SimpleStringProperty hint = new SimpleStringProperty("Saisissez au moins un départ et une arrivée");
+    public TitleTextFieldVM departureVM = new TitleTextFieldVM("Départ", "Gare, station, arrêt ...");
+    public TitleTextFieldVM arrivalVM = new TitleTextFieldVM("Arrivée", "Gare, station, arrêt ...");
+    public ObservableList<TitleTextFieldVM> observableStepVms = FXCollections.observableArrayList();
     SearchService searchService = new SearchServiceImpl();
 
     public MainVM() {
-        setupStrings();
         setupBindings();
-    }
-
-    void setupStrings() {
-        stepTitle.set("Étape");
-        stepButtonTitle.set("+ Ajouter une étape");
-        hint.set("Saisissez au moins un départ et une arrivée");
     }
 
     void setupBindings() {
@@ -35,15 +29,7 @@ public class MainVM {
         });
     }
 
-
-
     public void onAddStep() {
-        System.out.println("tapped");
-//        TitleTextField newTextField = new TitleTextField();
-//        newTextField.setTitle("Étape " + stepCountProperty.get());
-//        stepCountProperty.set(stepCountProperty.get() + 1);
-//        newTextField.getTextProperty().addListener(System.out::println);
-//        stepBox.getChildren().add(newTextField);
-
+        observableStepVms.add(new TitleTextFieldVM("", "Gare, station, arrêt ..."));
     }
 }

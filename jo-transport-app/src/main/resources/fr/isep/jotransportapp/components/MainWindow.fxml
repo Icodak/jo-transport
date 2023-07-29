@@ -2,14 +2,11 @@
 
 <?import fr.isep.jotransportapp.components.TitleTextField?>
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.Pane?>
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.shape.Line?>
 <?import javafx.scene.control.Button?>
-<?import java.lang.String?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.layout.*?>
+<?import java.lang.String?>
 <AnchorPane xmlns:fx="http://javafx.com/fxml"
             fx:controller="fr.isep.jotransportapp.components.MainController"
             stylesheets="@../styles/Main.css">
@@ -22,24 +19,26 @@
                 <padding>
                     <Insets bottom="85.0" left="20.0" right="20.0" top="85.0"/>
                 </padding>
-                <Pane styleClass="highlighted" prefWidth="16" VBox.vgrow="ALWAYS" />
+                <Pane styleClass="highlighted" prefWidth="16" VBox.vgrow="ALWAYS"/>
             </VBox>
 
             <!-- Text Field section -->
-            <VBox alignment="CENTER" spacing="16.0">
+            <VBox alignment="CENTER" spacing="16.0" prefWidth="1050">
                 <padding>
                     <Insets bottom="62.0" left="20.0" right="20.0" top="20.0"/>
                 </padding>
+                <!-- Departure -->
                 <TitleTextField fx:id="departure"/>
-                <VBox fx:id="stepBox" alignment="CENTER" spacing="16.0"/>
-                <Pane fx:id="buttonContainer">
+                <!-- Steps -->
+                <ListView fx:id="stepContainer" HBox.hgrow="ALWAYS"/>
+                <!-- Add step -->
                 <Button fx:id="addStep">
                     <styleClass>
-                    <String fx:value="highlighted" />
-                    <String fx:value="button" />
+                        <String fx:value="highlighted"/>
+                        <String fx:value="button"/>
                     </styleClass>
                 </Button>
-                </Pane>
+                <!-- Arrival -->
                 <TitleTextField fx:id="arrival"/>
                 <HBox>
                     <Label fx:id="hint" styleClass="smallText"/>

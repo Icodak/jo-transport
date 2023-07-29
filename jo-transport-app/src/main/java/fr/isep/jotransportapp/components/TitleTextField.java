@@ -1,7 +1,6 @@
 package fr.isep.jotransportapp.components;
 
 import fr.isep.jotransportapp.viewModels.TitleTextFieldVM;
-import javafx.beans.property.StringProperty;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Label;

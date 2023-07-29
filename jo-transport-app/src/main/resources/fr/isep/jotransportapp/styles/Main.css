@@ -73,6 +73,16 @@
     -fx-background-color: #231123;;
 }
 
+.list-view {
+    -fx-background-color: clear;
+    -fx-padding: 0px;
+}
+
+.list-cell {
+    -fx-background-color: clear;
+    -fx-padding: 16 0;
+}
+
 #textFieldContainer {
     -fx-background-color: white;
     -fx-background-radius: 32px;
