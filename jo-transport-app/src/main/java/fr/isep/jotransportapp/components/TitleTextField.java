@@ -33,6 +33,10 @@ public class TitleTextField extends Pane {
         label.setText(title);
     }
 
+    public void setPlaceholder(String placeholder) {
+        textField.setPromptText(placeholder);
+    }
+
     public StringProperty getTextProperty() {
         return textField.textProperty();
     }

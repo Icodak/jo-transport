@@ -1,37 +1,42 @@
 package fr.isep.jotransportapp.components;
 
+import fr.isep.jotransportapp.viewModels.MainViewModel;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.layout.Pane;
+import javafx.scene.layout.VBox;
 
-import java.net.URL;
-import java.util.ResourceBundle;
 
-
-public class MainController implements Initializable {
+public class MainController {
+    // Components
     @FXML
     public Button addStep;
     @FXML
     public Label hint;
     @FXML
+    public VBox stepBox;
+    @FXML
+    public Pane buttonContainer;
+    @FXML
     private TitleTextField departure;
-
     @FXML
     private TitleTextField arrival;
 
+    public void bind(MainViewModel viewModel) {
+        departure.setTitle(viewModel.departureTitle.get());
+        departure.setPlaceholder(viewModel.placeholder.get());
+        viewModel.departureSearch.bind(departure.getTextProperty());
 
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-        departure.setTitle("Départ");
-        departure.getTextProperty().addListener(System.out::println);
+        arrival.setTitle(viewModel.arrivalTitle.get());
+        arrival.setPlaceholder(viewModel.placeholder.get());
+        viewModel.arrivalSearch.bind(arrival.getTextProperty());
 
-        addStep.setText("+ Ajouter une étape");
-        addStep.setOnAction(e -> System.out.println("PAF!"));
+        hint.setText(viewModel.hint.get());
 
-        arrival.setTitle("Arrivée");
-        arrival.getTextProperty().addListener(System.out::println);
-
-        hint.setText("Saisissez au moins un départ et une arrivée");
+        addStep.setText(viewModel.stepTitle.get());
+        addStep.setOnAction(e -> viewModel.onAddStep());
     }
+
+
 }

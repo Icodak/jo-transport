@@ -31,12 +31,15 @@
                     <Insets bottom="62.0" left="20.0" right="20.0" top="20.0"/>
                 </padding>
                 <TitleTextField fx:id="departure"/>
+                <VBox fx:id="stepBox" alignment="CENTER" spacing="16.0"/>
+                <Pane fx:id="buttonContainer">
                 <Button fx:id="addStep">
                     <styleClass>
                     <String fx:value="highlighted" />
                     <String fx:value="button" />
                     </styleClass>
                 </Button>
+                </Pane>
                 <TitleTextField fx:id="arrival"/>
                 <HBox>
                     <Label fx:id="hint" styleClass="smallText"/>
