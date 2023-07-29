@@ -1,15 +1,26 @@
 package fr.isep.jotransportapp.components;
 
-import fr.isep.jotransportapp.domain.MainViewModel;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
+
+import java.net.URL;
+import java.util.ResourceBundle;
 
 
-public class MainController {
+public class MainController implements Initializable {
     @FXML
-    private TitleTextField titleTextField;
+    private TitleTextField departure;
 
-    public void bind(MainViewModel viewModel) {
-        titleTextField.setTitle("Voila mon super titre");
-        titleTextField.getTextProperty().addListener(System.out::println);
+    @FXML
+    private TitleTextField arrival;
+
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        departure.setTitle("Départ");
+        departure.getTextProperty().addListener(System.out::println);
+
+        arrival.setTitle("Arrivée");
+        arrival.getTextProperty().addListener(System.out::println);
     }
 }
