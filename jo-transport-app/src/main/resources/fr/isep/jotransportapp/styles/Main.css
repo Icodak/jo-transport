@@ -34,6 +34,15 @@
     -fx-font-size: 24;
 }
 
+.highlight {
+    -fx-background-color: #0FF9CE;
+    -fx-background-radius: 24;
+}
+
+.headerSection {
+    -fx-background-color: #231123;;
+}
+
 #textFieldContainer {
     -fx-background-color: white;
     -fx-background-radius: 24px;
