@@ -10,8 +10,8 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 public class Application extends javafx.application.Application {
-    public static final int WIDTH = 320;
-    public static final int HEIGHT = 240;
+    public static final int WIDTH = 960;
+    public static final int HEIGHT = 540;
     public static final String APP_NAME = "Simulateur de transports en commun";
 
     public static void main(String[] args) {

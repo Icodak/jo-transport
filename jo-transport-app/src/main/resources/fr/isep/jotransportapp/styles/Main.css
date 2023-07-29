@@ -1,10 +1,41 @@
+@font-face {
+    font-family: 'Quicksand-Regular';
+    src: url('Quicksand-Regular.ttf');
+}
+
+@font-face {
+    font-family: 'Quicksand-Medium';
+    src: url('Quicksand-Medium.ttf');
+}
+
+@font-face {
+    font-family: 'Quicksand-SemiBold';
+    src: url('Quicksand-SemiBold.ttf');
+}
+
 .root {
-    -fx-background-color: white;
+    -fx-font-family: 'Quicksand-Regular';
+    -fx-background-color: #2F2137;
 }
 
 .text-field {
+    -fx-font-family: 'Quicksand-Regular';
     -fx-background-color: transparent;
     -fx-background-insets: 0;
     -fx-background-radius: 0;
     -fx-border-color: transparent;
+    -fx-prompt-text-fill: #525252; /* Couleur du texte de l'invite */
+    -fx-text-fill: black;
 }
+
+.header {
+    -fx-font-family: 'Quicksand-Regular';
+    -fx-text-fill: white;
+    -fx-font-size: 24;
+}
+
+#textFieldContainer {
+    -fx-background-color: white;
+    -fx-background-radius: 24px;
+}
+
