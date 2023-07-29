@@ -1,6 +1,6 @@
 package fr.isep.jotransportapp.viewModels;
 
-import fr.isep.jotransportapp.model.parameters.SearchParameters;
+import fr.isep.jotransportapp.models.parameters.SearchParameters;
 import fr.isep.jotransportapp.services.SearchService;
 import fr.isep.jotransportapp.services.SearchServiceImpl;
 import javafx.beans.property.SimpleStringProperty;

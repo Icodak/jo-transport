@@ -1,7 +1,7 @@
 package fr.isep.jotransportapp.services;
 
-import fr.isep.jotransportapp.model.parameters.SearchParameters;
-import fr.isep.jotransportapp.model.responses.SearchResponse;
+import fr.isep.jotransportapp.models.parameters.SearchParameters;
+import fr.isep.jotransportapp.models.responses.SearchResponse;
 
 public class SearchServiceImpl implements SearchService {
 

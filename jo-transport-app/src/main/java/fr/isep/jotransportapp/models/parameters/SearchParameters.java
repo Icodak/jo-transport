@@ -1,4 +1,4 @@
-package fr.isep.jotransportapp.model.parameters;
+package fr.isep.jotransportapp.models.parameters;
 
 
 public class SearchParameters {
