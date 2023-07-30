@@ -20,16 +20,29 @@ public class MainVM {
     }
 
     void setupBindings() {
-        departureVM.search.addListener((e, oldValue, newValue) -> {
-            searchService.getResults(new SearchParameters(newValue));
-        });
+        linkToService(departureVM);
+        linkToService(arrivalVM);
+//        departureVM.search.addListener((e, oldSearchText, newSearchText) -> {
+//            searchService.getResults(new SearchParameters(newSearchText));
+//
+//        });
+//
+//        arrivalVM.search.addListener((e, oldValue, newValue) -> {
+//            searchService.getResults(new SearchParameters(newValue));
+//        });
+    }
 
-        arrivalVM.search.addListener((e, oldValue, newValue) -> {
+    void linkToService(TitleTextFieldVM titleTextFieldVM) {
+        titleTextFieldVM.search.addListener((e, oldValue, newValue) -> {
             searchService.getResults(new SearchParameters(newValue));
         });
     }
 
     public void onAddStep() {
-        observableStepVms.add(new TitleTextFieldVM("", "Gare, station, arrêt ..."));
+        TitleTextFieldVM titleTextFieldVM = new TitleTextFieldVM("", "Gare, station, arrêt ...");
+        titleTextFieldVM.hasCross.set(true);
+        titleTextFieldVM.hasClicked.addListener((e, oldValue, newValue) -> observableStepVms.remove(titleTextFieldVM));
+        linkToService(titleTextFieldVM);
+        observableStepVms.add(titleTextFieldVM);
     }
 }

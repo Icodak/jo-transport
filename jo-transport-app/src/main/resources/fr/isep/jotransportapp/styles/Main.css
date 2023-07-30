@@ -58,7 +58,15 @@
     -fx-border-width: 2;
     -fx-border-radius: 24;
     -fx-border-color: #FFFFFF00;
+}
 
+.cross {
+    -fx-background-color: #8f9190;
+    -fx-background-radius: 24;
+    -fx-font-size: 16;
+    -fx-font-weight: 700;
+    -fx-text-fill: white;
+    -fx-padding: 10px 10px;
 }
 
 .button:hover {

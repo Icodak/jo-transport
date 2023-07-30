@@ -3,6 +3,7 @@ package fr.isep.jotransportapp.components;
 import fr.isep.jotransportapp.viewModels.TitleTextFieldVM;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
@@ -12,9 +13,11 @@ import java.io.IOException;
 public class TitleTextField extends Pane {
     @FXML
     private Label label;
-
     @FXML
     private TextField textField;
+
+    @FXML
+    private Button cross;
 
     public TitleTextField() {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("TitleTextField.fxml"));
@@ -33,5 +36,14 @@ public class TitleTextField extends Pane {
         label.setText(viewModel.title.get());
         textField.setPromptText(viewModel.placeholder.get());
         viewModel.search.bind(textField.textProperty());
+
+        textField.setOnMouseClicked(event -> {
+            textField.clear();
+        });
+
+        cross.visibleProperty().bind(viewModel.hasCross);
+        cross.setOnMouseClicked(event -> {
+            viewModel.hasClicked.set(true);
+        });
     }
 }

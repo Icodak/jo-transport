@@ -39,8 +39,6 @@ public class MainController {
 
         viewModel.observableStepVms.addListener((ListChangeListener<TitleTextFieldVM>) c -> {
             while (c.next()) {
-                System.out.println(stepContainer.getItems().size());
-                System.out.println("PROUT");
                 stepContainer.setPrefHeight(computeListViewHeight(stepContainer));
             }
         });
@@ -55,7 +53,7 @@ public class MainController {
 
     private double computeListViewHeight(ListView<?> listView) {
         int cellCount = listView.getItems().size();
-        double cellHeight = 125.0;
+        double cellHeight = 130.0;
         return cellCount * cellHeight + 32;
     }
 }
