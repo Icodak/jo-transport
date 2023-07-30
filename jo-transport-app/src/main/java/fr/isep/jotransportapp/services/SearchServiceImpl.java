@@ -14,8 +14,6 @@ public class SearchServiceImpl implements SearchService {
 
     @Override
     public SearchResponse getResults(SearchParameters parameters) {
-        System.out.println(parameters.locationName);
-
         // TODO change this to call the real service
         return new SearchResponse(
                 List.of(

@@ -27,6 +27,7 @@ public class MainVM {
     public SimpleBooleanProperty isSearchResultVisible = new SimpleBooleanProperty(false);
 
     public SimpleStringProperty clickedUuid = new SimpleStringProperty("");
+    public SimpleStringProperty clickedTitle = new SimpleStringProperty("");
     public SimpleStringProperty currentlyActiveTextField = new SimpleStringProperty("");
     SearchService searchService = new SearchServiceImpl();
 
@@ -38,10 +39,6 @@ public class MainVM {
         bindTitleTextField(departureVM);
         bindTitleTextField(arrivalVM);
         scene.onMouseClickedProperty().addListener((e, o, n) -> isSearchResultVisible.set(false));
-
-        clickedUuid.addListener((e,o,n) -> System.out.println(n));
-        currentlyActiveTextField.addListener((e,o,n) -> System.out.println(n));
-
     }
 
     void bindTitleTextField(TitleTextFieldVM titleTextFieldVM) {
@@ -52,6 +49,7 @@ public class MainVM {
             observableResultsVms.setAll(searchResults.stations.stream().map(desc -> {
                 SearchResultVM searchResultVM = new SearchResultVM(desc.type, desc.title, desc.stations, desc.uuid);
                 searchResultVM.uuidProperty.addListener((e,o,n) -> clickedUuid.set(n));
+                searchResultVM.titleProperty.addListener((e,o,n) -> clickedTitle.set(n));
                     return searchResultVM;
         }).toList());
 
@@ -72,6 +70,15 @@ public class MainVM {
         clickedUuid.addListener((e,o,n) -> {
             if (Objects.equals(titleTextFieldVM.id, currentlyActiveTextField.getValue())) {
                 titleTextFieldVM.tripUuid.set(clickedUuid.get());
+            }
+            isSearchResultVisible.set(false);
+        });
+        clickedTitle.addListener((e,o,n) -> {
+            if (Objects.equals(titleTextFieldVM.id, currentlyActiveTextField.getValue())) {
+                if (n != null) {
+                    titleTextFieldVM.tripTitle.set(clickedTitle.get());
+                    clickedTitle.set(null);
+                }
             }
             isSearchResultVisible.set(false);
         });

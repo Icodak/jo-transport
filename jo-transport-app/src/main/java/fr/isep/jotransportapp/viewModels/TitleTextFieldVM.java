@@ -20,6 +20,7 @@ public class TitleTextFieldVM {
     public String id = UUID.randomUUID().toString();
 
     public final SimpleStringProperty tripUuid = new SimpleStringProperty("");
+    public final SimpleStringProperty tripTitle = new SimpleStringProperty("");
 
     // Convenience init
     public TitleTextFieldVM(String title, String placeholder) {

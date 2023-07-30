@@ -36,6 +36,7 @@ public class TitleTextField extends Pane {
 
     public void bind(TitleTextFieldVM viewModel) {
         label.setText(viewModel.title.get());
+
         textField.setPromptText(viewModel.placeholder.get());
         viewModel.textEventProperty.bind(textField.textProperty().map(str -> {
             Transform textFieldTransform = textField.getLocalToSceneTransform();
@@ -49,11 +50,15 @@ public class TitleTextField extends Pane {
             viewModel.hasClickedTextField.set(true);
         });
 
+        viewModel.tripTitle.addListener((e,o,n) -> textField.setText(n));
+
+        viewModel.hasClickedTextField.addListener((e,o,n) -> {
+            if (n) viewModel.hasClickedTextField.set(false);
+        });
+
         cross.visibleProperty().bind(viewModel.hasCross);
         cross.setOnMouseClicked(event -> {
             viewModel.hasClicked.set(true);
         });
-
-        viewModel.tripUuid.addListener((e,o,n) -> System.out.println("" + viewModel.title.get() + "SET UUID TO" + n));
     }
 }

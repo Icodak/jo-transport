@@ -15,6 +15,7 @@ public class SearchResultVM {
     private String uuid;
 
     public SimpleStringProperty uuidProperty = new SimpleStringProperty("");
+    public SimpleStringProperty titleProperty = new SimpleStringProperty("");
 
     SearchResultVM(TransportTypes type, String title, List<Station> stations, String uuid) {
         switch (type) {
@@ -32,6 +33,7 @@ public class SearchResultVM {
 
     public void onClick() {
         uuidProperty.set(uuid);
+        titleProperty.set(title);
     }
 }
 
