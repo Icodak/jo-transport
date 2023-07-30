@@ -9,6 +9,7 @@ import javafx.collections.ObservableList;
 
 public class MainVM {
     public final SimpleStringProperty stepButtonTitle = new SimpleStringProperty("+ Ajouter une étape");
+    public final SimpleStringProperty sendButtonTitle = new SimpleStringProperty("Rechercher un trajet");
     public final SimpleStringProperty hint = new SimpleStringProperty("Saisissez au moins un départ et une arrivée");
     public TitleTextFieldVM departureVM = new TitleTextFieldVM("Départ", "Gare, station, arrêt ...");
     public TitleTextFieldVM arrivalVM = new TitleTextFieldVM("Arrivée", "Gare, station, arrêt ...");
@@ -44,5 +45,11 @@ public class MainVM {
         titleTextFieldVM.hasClicked.addListener((e, oldValue, newValue) -> observableStepVms.remove(titleTextFieldVM));
         linkToService(titleTextFieldVM);
         observableStepVms.add(titleTextFieldVM);
+    }
+
+    public void sendRequest() {
+        System.out.println("Departure: " + departureVM.search.getValue());
+        observableStepVms.forEach(vm -> System.out.println("Step: " + vm.search.getValue()));
+        System.out.println("Arrivée: " + arrivalVM.search.getValue());
     }
 }

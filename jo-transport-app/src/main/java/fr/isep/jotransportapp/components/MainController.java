@@ -19,9 +19,7 @@ public class MainController {
     @FXML
     public Label hint;
     @FXML
-    public VBox stepBox;
-    @FXML
-    public Pane buttonContainer;
+    public Button sendRequest;
     @FXML
     private TitleTextField departure;
 
@@ -49,6 +47,9 @@ public class MainController {
 
         addStep.setText(viewModel.stepButtonTitle.get());
         addStep.setOnAction(e -> viewModel.onAddStep());
+
+        sendRequest.setText(viewModel.sendButtonTitle.get());
+        sendRequest.setOnAction(e -> viewModel.sendRequest());
     }
 
     private double computeListViewHeight(ListView<?> listView) {

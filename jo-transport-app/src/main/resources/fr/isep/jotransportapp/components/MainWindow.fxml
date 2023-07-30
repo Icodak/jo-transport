@@ -17,15 +17,15 @@
             <!-- Blue vertical line -->
             <VBox spacing="20.0" alignment="CENTER">
                 <padding>
-                    <Insets bottom="85.0" left="20.0" right="20.0" top="85.0"/>
+                    <Insets bottom="140.0" left="20.0" right="20.0" top="85.0"/>
                 </padding>
                 <Pane styleClass="highlighted" prefWidth="16" VBox.vgrow="ALWAYS"/>
             </VBox>
 
             <!-- Text Field section -->
-            <VBox alignment="CENTER" spacing="16.0" prefWidth="1050">
+            <VBox alignment="CENTER" spacing="10.0" prefWidth="1050">
                 <padding>
-                    <Insets bottom="62.0" left="20.0" right="20.0" top="20.0"/>
+                    <Insets bottom="40.0" left="20.0" right="20.0" top="20.0"/>
                 </padding>
                 <!-- Departure -->
                 <TitleTextField fx:id="departure"/>
@@ -43,8 +43,15 @@
                 <HBox>
                     <Label fx:id="hint" styleClass="smallText"/>
                 </HBox>
+                <Button fx:id="sendRequest">
+                    <styleClass>
+                        <String fx:value="highlighted"/>
+                        <String fx:value="button"/>
+                    </styleClass>
+                </Button>
             </VBox>
 
         </HBox>
     </AnchorPane>
+
 </AnchorPane>
