@@ -24,7 +24,7 @@ public class SearchServiceImpl implements SearchService {
                                         new Station("N", Color.ALICEBLUE)),
                                 "Gare montparnasse",
                                 TransportTypes.TRAIN,
-                                UUID.randomUUID()
+                                UUID.randomUUID().toString()
                         ),
                         new StationDescription(
                                 List.of(
@@ -34,14 +34,14 @@ public class SearchServiceImpl implements SearchService {
                                 ),
                                 "Gare routière d’Asnières",
                                 TransportTypes.BUS,
-                                UUID.randomUUID()
+                                UUID.randomUUID().toString()
                         ),
                         new StationDescription(
                                 List.of(
                                         new Station("6", Color.ORANGE)),
                                 "Garnier",
                                 TransportTypes.METRO,
-                                UUID.randomUUID()
+                                UUID.randomUUID().toString()
                         )
                 )
 

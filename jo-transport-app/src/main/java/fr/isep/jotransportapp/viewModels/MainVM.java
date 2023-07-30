@@ -11,6 +11,8 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.Scene;
 
+import java.util.Objects;
+
 public class MainVM {
     public final SimpleStringProperty stepButtonTitle = new SimpleStringProperty("+ Ajouter une étape");
     public final SimpleStringProperty sendButtonTitle = new SimpleStringProperty("Rechercher un trajet");
@@ -23,18 +25,13 @@ public class MainVM {
     public SimpleDoubleProperty searchPosY = new SimpleDoubleProperty(0.0);
 
     public SimpleBooleanProperty isSearchResultVisible = new SimpleBooleanProperty(false);
+
+    public SimpleStringProperty clickedUuid = new SimpleStringProperty("");
+    public SimpleStringProperty currentlyActiveTextField = new SimpleStringProperty("");
     SearchService searchService = new SearchServiceImpl();
 
     public MainVM(Scene scene) {
-
         setupBindings(scene);
-//        scene.setOnMouseClicked(event -> {
-//            searchPosX.set(event.getSceneX());
-//            searchPosY.set(event.getSceneY());
-//            double x = event.getSceneX();
-//            double y = event.getSceneY();
-//            System.out.println("Coordonnées du clic : x = " + x + ", y = " + y);
-//        });
     }
 
     void setupBindings(Scene scene) {
@@ -42,18 +39,41 @@ public class MainVM {
         bindTitleTextField(arrivalVM);
         scene.onMouseClickedProperty().addListener((e, o, n) -> isSearchResultVisible.set(false));
 
+        clickedUuid.addListener((e,o,n) -> System.out.println(n));
+        currentlyActiveTextField.addListener((e,o,n) -> System.out.println(n));
+
     }
 
     void bindTitleTextField(TitleTextFieldVM titleTextFieldVM) {
-        titleTextFieldVM.textEventProperty.addListener((e, oldValue, newValue) -> {
+
+        titleTextFieldVM.textEventProperty.addListener((event, oldValue, newValue) -> {
             // Search and set results
             SearchResponse searchResults = searchService.getResults(new SearchParameters(newValue.text));
-            observableResultsVms.setAll(searchResults.stations.stream().map(desc ->
-                    new SearchResultVM(desc.type, desc.title, desc.stations)).toList());
+            observableResultsVms.setAll(searchResults.stations.stream().map(desc -> {
+                SearchResultVM searchResultVM = new SearchResultVM(desc.type, desc.title, desc.stations, desc.uuid);
+                searchResultVM.uuidProperty.addListener((e,o,n) -> clickedUuid.set(n));
+                    return searchResultVM;
+        }).toList());
+
+
+
             // Move the search results listview coordinates
             searchPosX.set(newValue.x);
             searchPosY.set(newValue.y + 50);
             if (newValue.x != 0 && newValue.y != 0) isSearchResultVisible.set(true);
+        });
+
+
+        // When we click on a textfield we store its id here
+        titleTextFieldVM.hasClickedTextField.addListener((e,o,n) -> {
+            currentlyActiveTextField.set(titleTextFieldVM.id);
+        });
+        // If when we click a field its id is the same we propagate the change
+        clickedUuid.addListener((e,o,n) -> {
+            if (Objects.equals(titleTextFieldVM.id, currentlyActiveTextField.getValue())) {
+                titleTextFieldVM.tripUuid.set(clickedUuid.get());
+            }
+            isSearchResultVisible.set(false);
         });
     }
 

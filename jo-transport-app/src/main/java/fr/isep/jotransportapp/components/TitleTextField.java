@@ -46,12 +46,14 @@ public class TitleTextField extends Pane {
 
         textField.setOnMouseClicked(event -> {
             textField.clear();
-
+            viewModel.hasClickedTextField.set(true);
         });
 
         cross.visibleProperty().bind(viewModel.hasCross);
         cross.setOnMouseClicked(event -> {
             viewModel.hasClicked.set(true);
         });
+
+        viewModel.tripUuid.addListener((e,o,n) -> System.out.println("" + viewModel.title.get() + "SET UUID TO" + n));
     }
 }

@@ -10,9 +10,9 @@ public class StationDescription {
     public List<Station> stations;
     public String title;
     public TransportTypes type;
-    public UUID uuid;
+    public String uuid;
 
-    public StationDescription(List<Station> stations, String title, TransportTypes type, UUID uuid) {
+    public StationDescription(List<Station> stations, String title, TransportTypes type, String uuid) {
         this.stations = stations;
         this.title = title;
         this.type = type;

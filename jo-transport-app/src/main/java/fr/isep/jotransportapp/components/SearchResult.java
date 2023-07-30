@@ -36,5 +36,6 @@ public class SearchResult extends Pane {
     public void bind(SearchResultVM viewModel) {
         name.setText(viewModel.title);
         image.setImage(viewModel.image);
+        setOnMousePressed(e -> viewModel.onClick());
     }
 }

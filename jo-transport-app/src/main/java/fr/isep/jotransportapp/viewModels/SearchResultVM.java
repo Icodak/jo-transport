@@ -1,6 +1,7 @@
 package fr.isep.jotransportapp.viewModels;
 
 import fr.isep.jotransportapp.models.Station;
+import javafx.beans.property.SimpleStringProperty;
 import javafx.scene.image.Image;
 
 import java.util.List;
@@ -11,8 +12,11 @@ public class SearchResultVM {
     public Image image;
     public List<Station> stations;
 
-    SearchResultVM(TransportTypes type, String title, List<Station> stations) {
-        System.out.println("");
+    private String uuid;
+
+    public SimpleStringProperty uuidProperty = new SimpleStringProperty("");
+
+    SearchResultVM(TransportTypes type, String title, List<Station> stations, String uuid) {
         switch (type) {
             case TRAIN ->
                     image = new Image(Objects.requireNonNull(getClass().getResource("/fr/isep/jotransportapp/images/train.png")).toString());
@@ -23,6 +27,11 @@ public class SearchResultVM {
         }
         this.title = title;
         this.stations = stations;
+        this.uuid = uuid;
+    }
+
+    public void onClick() {
+        uuidProperty.set(uuid);
     }
 }
 
