@@ -1,16 +1,16 @@
 @font-face {
     font-family: 'Quicksand-Regular';
-    src: url('Quicksand-Regular.ttf');
+    src: url('../fonts/Quicksand-Regular.ttf');
 }
 
 @font-face {
     font-family: 'Quicksand-Medium';
-    src: url('Quicksand-Medium.ttf');
+    src: url('../fonts/Quicksand-Medium.ttf');
 }
 
 @font-face {
     font-family: 'Quicksand-SemiBold';
-    src: url('Quicksand-SemiBold.ttf');
+    src: url('../fonts/Quicksand-SemiBold.ttf');
 }
 
 .root {
@@ -91,6 +91,11 @@
     -fx-padding: 16 0;
 }
 
+#searchResults {
+    -fx-padding: 16 0 0 0;
+    -fx-background-radius: 32;
+}
+
 #textFieldContainer {
     -fx-background-color: white;
     -fx-background-radius: 32px;
@@ -101,4 +106,8 @@
 
 #textFieldContainer:hover {
     -fx-border-color: #0FF9CE;
+}
+
+.grayOnHover:hover {
+    -fx-background-color: #d9d9d9;
 }

@@ -57,7 +57,7 @@ public class MainVM {
 
             // Move the search results listview coordinates
             searchPosX.set(newValue.x);
-            searchPosY.set(newValue.y + 50);
+            searchPosY.set(newValue.y + 60);
             if (newValue.x != 0 && newValue.y != 0) isSearchResultVisible.set(true);
         });
 

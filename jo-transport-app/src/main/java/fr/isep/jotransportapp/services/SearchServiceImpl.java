@@ -20,7 +20,7 @@ public class SearchServiceImpl implements SearchService {
                         new StationDescription(
                                 List.of(
                                         new Station("N", Color.ALICEBLUE)),
-                                "Gare montparnasse",
+                                "Gare Montparnasse",
                                 TransportTypes.TRAIN,
                                 UUID.randomUUID().toString()
                         ),

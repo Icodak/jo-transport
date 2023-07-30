@@ -54,6 +54,6 @@
 
     </VBox>
     <AnchorPane fx:id="searchAnchor" visible="false">
-        <ListView fx:id="searchResults"/>
+        <ListView fx:id="searchResults" prefWidth="960" fixedCellSize="50"/>
     </AnchorPane>
 </AnchorPane>
