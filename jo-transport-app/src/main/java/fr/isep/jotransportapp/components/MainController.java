@@ -56,6 +56,7 @@ public class MainController {
         searchResults.setItems(viewModel.observableResultsVms);
         searchResults.setCellFactory(new SearchResultFactory());
 
+        searchAnchor.visibleProperty().bindBidirectional(viewModel.isSearchResultVisible);
         searchAnchor.layoutXProperty().bindBidirectional(viewModel.searchPosX);
         searchAnchor.layoutYProperty().bindBidirectional(viewModel.searchPosY);
     }

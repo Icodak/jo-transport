@@ -53,7 +53,7 @@
 
 
     </VBox>
-    <AnchorPane fx:id="searchAnchor">
+    <AnchorPane fx:id="searchAnchor" visible="false">
         <ListView fx:id="searchResults"/>
     </AnchorPane>
 </AnchorPane>

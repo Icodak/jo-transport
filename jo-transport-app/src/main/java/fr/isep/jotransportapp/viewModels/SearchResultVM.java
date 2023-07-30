@@ -14,9 +14,12 @@ public class SearchResultVM {
     SearchResultVM(TransportTypes type, String title, List<Station> stations) {
         System.out.println("");
         switch (type) {
-            case TRAIN -> image = new Image(Objects.requireNonNull(getClass().getResource("/fr/isep/jotransportapp/images/train.png")).toString());
-            case METRO -> image = new Image(Objects.requireNonNull(getClass().getResource("/fr/isep/jotransportapp/images/metro.png")).toString());
-            case BUS -> image = new Image(Objects.requireNonNull(getClass().getResource("/fr/isep/jotransportapp/images/bus.png")).toString());
+            case TRAIN ->
+                    image = new Image(Objects.requireNonNull(getClass().getResource("/fr/isep/jotransportapp/images/train.png")).toString());
+            case METRO ->
+                    image = new Image(Objects.requireNonNull(getClass().getResource("/fr/isep/jotransportapp/images/metro.png")).toString());
+            case BUS ->
+                    image = new Image(Objects.requireNonNull(getClass().getResource("/fr/isep/jotransportapp/images/bus.png")).toString());
         }
         this.title = title;
         this.stations = stations;
