@@ -4,7 +4,6 @@ import fr.isep.jotransportapp.models.Station;
 import fr.isep.jotransportapp.viewModels.TransportTypes;
 
 import java.util.List;
-import java.util.UUID;
 
 public class StationDescription {
     public List<Station> stations;

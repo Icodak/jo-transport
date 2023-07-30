@@ -47,12 +47,16 @@ public class MainVM {
             // Search and set results
             SearchResponse searchResults = searchService.getResults(new SearchParameters(newValue.text));
             observableResultsVms.setAll(searchResults.stations.stream().map(desc -> {
-                SearchResultVM searchResultVM = new SearchResultVM(desc.type, desc.title, desc.stations, desc.uuid);
-                searchResultVM.uuidProperty.addListener((e,o,n) -> clickedUuid.set(n));
-                searchResultVM.titleProperty.addListener((e,o,n) -> clickedTitle.set(n));
-                    return searchResultVM;
-        }).toList());
-
+                SearchResultVM searchResultVM = new SearchResultVM(
+                        desc.type,
+                        desc.title,
+                        desc.stations.stream().map(station -> new StationCardVM(station.name, station.color)).toList(),
+                        desc.uuid
+                );
+                searchResultVM.uuidProperty.addListener((e, o, n) -> clickedUuid.set(n));
+                searchResultVM.titleProperty.addListener((e, o, n) -> clickedTitle.set(n));
+                return searchResultVM;
+            }).toList());
 
 
             // Move the search results listview coordinates
@@ -63,17 +67,17 @@ public class MainVM {
 
 
         // When we click on a textfield we store its id here
-        titleTextFieldVM.hasClickedTextField.addListener((e,o,n) -> {
+        titleTextFieldVM.hasClickedTextField.addListener((e, o, n) -> {
             currentlyActiveTextField.set(titleTextFieldVM.id);
         });
         // If when we click a field its id is the same we propagate the change
-        clickedUuid.addListener((e,o,n) -> {
+        clickedUuid.addListener((e, o, n) -> {
             if (Objects.equals(titleTextFieldVM.id, currentlyActiveTextField.getValue())) {
                 titleTextFieldVM.tripUuid.set(clickedUuid.get());
             }
             isSearchResultVisible.set(false);
         });
-        clickedTitle.addListener((e,o,n) -> {
+        clickedTitle.addListener((e, o, n) -> {
             if (Objects.equals(titleTextFieldVM.id, currentlyActiveTextField.getValue())) {
                 if (n != null) {
                     titleTextFieldVM.tripTitle.set(clickedTitle.get());

@@ -16,11 +16,9 @@ public class TitleTextFieldVM {
     public final SimpleBooleanProperty hasClickedTextField = new SimpleBooleanProperty(false);
 
     public final SimpleObjectProperty<TextEvent> textEventProperty = new SimpleObjectProperty<>();
-
-    public String id = UUID.randomUUID().toString();
-
     public final SimpleStringProperty tripUuid = new SimpleStringProperty("");
     public final SimpleStringProperty tripTitle = new SimpleStringProperty("");
+    public String id = UUID.randomUUID().toString();
 
     // Convenience init
     public TitleTextFieldVM(String title, String placeholder) {

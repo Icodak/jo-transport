@@ -111,3 +111,8 @@
 .grayOnHover:hover {
     -fx-background-color: #d9d9d9;
 }
+
+.smallCorner {
+    -fx-padding: 0 10;
+    -fx-background-radius: 10;
+}

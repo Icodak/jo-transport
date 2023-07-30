@@ -3,6 +3,7 @@ package fr.isep.jotransportapp.components;
 import fr.isep.jotransportapp.viewModels.SearchResultVM;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Pos;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
@@ -36,6 +37,12 @@ public class SearchResult extends Pane {
     public void bind(SearchResultVM viewModel) {
         name.setText(viewModel.title);
         image.setImage(viewModel.image);
+        viewModel.stations.forEach(stationCardVM -> {
+            StationCard stationCard = new StationCard();
+            stationCard.bind(stationCardVM);
+            container.getChildren().add(stationCard);
+        });
         setOnMousePressed(e -> viewModel.onClick());
+        container.setAlignment(Pos.CENTER_LEFT);
     }
 }

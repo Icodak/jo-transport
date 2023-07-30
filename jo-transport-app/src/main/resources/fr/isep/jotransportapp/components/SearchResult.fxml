@@ -1,17 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
-<?import javafx.geometry.Insets?>
 <fx:root xmlns:fx="http://javafx.com/fxml/1"
          type="Pane"
          xmlns="http://javafx.com/javafx/19">
-    <HBox spacing="16" fx:id="container" prefHeight="50" prefWidth="960" styleClass="grayOnHover" alignment="CENTER_LEFT">
+    <HBox spacing="16" fx:id="container" prefHeight="50" prefWidth="960" styleClass="grayOnHover"
+          alignment="CENTER_LEFT">
         <padding>
-            <Insets left="20.0" right="20.0"/>
+            <Insets left="20.0" right="20.0" top="10.0" bottom="10.0"/>
         </padding>
         <ImageView fx:id="image"/>
         <Label fx:id="name"/>

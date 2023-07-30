@@ -50,9 +50,9 @@ public class TitleTextField extends Pane {
             viewModel.hasClickedTextField.set(true);
         });
 
-        viewModel.tripTitle.addListener((e,o,n) -> textField.setText(n));
+        viewModel.tripTitle.addListener((e, o, n) -> textField.setText(n));
 
-        viewModel.hasClickedTextField.addListener((e,o,n) -> {
+        viewModel.hasClickedTextField.addListener((e, o, n) -> {
             if (n) viewModel.hasClickedTextField.set(false);
         });
 
