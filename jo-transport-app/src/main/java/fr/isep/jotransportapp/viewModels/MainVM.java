@@ -1,11 +1,14 @@
 package fr.isep.jotransportapp.viewModels;
 
 import fr.isep.jotransportapp.models.parameters.SearchParameters;
+import fr.isep.jotransportapp.models.responses.SearchResponse;
 import fr.isep.jotransportapp.services.SearchService;
 import fr.isep.jotransportapp.services.SearchServiceImpl;
+import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.scene.Scene;
 
 public class MainVM {
     public final SimpleStringProperty stepButtonTitle = new SimpleStringProperty("+ Ajouter une étape");
@@ -14,28 +17,34 @@ public class MainVM {
     public TitleTextFieldVM departureVM = new TitleTextFieldVM("Départ", "Gare, station, arrêt ...");
     public TitleTextFieldVM arrivalVM = new TitleTextFieldVM("Arrivée", "Gare, station, arrêt ...");
     public ObservableList<TitleTextFieldVM> observableStepVms = FXCollections.observableArrayList();
+    public ObservableList<SearchResultVM> observableResultsVms = FXCollections.observableArrayList();
     SearchService searchService = new SearchServiceImpl();
 
-    public MainVM() {
+    public SimpleDoubleProperty searchPosX = new SimpleDoubleProperty(0.0);
+    public SimpleDoubleProperty searchPosY = new SimpleDoubleProperty(0.0);
+
+    public MainVM(Scene scene) {
+
         setupBindings();
+        scene.setOnMouseClicked(event -> {
+            searchPosX.set(event.getSceneX());
+            searchPosY.set(event.getSceneY());
+            double x = event.getSceneX();
+            double y = event.getSceneY();
+            System.out.println("Coordonnées du clic : x = " + x + ", y = " + y);
+        });
     }
 
     void setupBindings() {
         linkToService(departureVM);
         linkToService(arrivalVM);
-//        departureVM.search.addListener((e, oldSearchText, newSearchText) -> {
-//            searchService.getResults(new SearchParameters(newSearchText));
-//
-//        });
-//
-//        arrivalVM.search.addListener((e, oldValue, newValue) -> {
-//            searchService.getResults(new SearchParameters(newValue));
-//        });
     }
 
     void linkToService(TitleTextFieldVM titleTextFieldVM) {
         titleTextFieldVM.search.addListener((e, oldValue, newValue) -> {
-            searchService.getResults(new SearchParameters(newValue));
+            SearchResponse searchResults = searchService.getResults(new SearchParameters(newValue));
+            observableResultsVms.setAll(searchResults.stations.stream().map(desc ->
+                    new SearchResultVM(desc.type, desc.title, desc.stations)).toList());
         });
     }
 

@@ -22,7 +22,7 @@ public class Application extends javafx.application.Application {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/fr/isep/jotransportapp/components/MainWindow.fxml"));
         Scene scene = new Scene(loader.load(), WIDTH, HEIGHT);
 
-        MainVM viewModel = new MainVM();
+        MainVM viewModel = new MainVM(scene);
         MainController mainController = loader.getController();
         mainController.bind(viewModel);
         stage.setTitle(APP_NAME);

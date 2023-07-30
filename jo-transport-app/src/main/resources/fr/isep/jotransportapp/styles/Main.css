@@ -81,7 +81,7 @@
     -fx-background-color: #231123;;
 }
 
-.list-view {
+#stepContainer {
     -fx-background-color: clear;
     -fx-padding: 0px;
 }

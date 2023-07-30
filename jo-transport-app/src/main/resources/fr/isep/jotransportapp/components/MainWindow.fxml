@@ -2,17 +2,15 @@
 
 <?import fr.isep.jotransportapp.components.TitleTextField?>
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import java.lang.String?>
 <AnchorPane xmlns:fx="http://javafx.com/fxml"
             fx:controller="fr.isep.jotransportapp.components.MainController"
             stylesheets="@../styles/Main.css">
-    <!-- Header section -->
-    <AnchorPane styleClass="headerSection" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
-        <HBox alignment="CENTER" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+    <VBox prefWidth="Infinity" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+        <!-- Header section -->
+        <HBox alignment="CENTER" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" styleClass="headerSection">
 
             <!-- Blue vertical line -->
             <VBox spacing="20.0" alignment="CENTER">
@@ -52,6 +50,10 @@
             </VBox>
 
         </HBox>
-    </AnchorPane>
 
+
+    </VBox>
+    <AnchorPane fx:id="searchAnchor">
+        <ListView fx:id="searchResults"/>
+    </AnchorPane>
 </AnchorPane>

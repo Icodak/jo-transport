@@ -1,15 +1,12 @@
 package fr.isep.jotransportapp.components;
 
-import fr.isep.jotransportapp.viewModels.MainVM;
-import fr.isep.jotransportapp.viewModels.StepFactory;
-import fr.isep.jotransportapp.viewModels.TitleTextFieldVM;
+import fr.isep.jotransportapp.viewModels.*;
 import javafx.collections.ListChangeListener;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
-import javafx.scene.layout.Pane;
-import javafx.scene.layout.VBox;
+import javafx.scene.layout.AnchorPane;
 
 
 public class MainController {
@@ -21,12 +18,17 @@ public class MainController {
     @FXML
     public Button sendRequest;
     @FXML
+    public AnchorPane searchAnchor;
+    @FXML
     private TitleTextField departure;
 
     @FXML
     private ListView<TitleTextFieldVM> stepContainer;
     @FXML
     private TitleTextField arrival;
+
+    @FXML
+    private ListView<SearchResultVM> searchResults;
 
     public void bind(MainVM viewModel) {
         departure.bind(viewModel.departureVM);
@@ -50,6 +52,12 @@ public class MainController {
 
         sendRequest.setText(viewModel.sendButtonTitle.get());
         sendRequest.setOnAction(e -> viewModel.sendRequest());
+
+        searchResults.setItems(viewModel.observableResultsVms);
+        searchResults.setCellFactory(new SearchResultFactory());
+
+        searchAnchor.layoutXProperty().bindBidirectional(viewModel.searchPosX);
+        searchAnchor.layoutYProperty().bindBidirectional(viewModel.searchPosY);
     }
 
     private double computeListViewHeight(ListView<?> listView) {
