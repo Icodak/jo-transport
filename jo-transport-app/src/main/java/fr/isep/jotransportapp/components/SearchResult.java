@@ -37,10 +37,10 @@ public class SearchResult extends Pane {
     public void bind(SearchResultVM viewModel) {
         name.setText(viewModel.title);
         image.setImage(viewModel.image);
-        viewModel.stations.forEach(stationCardVM -> {
-            StationCard stationCard = new StationCard();
-            stationCard.bind(stationCardVM);
-            container.getChildren().add(stationCard);
+        viewModel.lines.forEach(lineCardVM -> {
+            LineCard lineCard = new LineCard();
+            lineCard.bind(lineCardVM);
+            container.getChildren().add(lineCard);
         });
         setOnMousePressed(e -> viewModel.onClick());
         container.setAlignment(Pos.CENTER_LEFT);

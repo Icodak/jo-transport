@@ -15,7 +15,7 @@ import java.io.IOException;
 public class TripProposal extends Pane {
 
     @FXML
-private HBox stationContainer;
+private HBox lineContainer;
     @FXML
 private Label tripName;
     @FXML
@@ -44,10 +44,10 @@ private ImageView affluence;
         affluence.setImage(viewModel.affluencePicto);
         price.setText(viewModel.formattedPrice);
         duration.setText(viewModel.formattedDuration);
-        viewModel.stations.forEach(stationCardVM -> {
-            StationCard stationCard = new StationCard();
-            stationCard.bind(stationCardVM);
-            stationContainer.getChildren().add(stationCard);
+        viewModel.lines.forEach(lineCardVM -> {
+            LineCard lineCard = new LineCard();
+            lineCard.bind(lineCardVM);
+            lineContainer.getChildren().add(lineCard);
         });
         setOnMousePressed(e -> viewModel.onClick());
     }

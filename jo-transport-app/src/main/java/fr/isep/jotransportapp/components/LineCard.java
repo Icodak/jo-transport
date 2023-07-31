@@ -1,7 +1,7 @@
 package fr.isep.jotransportapp.components;
 
 import fr.isep.jotransportapp.helpers.ColorHelpers;
-import fr.isep.jotransportapp.viewModels.StationCardVM;
+import fr.isep.jotransportapp.viewModels.LineCardVM;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Label;
@@ -9,16 +9,16 @@ import javafx.scene.layout.Pane;
 
 import java.io.IOException;
 
-public class StationCard extends Pane {
+public class LineCard extends Pane {
     @FXML
     Label label;
 
 
-    public StationCard() {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("StationCard.fxml"));
+    public LineCard() {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("LineCard.fxml"));
 
         fxmlLoader.setRoot(this);
-        fxmlLoader.setController(StationCard.this);
+        fxmlLoader.setController(LineCard.this);
 
         try {
             fxmlLoader.load();
@@ -27,7 +27,7 @@ public class StationCard extends Pane {
         }
     }
 
-    void bind(StationCardVM viewModel) {
+    void bind(LineCardVM viewModel) {
         label.setText(viewModel.name);
         label.setStyle("-fx-background-color: " + ColorHelpers.toRGBCode(viewModel.color) + ";");
     }

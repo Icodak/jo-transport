@@ -69,8 +69,8 @@ public class MainController {
         temp.bind(new TripProposalVM(
                 "Gare montparnasse",
                 AffluenceLevel.MEDIUM,
-                List.of(new StationCardVM("354", ColorHelpers.fromRGBCode("#FF2467")),
-                        new StationCardVM("R", ColorHelpers.fromRGBCode("#25FF67"))),
+                List.of(new LineCardVM("354", ColorHelpers.fromRGBCode("#FF2467")),
+                        new LineCardVM("R", ColorHelpers.fromRGBCode("#25FF67"))),
                 1.25,
                 12
                 ));

@@ -17,8 +17,8 @@ public class MainVM {
     public final SimpleStringProperty stepButtonTitle = new SimpleStringProperty("+ Ajouter une étape");
     public final SimpleStringProperty sendButtonTitle = new SimpleStringProperty("Rechercher un trajet");
     public final SimpleStringProperty hint = new SimpleStringProperty("Saisissez au moins un départ et une arrivée");
-    public TitleTextFieldVM departureVM = new TitleTextFieldVM("Départ", "Gare, station, arrêt ...");
-    public TitleTextFieldVM arrivalVM = new TitleTextFieldVM("Arrivée", "Gare, station, arrêt ...");
+    public TitleTextFieldVM departureVM = new TitleTextFieldVM("Départ", "Gare, line, arrêt ...");
+    public TitleTextFieldVM arrivalVM = new TitleTextFieldVM("Arrivée", "Gare, line, arrêt ...");
     public ObservableList<TitleTextFieldVM> observableStepVms = FXCollections.observableArrayList();
     public ObservableList<SearchResultVM> observableResultsVms = FXCollections.observableArrayList();
     public SimpleDoubleProperty searchPosX = new SimpleDoubleProperty(0.0);
@@ -46,11 +46,11 @@ public class MainVM {
         titleTextFieldVM.textEventProperty.addListener((event, oldValue, newValue) -> {
             // Search and set results
             SearchResponse searchResults = searchService.getResults(new SearchParameters(newValue.text));
-            observableResultsVms.setAll(searchResults.stations.stream().map(desc -> {
+            observableResultsVms.setAll(searchResults.lines.stream().map(desc -> {
                 SearchResultVM searchResultVM = new SearchResultVM(
                         desc.type,
                         desc.title,
-                        desc.stations.stream().map(station -> new StationCardVM(station.name, station.color)).toList(),
+                        desc.lines.stream().map(line -> new LineCardVM(line.name, line.color)).toList(),
                         desc.uuid
                 );
                 searchResultVM.uuidProperty.addListener((e, o, n) -> clickedUuid.set(n));
@@ -89,7 +89,7 @@ public class MainVM {
     }
 
     public void onAddStep() {
-        TitleTextFieldVM titleTextFieldVM = new TitleTextFieldVM("", "Gare, station, arrêt ...");
+        TitleTextFieldVM titleTextFieldVM = new TitleTextFieldVM("", "Gare, line, arrêt ...");
         titleTextFieldVM.hasCross.set(true);
         titleTextFieldVM.hasClicked.addListener((e, oldValue, newValue) -> {
             observableStepVms.remove(titleTextFieldVM);

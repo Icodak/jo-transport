@@ -15,7 +15,7 @@
         </padding>
         <!-- Left side container -->
         <HBox fx:id="leftContainer" spacing="30" prefWidth="660" maxWidth="660">
-        <HBox fx:id="stationContainer" spacing="10"/>
+        <HBox fx:id="lineContainer" spacing="10"/>
         <Label fx:id="tripName"/>
         </HBox>
 

@@ -13,7 +13,7 @@ public class TripProposalVM {
     public String name;
     public AffluenceLevel affluenceLevel;
     public Image affluencePicto;
-    public List<StationCardVM> stations;
+    public List<LineCardVM> lines;
     public Double price;
     public String formattedPrice;
     public String formattedDuration;
@@ -22,12 +22,12 @@ public class TripProposalVM {
     public TripProposalVM(
             String name,
             AffluenceLevel affluenceLevel,
-            List<StationCardVM> stations,
+            List<LineCardVM> lines,
             Double price,
             Integer duration) {
         this.name = name;
         this.affluenceLevel = affluenceLevel;
-        this.stations = stations;
+        this.lines = lines;
         this.price = price;
         formattedPrice = formatPrice(price);
         switch (affluenceLevel) {

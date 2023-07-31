@@ -18,7 +18,7 @@
             </padding>
         </Label>
         <StackPane fx:id="textFieldContainer" alignment="CENTER_RIGHT">
-            <TextField fx:id="textField" promptText="Gare, station, arrêt ..."/>
+            <TextField fx:id="textField" promptText="Gare, line, arrêt ..."/>
             <Button fx:id="cross" prefWidth="50" maxWidth="50" styleClass="cross" text="x">
             </Button>
         </StackPane>

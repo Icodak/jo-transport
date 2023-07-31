@@ -1,10 +1,10 @@
 package fr.isep.jotransportapp.services;
 
 import fr.isep.jotransportapp.helpers.ColorHelpers;
-import fr.isep.jotransportapp.models.Station;
+import fr.isep.jotransportapp.models.Line;
 import fr.isep.jotransportapp.models.parameters.SearchParameters;
 import fr.isep.jotransportapp.models.responses.SearchResponse;
-import fr.isep.jotransportapp.models.responses.StationDescription;
+import fr.isep.jotransportapp.models.responses.LineDescription;
 import fr.isep.jotransportapp.viewModels.TransportTypes;
 
 import java.util.List;
@@ -17,26 +17,26 @@ public class SearchServiceImpl implements SearchService {
         // TODO change this to call the real service
         return new SearchResponse(
                 List.of(
-                        new StationDescription(
+                        new LineDescription(
                                 List.of(
-                                        new Station("N", ColorHelpers.fromRGBCode("#0FF9A4"))),
+                                        new Line("N", ColorHelpers.fromRGBCode("#0FF9A4"))),
                                 "Gare Montparnasse",
                                 TransportTypes.TRAIN,
                                 UUID.randomUUID().toString()
                         ),
-                        new StationDescription(
+                        new LineDescription(
                                 List.of(
-                                        new Station("132", ColorHelpers.fromRGBCode("#FF479F")),
-                                        new Station("513", ColorHelpers.fromRGBCode("#FBFF47")),
-                                        new Station("868", ColorHelpers.fromRGBCode("#47E9FF"))
+                                        new Line("132", ColorHelpers.fromRGBCode("#FF479F")),
+                                        new Line("513", ColorHelpers.fromRGBCode("#FBFF47")),
+                                        new Line("868", ColorHelpers.fromRGBCode("#47E9FF"))
                                 ),
                                 "Gare routière d’Asnières",
                                 TransportTypes.BUS,
                                 UUID.randomUUID().toString()
                         ),
-                        new StationDescription(
+                        new LineDescription(
                                 List.of(
-                                        new Station("6", ColorHelpers.fromRGBCode("#FF6847"))),
+                                        new Line("6", ColorHelpers.fromRGBCode("#FF6847"))),
                                 "Garnier",
                                 TransportTypes.METRO,
                                 UUID.randomUUID().toString()
