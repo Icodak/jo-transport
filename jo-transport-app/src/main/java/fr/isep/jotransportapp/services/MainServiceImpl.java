@@ -9,8 +9,8 @@ import fr.isep.jotransportapp.models.parameters.TripParameters;
 import fr.isep.jotransportapp.models.responses.SearchResponse;
 import fr.isep.jotransportapp.models.responses.LineDescription;
 import fr.isep.jotransportapp.models.responses.TripResponse;
-import fr.isep.jotransportapp.viewModels.AffluenceLevel;
-import fr.isep.jotransportapp.viewModels.TransportTypes;
+import fr.isep.jotransportapp.models.AffluenceLevel;
+import fr.isep.jotransportapp.models.TransportTypes;
 
 import java.util.List;
 import java.util.UUID;

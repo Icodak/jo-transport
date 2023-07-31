@@ -1,21 +1,18 @@
 package fr.isep.jotransportapp.models;
 
-import fr.isep.jotransportapp.viewModels.AffluenceLevel;
-import fr.isep.jotransportapp.viewModels.TransportTypes;
-
 import java.util.List;
 
 public class TripSummary {
     /*
      * Contains all the details of a trip
      */
-    List<LineDetails> lineDetails;
-    String departureStationName;
-    AffluenceLevel affluenceLevel;
-    Double tripPrice;
-    Integer tripMinutesDuration;
+    public List<LineDetails> lineDetails;
+    public String departureStationName;
+    public AffluenceLevel affluenceLevel;
+    public Double tripPrice;
+    public Integer tripMinutesDuration;
 
-    List<TransportTypes> usedTransportTypes;
+    public List<TransportTypes> usedTransportTypes;
 
     public TripSummary(List<LineDetails> lineDetails, String departureStationName, AffluenceLevel affluenceLevel, Double tripPrice, Integer tripMinutesDuration, List<TransportTypes> usedTransportTypes) {
         this.lineDetails = lineDetails;

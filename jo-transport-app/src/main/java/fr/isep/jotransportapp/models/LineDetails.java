@@ -6,11 +6,11 @@ public class LineDetails {
     /*
      * Details the different stations to take along a trip of a specific line
      * */
-    Line line;
+    public Line line;
 
 
 
-    List<String> stations;
+    public List<String> stations;
 
     public LineDetails(Line line, List<String> stations) {
         this.line = line;

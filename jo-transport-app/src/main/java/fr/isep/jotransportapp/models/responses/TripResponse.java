@@ -9,7 +9,7 @@ public class TripResponse {
     /*
      * List of TripSummary
      * */
-    List<TripSummary> tripSummaries;
+    public List<TripSummary> tripSummaries;
 
     public TripResponse(List<TripSummary> tripSummaries) {
         this.tripSummaries = tripSummaries;

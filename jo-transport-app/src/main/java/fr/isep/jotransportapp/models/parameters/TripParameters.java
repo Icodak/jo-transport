@@ -4,7 +4,13 @@ import java.util.List;
 import java.util.UUID;
 
 public class TripParameters {
-    UUID departure;
-    UUID arrival;
-    List<UUID> steps;
+    String departureUuid;
+    String arrivalUuid;
+    List<String> stepsUuids;
+
+    public TripParameters(String departureUuid, String arrivalUuid, List<String> stepsUuids) {
+        this.departureUuid = departureUuid;
+        this.arrivalUuid = arrivalUuid;
+        this.stepsUuids = stepsUuids;
+    }
 }

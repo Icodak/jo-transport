@@ -1,4 +1,4 @@
-package fr.isep.jotransportapp.viewModels;
+package fr.isep.jotransportapp.models;
 
 public enum TransportTypes {
     TRAIN,

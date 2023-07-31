@@ -1,7 +1,10 @@
 package fr.isep.jotransportapp.viewModels;
 
+import fr.isep.jotransportapp.models.TripSummary;
 import fr.isep.jotransportapp.models.parameters.SearchParameters;
+import fr.isep.jotransportapp.models.parameters.TripParameters;
 import fr.isep.jotransportapp.models.responses.SearchResponse;
+import fr.isep.jotransportapp.models.responses.TripResponse;
 import fr.isep.jotransportapp.services.MainService;
 import fr.isep.jotransportapp.services.MainServiceImpl;
 import javafx.beans.property.SimpleBooleanProperty;
@@ -21,6 +24,7 @@ public class MainVM {
     public TitleTextFieldVM arrivalVM = new TitleTextFieldVM("Arrivée", "Gare, line, arrêt ...");
     public ObservableList<TitleTextFieldVM> observableStepVms = FXCollections.observableArrayList();
     public ObservableList<SearchResultVM> observableResultsVms = FXCollections.observableArrayList();
+    public ObservableList<TripProposalVM> observableTripProposalVms = FXCollections.observableArrayList();
     public SimpleDoubleProperty searchPosX = new SimpleDoubleProperty(0.0);
     public SimpleDoubleProperty searchPosY = new SimpleDoubleProperty(0.0);
 
@@ -106,9 +110,27 @@ public class MainVM {
     }
 
     public void sendRequest() {
-        System.out.println("Departure: " + departureVM.textEventProperty.getValue().text);
-        observableStepVms.forEach(vm -> System.out.println("Step: " + vm.textEventProperty.getValue().text));
-        System.out.println("Arrivée: " + arrivalVM.textEventProperty.getValue().text);
+        TripResponse response = mainService.getTrips(new TripParameters(
+                departureVM.tripUuid.get(),
+                arrivalVM.tripUuid.get(),
+                observableStepVms.stream().map(vm -> vm.tripUuid.get()).toList()
+        ));
+
+        observableTripProposalVms.setAll(
+                response.tripSummaries.stream().map(this::tripSummaryToTripProposalVM).toList()
+        );
+
+
         isSearchResultVisible.set(false);
+    }
+
+    private TripProposalVM tripSummaryToTripProposalVM(TripSummary summary) {
+        return new TripProposalVM(
+                summary.departureStationName,
+                summary.affluenceLevel,
+                summary.lineDetails.stream().map(lineDetails -> new LineCardVM(lineDetails.line.name,lineDetails.line.color)).toList(),
+                summary.tripPrice,
+                summary.tripMinutesDuration
+                );
     }
 }

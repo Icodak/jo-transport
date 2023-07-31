@@ -1,9 +1,5 @@
 package fr.isep.jotransportapp.models;
 
-import fr.isep.jotransportapp.viewModels.AffluenceLevel;
-
-import java.util.List;
-
 public class TextEvent {
     public String text;
     public double x;

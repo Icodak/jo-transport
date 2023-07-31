@@ -5,13 +5,24 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="28a9f81b-d715-41fd-aa28-e844a39e83bf" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/fr/isep/jotransportapp/models/LineDetails.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/fr/isep/jotransportapp/models/TripSummary.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/fr/isep/jotransportapp/models/responses/TripResponse.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/fr/isep/jotransportapp/models/Line.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/isep/jotransportapp/models/Line.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/fr/isep/jotransportapp/components/TripProposalCell.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/fr/isep/jotransportapp/viewModels/TripProposalFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/fr/isep/jotransportapp/components/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/isep/jotransportapp/components/MainController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/fr/isep/jotransportapp/models/LineDetails.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/isep/jotransportapp/models/LineDetails.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/fr/isep/jotransportapp/models/TextEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/isep/jotransportapp/models/TextEvent.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/fr/isep/jotransportapp/services/MainService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/isep/jotransportapp/services/MainService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/fr/isep/jotransportapp/models/TripSummary.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/isep/jotransportapp/models/TripSummary.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/fr/isep/jotransportapp/models/parameters/TripParameters.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/isep/jotransportapp/models/parameters/TripParameters.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/fr/isep/jotransportapp/models/responses/LineDescription.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/isep/jotransportapp/models/responses/LineDescription.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/fr/isep/jotransportapp/models/responses/TripResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/isep/jotransportapp/models/responses/TripResponse.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/fr/isep/jotransportapp/services/MainServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/isep/jotransportapp/services/MainServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/fr/isep/jotransportapp/viewModels/AffluenceLevel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/isep/jotransportapp/models/AffluenceLevel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/fr/isep/jotransportapp/viewModels/MainVM.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/isep/jotransportapp/viewModels/MainVM.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/fr/isep/jotransportapp/viewModels/SearchResultVM.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/isep/jotransportapp/viewModels/SearchResultVM.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/fr/isep/jotransportapp/viewModels/TransportTypes.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/isep/jotransportapp/models/TransportTypes.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/fr/isep/jotransportapp/viewModels/TripProposalVM.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/isep/jotransportapp/viewModels/TripProposalVM.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/fr/isep/jotransportapp/components/MainWindow.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/fr/isep/jotransportapp/components/MainWindow.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/fr/isep/jotransportapp/styles/Main.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/fr/isep/jotransportapp/styles/Main.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -131,7 +142,7 @@
       <workItem from="1690694437588" duration="19522000" />
       <workItem from="1690736402328" duration="5184000" />
       <workItem from="1690754316639" duration="588000" />
-      <workItem from="1690793368189" duration="7922000" />
+      <workItem from="1690793368189" duration="9608000" />
     </task>
     <servers />
   </component>

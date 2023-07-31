@@ -1,5 +1,6 @@
 package fr.isep.jotransportapp.viewModels;
 
+import fr.isep.jotransportapp.models.TransportTypes;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.scene.image.Image;
 

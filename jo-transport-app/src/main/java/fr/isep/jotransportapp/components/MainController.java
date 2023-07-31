@@ -1,6 +1,7 @@
 package fr.isep.jotransportapp.components;
 
 import fr.isep.jotransportapp.helpers.ColorHelpers;
+import fr.isep.jotransportapp.models.AffluenceLevel;
 import fr.isep.jotransportapp.viewModels.*;
 import javafx.collections.ListChangeListener;
 import javafx.fxml.FXML;
@@ -30,8 +31,8 @@ public class MainController {
     public Label price;
     @FXML
     public Label duration;
-    //@FXML
-    //public ListView tripResultsList;
+    @FXML
+    public ListView<TripProposalVM> tripProposalList;
     @FXML
     private TitleTextField departure;
 
@@ -80,6 +81,9 @@ public class MainController {
         affluence.setText(viewModel.affluenceTitle);
         price.setText(viewModel.priceTitle);
         duration.setText(viewModel.durationTitle);
+
+        tripProposalList.setItems(viewModel.observableTripProposalVms);
+        tripProposalList.setCellFactory(new TripProposalFactory());
 
         temp.bind(new TripProposalVM(
                 "Gare montparnasse",

@@ -1,10 +1,8 @@
 package fr.isep.jotransportapp.viewModels;
 
-import javafx.beans.property.SimpleStringProperty;
+import fr.isep.jotransportapp.models.AffluenceLevel;
 import javafx.scene.image.Image;
-import javafx.scene.paint.Color;
 
-import java.util.Date;
 import java.util.List;
 import java.util.Objects;
 

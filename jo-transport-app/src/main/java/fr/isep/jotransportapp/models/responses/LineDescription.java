@@ -1,7 +1,7 @@
 package fr.isep.jotransportapp.models.responses;
 
 import fr.isep.jotransportapp.models.Line;
-import fr.isep.jotransportapp.viewModels.TransportTypes;
+import fr.isep.jotransportapp.models.TransportTypes;
 
 import java.util.List;
 
