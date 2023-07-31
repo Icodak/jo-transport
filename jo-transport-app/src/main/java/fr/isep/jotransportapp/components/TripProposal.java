@@ -47,6 +47,6 @@ public class TripProposal extends Pane {
             lineCard.bind(lineCardVM);
             lineContainer.getChildren().add(lineCard);
         });
-        setOnMousePressed(e -> viewModel.onClick());
+        setOnMousePressed(e -> viewModel.onClick.run());
     }
 }

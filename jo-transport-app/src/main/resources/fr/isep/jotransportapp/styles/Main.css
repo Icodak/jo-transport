@@ -139,3 +139,13 @@
     -fx-border-color: white;
     -fx-border-radius: 32;
 }
+
+#summary {
+    -fx-background-color: white;
+    -fx-background-radius: 32;
+}
+
+#detailsTitle {
+    -fx-font-size: 24;
+    -fx-text-fill: black;
+}

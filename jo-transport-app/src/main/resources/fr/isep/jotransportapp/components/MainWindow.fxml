@@ -51,7 +51,7 @@
 
         </HBox>
 
-        <HBox alignment="CENTER" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+        <HBox alignment="CENTER" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" spacing="100">
             <VBox>
                 <padding>
                     <Insets top="50.0"/>
@@ -75,6 +75,18 @@
                         <Label fx:id="duration" styleClass="headerTitles"/>
                     </HBox>
                 </StackPane>
+            </VBox>
+
+            <!-- Summary -->
+            <VBox>
+                <padding>
+                    <Insets top="50.0"/>
+                </padding>
+            <VBox fx:id="summary" prefWidth="300" alignment="TOP_CENTER">
+
+                <Label fx:id="detailsTitle"/>
+                <ListView fx:id="detailsList"/>
+            </VBox>
             </VBox>
         </HBox>
     </VBox>

@@ -7,6 +7,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.VBox;
 
 
 public class MainController {
@@ -29,6 +30,12 @@ public class MainController {
     public Label duration;
     @FXML
     public ListView<TripProposalVM> tripProposalList;
+   @FXML
+    public Label detailsTitle;
+   @FXML
+    public VBox summary;
+   @FXML
+   public ListView<TripDetailsVM> detailsList;
     @FXML
     private TitleTextField departure;
 
@@ -84,6 +91,10 @@ public class MainController {
                 tripProposalList.setPrefHeight(computeListViewHeight(tripProposalList, 50.0, 100.0));
             }
         });
+
+        detailsTitle.setText(viewModel.detailsTitle);
+
+        // TODO factory for details
     }
 
     private double computeListViewHeight(ListView<?> listView, Double cellHeight, Double padding) {

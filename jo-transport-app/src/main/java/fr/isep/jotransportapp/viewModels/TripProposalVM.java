@@ -16,13 +16,15 @@ public class TripProposalVM {
     public String formattedPrice;
     public String formattedDuration;
     public Integer duration;
+    public Runnable onClick;
 
     public TripProposalVM(
             String name,
             AffluenceLevel affluenceLevel,
             List<LineCardVM> lines,
             Double price,
-            Integer duration) {
+            Integer duration,
+            Runnable onClick) {
         this.name = name;
         this.affluenceLevel = affluenceLevel;
         this.lines = lines;
@@ -40,6 +42,7 @@ public class TripProposalVM {
         }
         this.duration = duration;
         formattedDuration = formatDuration(duration);
+        this.onClick = onClick;
     }
 
     private String formatPrice(Double price) {
@@ -52,8 +55,8 @@ public class TripProposalVM {
         return duration + "min";
     }
 
-    public void onClick() {
-        System.out.println("pouet");
-    }
+
+
+
 }
 

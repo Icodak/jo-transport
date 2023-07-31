@@ -25,19 +25,19 @@ public class MainVM {
     public ObservableList<TitleTextFieldVM> observableStepVms = FXCollections.observableArrayList();
     public ObservableList<SearchResultVM> observableResultsVms = FXCollections.observableArrayList();
     public ObservableList<TripProposalVM> observableTripProposalVms = FXCollections.observableArrayList();
+    public ObservableList<TripDetailsVM> observableTripDetailsVms = FXCollections.observableArrayList();
     public SimpleDoubleProperty searchPosX = new SimpleDoubleProperty(0.0);
     public SimpleDoubleProperty searchPosY = new SimpleDoubleProperty(0.0);
-
     public SimpleBooleanProperty isSearchResultVisible = new SimpleBooleanProperty(false);
-
     public SimpleStringProperty clickedUuid = new SimpleStringProperty("");
     public SimpleStringProperty clickedTitle = new SimpleStringProperty("");
     public SimpleStringProperty currentlyActiveTextField = new SimpleStringProperty("");
-
     public String departureTitle = "Station de départ";
     public String affluenceTitle = "Affluence";
     public String priceTitle = "Prix";
     public String durationTitle = "Durée";
+    public String detailsTitle = "Détail du trajet";
+
     MainService mainService = new MainServiceImpl();
 
     public MainVM(Scene scene) {
@@ -76,9 +76,7 @@ public class MainVM {
 
 
         // When we click on a textfield we store its id here
-        titleTextFieldVM.hasClickedTextField.addListener((e, o, n) -> {
-            currentlyActiveTextField.set(titleTextFieldVM.id);
-        });
+        titleTextFieldVM.hasClickedTextField.addListener((e, o, n) -> currentlyActiveTextField.set(titleTextFieldVM.id));
         // If when we click a field its id is the same we propagate the change
         clickedUuid.addListener((e, o, n) -> {
             if (Objects.equals(titleTextFieldVM.id, currentlyActiveTextField.getValue())) {
@@ -129,7 +127,10 @@ public class MainVM {
                 summary.affluenceLevel,
                 summary.lineDetails.stream().map(lineDetails -> new LineCardVM(lineDetails.line.name, lineDetails.line.color)).toList(),
                 summary.tripPrice,
-                summary.tripMinutesDuration
+                summary.tripMinutesDuration,
+                () -> {
+                    observableTripDetailsVms.setAll(summary.lineDetails.stream().map(lineDetails -> new TripDetailsVM(lineDetails.line, lineDetails.stations)).toList());
+                }
         );
     }
 }
