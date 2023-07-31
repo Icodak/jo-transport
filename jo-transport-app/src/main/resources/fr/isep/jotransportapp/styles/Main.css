@@ -108,6 +108,10 @@
     -fx-border-color: #0FF9CE;
 }
 
+.grayOnHover {
+    -fx-background-color: #FFFFFF;
+}
+
 .grayOnHover:hover {
     -fx-background-color: #d9d9d9;
 }

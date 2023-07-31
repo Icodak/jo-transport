@@ -5,9 +5,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="28a9f81b-d715-41fd-aa28-e844a39e83bf" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/resources/fr/isep/jotransportapp/images/icon.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/fr/isep/jotransportapp/components/TripProposal.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/fr/isep/jotransportapp/viewModels/AffluenceLevel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/fr/isep/jotransportapp/viewModels/TripProposalVM.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/fr/isep/jotransportapp/components/TripProposal.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/fr/isep/jotransportapp/images/high.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/fr/isep/jotransportapp/images/low.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/fr/isep/jotransportapp/images/medium.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/fr/isep/jotransportapp/images/none.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/fr/isep/jotransportapp/Application.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/isep/jotransportapp/Application.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/fr/isep/jotransportapp/components/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/isep/jotransportapp/components/MainController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/fr/isep/jotransportapp/components/MainWindow.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/fr/isep/jotransportapp/components/MainWindow.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/fr/isep/jotransportapp/styles/Main.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/fr/isep/jotransportapp/styles/Main.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -31,8 +41,12 @@
     <option name="stateVersion" value="1" />
   </component>
   <component name="ProblemsViewState">
-    <option name="selectedTabId" value="ProjectErrors" />
+    <option name="selectedTabId" value="CurrentFile" />
   </component>
+  <component name="ProjectColorInfo">{
+  &quot;customColor&quot;: &quot;&quot;,
+  &quot;associatedIndex&quot;: -1
+}</component>
   <component name="ProjectId" id="2Sy0H015nEjC4pbjjMhyZlAUPy5" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
@@ -49,14 +63,21 @@
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
     "full.screen.before.presentation.mode": "false",
-    "last_opened_file_path": "F:/Documents/prog/jo-transport/jo-transport/jo-transport-app/src/main/resources/fr/isep/jotransportapp/components",
+    "git-widget-placeholder": "main",
+    "ignore.virus.scanning.warn.message": "true",
+    "last_opened_file_path": "C:/Users/arsen/Documents/GitHub/jo-transport/jo-transport-app/src/main/resources/fr/isep/jotransportapp/images",
     "list.type.of.created.stylesheet": "CSS",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
     "project.structure.last.edited": "Problems",
     "project.structure.proportion": "0.0",
     "project.structure.side.proportion": "0.2",
     "run.code.analysis.last.selected.profile": "pProject Default",
-    "settings.editor.selected.configurable": "preferences.editor"
+    "settings.editor.selected.configurable": "preferences.editor",
+    "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
   <component name="RecentsManager">
@@ -64,6 +85,8 @@
       <recent name="fr.isep.jotransportapp.model.responses" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\arsen\Documents\GitHub\jo-transport\jo-transport-app\src\main\resources\fr\isep\jotransportapp\images" />
+      <recent name="C:\Users\arsen\Documents\GitHub\jo-transport\jo-transport-app\src\main\resources\fr\isep\jotransportapp\components" />
       <recent name="F:\Documents\prog\jo-transport\jo-transport\jo-transport-app\src\main\resources\fr\isep\jotransportapp\components" />
       <recent name="F:\Documents\prog\jo-transport\jo-transport\jo-transport-app\src\main\resources\fr\isep\jotransportapp\images" />
     </key>
@@ -75,6 +98,7 @@
       <recent name="F:\Documents\prog\jo-transport\jo-transport\jo-transport-app\src\main\resources\fr\isep\jotransportapp" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="fr.isep.jotransportapp.viewModels" />
       <recent name="fr.isep.jotransportapp.components" />
     </key>
   </component>
@@ -112,6 +136,8 @@
       <workItem from="1690616545401" duration="30889000" />
       <workItem from="1690694437588" duration="19522000" />
       <workItem from="1690736402328" duration="5184000" />
+      <workItem from="1690754316639" duration="588000" />
+      <workItem from="1690793368189" duration="3878000" />
     </task>
     <servers />
   </component>

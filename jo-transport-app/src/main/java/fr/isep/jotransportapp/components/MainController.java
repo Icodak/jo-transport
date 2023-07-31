@@ -1,5 +1,6 @@
 package fr.isep.jotransportapp.components;
 
+import fr.isep.jotransportapp.helpers.ColorHelpers;
 import fr.isep.jotransportapp.viewModels.*;
 import javafx.collections.ListChangeListener;
 import javafx.fxml.FXML;
@@ -7,6 +8,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.layout.AnchorPane;
+
+import java.util.List;
 
 
 public class MainController {
@@ -29,6 +32,9 @@ public class MainController {
 
     @FXML
     private ListView<SearchResultVM> searchResults;
+
+    @FXML
+    public TripProposal temp;
 
     public void bind(MainVM viewModel) {
         departure.bind(viewModel.departureVM);
@@ -59,6 +65,15 @@ public class MainController {
         searchAnchor.visibleProperty().bindBidirectional(viewModel.isSearchResultVisible);
         searchAnchor.layoutXProperty().bindBidirectional(viewModel.searchPosX);
         searchAnchor.layoutYProperty().bindBidirectional(viewModel.searchPosY);
+
+        temp.bind(new TripProposalVM(
+                "Gare montparnasse",
+                AffluenceLevel.MEDIUM,
+                List.of(new StationCardVM("354", ColorHelpers.fromRGBCode("#FF2467")),
+                        new StationCardVM("R", ColorHelpers.fromRGBCode("#25FF67"))),
+                1.25,
+                12
+                ));
     }
 
     private double computeListViewHeight(ListView<?> listView) {

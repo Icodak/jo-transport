@@ -5,6 +5,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import java.lang.String?>
+<?import fr.isep.jotransportapp.components.TripProposal?>
 <AnchorPane xmlns:fx="http://javafx.com/fxml"
             fx:controller="fr.isep.jotransportapp.components.MainController"
             stylesheets="@../styles/Main.css">
@@ -51,7 +52,7 @@
 
         </HBox>
 
-
+        <TripProposal fx:id="temp"/>
     </VBox>
     <AnchorPane fx:id="searchAnchor" visible="false">
         <ListView fx:id="searchResults" prefWidth="960" fixedCellSize="50" prefHeight="300"/>
