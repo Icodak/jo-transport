@@ -23,6 +23,16 @@ public class MainController {
     @FXML
     public AnchorPane searchAnchor;
     @FXML
+    public Label departureStation;
+    @FXML
+    public Label affluence;
+    @FXML
+    public Label price;
+    @FXML
+    public Label duration;
+    //@FXML
+    //public ListView tripResultsList;
+    @FXML
     private TitleTextField departure;
 
     @FXML
@@ -65,6 +75,11 @@ public class MainController {
         searchAnchor.visibleProperty().bindBidirectional(viewModel.isSearchResultVisible);
         searchAnchor.layoutXProperty().bindBidirectional(viewModel.searchPosX);
         searchAnchor.layoutYProperty().bindBidirectional(viewModel.searchPosY);
+
+        departureStation.setText(viewModel.departureTitle);
+        affluence.setText(viewModel.affluenceTitle);
+        price.setText(viewModel.priceTitle);
+        duration.setText(viewModel.durationTitle);
 
         temp.bind(new TripProposalVM(
                 "Gare montparnasse",

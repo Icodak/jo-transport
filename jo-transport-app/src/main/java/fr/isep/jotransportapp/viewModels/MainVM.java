@@ -29,6 +29,11 @@ public class MainVM {
     public SimpleStringProperty clickedUuid = new SimpleStringProperty("");
     public SimpleStringProperty clickedTitle = new SimpleStringProperty("");
     public SimpleStringProperty currentlyActiveTextField = new SimpleStringProperty("");
+
+    public String departureTitle = "Station de départ";
+    public String affluenceTitle = "Affluence";
+    public String priceTitle = "Prix";
+    public String durationTitle = "Durée";
     SearchService searchService = new SearchServiceImpl();
 
     public MainVM(Scene scene) {

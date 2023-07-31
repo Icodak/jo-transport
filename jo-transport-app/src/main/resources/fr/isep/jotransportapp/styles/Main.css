@@ -78,7 +78,7 @@
 }
 
 .headerSection {
-    -fx-background-color: #231123;;
+    -fx-background-color: #231123;
 }
 
 #stepContainer {
@@ -119,4 +119,23 @@
 .smallCorner {
     -fx-padding: 0 10;
     -fx-background-radius: 10;
+}
+
+.tripResultsHeader {
+    -fx-background-color: #231123;
+    -fx-background-radius: 30 30 0 0;
+}
+
+.headerTitles {
+    -fx-text-fill: white;
+}
+
+#tripResultsList {
+    -fx-background-radius: 32;
+}
+
+.tripResults {
+    -fx-border-width: 2;
+    -fx-border-color: white;
+    -fx-border-radius: 32;
 }

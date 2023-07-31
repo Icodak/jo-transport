@@ -12,7 +12,7 @@ import java.util.List;
 
 public class Application extends javafx.application.Application {
     public static final int WIDTH = 1280;
-    public static final int HEIGHT = 720;
+    public static final int HEIGHT = 960;
     public static final String APP_NAME = "Simulateur de transports en commun";
 
     public static void main(String[] args) {
