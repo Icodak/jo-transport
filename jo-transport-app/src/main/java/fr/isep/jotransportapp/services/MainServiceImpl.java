@@ -65,7 +65,8 @@ public class MainServiceImpl implements MainService {
                         "Raspail",
                         AffluenceLevel.MEDIUM,
                         1.20,
-                        26
+                        26,
+                        List.of(TransportTypes.TRAIN)
                 ),
                 new TripSummary(
                         List.of(
@@ -77,7 +78,8 @@ public class MainServiceImpl implements MainService {
                         "Raspail",
                         AffluenceLevel.NONE,
                         2.9,
-                        12
+                        12,
+                        List.of(TransportTypes.TRAIN,TransportTypes.BUS)
                 ),
                 new TripSummary(
                         List.of(
@@ -89,7 +91,8 @@ public class MainServiceImpl implements MainService {
                         "Raspail",
                         AffluenceLevel.MEDIUM,
                         4.6,
-                        8
+                        8,
+                        List.of(TransportTypes.METRO)
                 )
                 ));
     }
