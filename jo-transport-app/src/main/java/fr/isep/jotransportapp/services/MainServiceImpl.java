@@ -10,11 +10,11 @@ import fr.isep.jotransportapp.viewModels.TransportTypes;
 import java.util.List;
 import java.util.UUID;
 
-public class SearchServiceImpl implements SearchService {
+public class MainServiceImpl implements MainService {
 
     @Override
     public SearchResponse getResults(SearchParameters parameters) {
-        // TODO change this to call the real service
+        // TODO change this to call the real implementation
         return new SearchResponse(
                 List.of(
                         new LineDescription(

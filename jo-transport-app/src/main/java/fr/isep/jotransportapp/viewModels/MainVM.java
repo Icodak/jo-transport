@@ -2,8 +2,8 @@ package fr.isep.jotransportapp.viewModels;
 
 import fr.isep.jotransportapp.models.parameters.SearchParameters;
 import fr.isep.jotransportapp.models.responses.SearchResponse;
-import fr.isep.jotransportapp.services.SearchService;
-import fr.isep.jotransportapp.services.SearchServiceImpl;
+import fr.isep.jotransportapp.services.MainService;
+import fr.isep.jotransportapp.services.MainServiceImpl;
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.SimpleStringProperty;
@@ -34,7 +34,7 @@ public class MainVM {
     public String affluenceTitle = "Affluence";
     public String priceTitle = "Prix";
     public String durationTitle = "Durée";
-    SearchService searchService = new SearchServiceImpl();
+    MainService mainService = new MainServiceImpl();
 
     public MainVM(Scene scene) {
         setupBindings(scene);
@@ -50,7 +50,7 @@ public class MainVM {
 
         titleTextFieldVM.textEventProperty.addListener((event, oldValue, newValue) -> {
             // Search and set results
-            SearchResponse searchResults = searchService.getResults(new SearchParameters(newValue.text));
+            SearchResponse searchResults = mainService.getResults(new SearchParameters(newValue.text));
             observableResultsVms.setAll(searchResults.lines.stream().map(desc -> {
                 SearchResultVM searchResultVM = new SearchResultVM(
                         desc.type,
