@@ -1,0 +1,19 @@
+package fr.isep.jotransportapp.models;
+
+import java.util.List;
+
+public class LineDetails {
+    /*
+     * Details the different stations to take along a trip of a specific line
+     * */
+    Line line;
+
+
+
+    List<String> stations;
+
+    public LineDetails(Line line, List<String> stations) {
+        this.line = line;
+        this.stations = stations;
+    }
+}

@@ -2,9 +2,14 @@ package fr.isep.jotransportapp.services;
 
 import fr.isep.jotransportapp.helpers.ColorHelpers;
 import fr.isep.jotransportapp.models.Line;
+import fr.isep.jotransportapp.models.LineDetails;
+import fr.isep.jotransportapp.models.TripSummary;
 import fr.isep.jotransportapp.models.parameters.SearchParameters;
+import fr.isep.jotransportapp.models.parameters.TripParameters;
 import fr.isep.jotransportapp.models.responses.SearchResponse;
 import fr.isep.jotransportapp.models.responses.LineDescription;
+import fr.isep.jotransportapp.models.responses.TripResponse;
+import fr.isep.jotransportapp.viewModels.AffluenceLevel;
 import fr.isep.jotransportapp.viewModels.TransportTypes;
 
 import java.util.List;
@@ -44,5 +49,48 @@ public class MainServiceImpl implements MainService {
                 )
 
         );
+    }
+
+    @Override
+    public TripResponse getTrips(TripParameters parameters) {
+        // TODO change this to call the real implementation
+        return new TripResponse(List.of(
+                new TripSummary(
+                        List.of(
+                                new LineDetails(
+                                        new Line("U", ColorHelpers.fromRGBCode("#FF6677")),
+                                        List.of("Raspail","Montparnasse-Bienvenue","Victor Hugo","Glaciere")
+                                )
+                        ),
+                        "Raspail",
+                        AffluenceLevel.MEDIUM,
+                        1.20,
+                        26
+                ),
+                new TripSummary(
+                        List.of(
+                                new LineDetails(
+                                        new Line("U", ColorHelpers.fromRGBCode("#FF6677")),
+                                        List.of("Raspail","Montparnasse-Bienvenue","Victor Hugo","Glaciere")
+                                )
+                        ),
+                        "Raspail",
+                        AffluenceLevel.NONE,
+                        2.9,
+                        12
+                ),
+                new TripSummary(
+                        List.of(
+                                new LineDetails(
+                                        new Line("U", ColorHelpers.fromRGBCode("#FF6677")),
+                                        List.of("Raspail","Montparnasse-Bienvenue","Victor Hugo","Glaciere")
+                                )
+                        ),
+                        "Raspail",
+                        AffluenceLevel.MEDIUM,
+                        4.6,
+                        8
+                )
+                ));
     }
 }
