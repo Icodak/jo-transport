@@ -1,10 +1,8 @@
 package fr.isep.jotransportapp.components;
 
-import fr.isep.jotransportapp.viewModels.SearchResultVM;
 import fr.isep.jotransportapp.viewModels.TripProposalVM;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.geometry.Pos;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
@@ -15,11 +13,11 @@ import java.io.IOException;
 public class TripProposal extends Pane {
 
     @FXML
-private HBox lineContainer;
+    private HBox lineContainer;
     @FXML
-private Label tripName;
+    private Label tripName;
     @FXML
-private ImageView affluence;
+    private ImageView affluence;
     @FXML
     private Label price;
     @FXML

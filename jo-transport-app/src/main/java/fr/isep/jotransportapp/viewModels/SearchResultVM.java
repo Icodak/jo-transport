@@ -13,7 +13,7 @@ public class SearchResultVM {
     public List<LineCardVM> lines;
     public SimpleStringProperty uuidProperty = new SimpleStringProperty("");
     public SimpleStringProperty titleProperty = new SimpleStringProperty("");
-    private String uuid;
+    private final String uuid;
 
     SearchResultVM(TransportTypes type, String title, List<LineCardVM> lines, String uuid) {
         switch (type) {

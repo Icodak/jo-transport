@@ -120,7 +120,6 @@ public class MainVM {
                 response.tripSummaries.stream().map(this::tripSummaryToTripProposalVM).toList()
         );
 
-
         isSearchResultVisible.set(false);
     }
 
@@ -128,9 +127,9 @@ public class MainVM {
         return new TripProposalVM(
                 summary.departureStationName,
                 summary.affluenceLevel,
-                summary.lineDetails.stream().map(lineDetails -> new LineCardVM(lineDetails.line.name,lineDetails.line.color)).toList(),
+                summary.lineDetails.stream().map(lineDetails -> new LineCardVM(lineDetails.line.name, lineDetails.line.color)).toList(),
                 summary.tripPrice,
                 summary.tripMinutesDuration
-                );
+        );
     }
 }

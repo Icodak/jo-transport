@@ -7,6 +7,7 @@ import fr.isep.jotransportapp.models.responses.TripResponse;
 
 public interface MainService {
     SearchResponse getResults(SearchParameters parameters);
+
     TripResponse getTrips(TripParameters parameters);
 }
 

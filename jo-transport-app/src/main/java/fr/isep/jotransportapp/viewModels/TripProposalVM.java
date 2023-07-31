@@ -44,13 +44,14 @@ public class TripProposalVM {
 
     private String formatPrice(Double price) {
         // TODO
-        return "" + price + "€";
+        return price + "€";
     }
 
     private String formatDuration(Integer duration) {
         // TODO
-        return "" + duration + "min";
+        return duration + "min";
     }
+
     public void onClick() {
         System.out.println("pouet");
     }

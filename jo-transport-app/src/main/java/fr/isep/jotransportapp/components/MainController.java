@@ -1,7 +1,5 @@
 package fr.isep.jotransportapp.components;
 
-import fr.isep.jotransportapp.helpers.ColorHelpers;
-import fr.isep.jotransportapp.models.AffluenceLevel;
 import fr.isep.jotransportapp.viewModels.*;
 import javafx.collections.ListChangeListener;
 import javafx.fxml.FXML;
@@ -9,8 +7,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.layout.AnchorPane;
-
-import java.util.List;
 
 
 public class MainController {
@@ -44,19 +40,16 @@ public class MainController {
     @FXML
     private ListView<SearchResultVM> searchResults;
 
-    @FXML
-    public TripProposal temp;
-
     public void bind(MainVM viewModel) {
         departure.bind(viewModel.departureVM);
 
         stepContainer.setItems(viewModel.observableStepVms);
         stepContainer.setCellFactory(new StepFactory());
-        stepContainer.setPrefHeight(computeListViewHeight(stepContainer));
+        stepContainer.setPrefHeight(computeListViewHeight(stepContainer, 130.0, 32.0));
 
         viewModel.observableStepVms.addListener((ListChangeListener<TitleTextFieldVM>) c -> {
             while (c.next()) {
-                stepContainer.setPrefHeight(computeListViewHeight(stepContainer));
+                stepContainer.setPrefHeight(computeListViewHeight(stepContainer, 130.0, 32.0));
             }
         });
 
@@ -84,20 +77,17 @@ public class MainController {
 
         tripProposalList.setItems(viewModel.observableTripProposalVms);
         tripProposalList.setCellFactory(new TripProposalFactory());
+        tripProposalList.setPrefHeight(computeListViewHeight(tripProposalList, 50.0, 100.0));
 
-        temp.bind(new TripProposalVM(
-                "Gare montparnasse",
-                AffluenceLevel.MEDIUM,
-                List.of(new LineCardVM("354", ColorHelpers.fromRGBCode("#FF2467")),
-                        new LineCardVM("R", ColorHelpers.fromRGBCode("#25FF67"))),
-                1.25,
-                12
-                ));
+        viewModel.observableTripProposalVms.addListener((ListChangeListener<TripProposalVM>) c -> {
+            while (c.next()) {
+                tripProposalList.setPrefHeight(computeListViewHeight(tripProposalList, 50.0, 100.0));
+            }
+        });
     }
 
-    private double computeListViewHeight(ListView<?> listView) {
+    private double computeListViewHeight(ListView<?> listView, Double cellHeight, Double padding) {
         int cellCount = listView.getItems().size();
-        double cellHeight = 130.0;
-        return cellCount * cellHeight + 32;
+        return cellCount * cellHeight + padding;
     }
 }

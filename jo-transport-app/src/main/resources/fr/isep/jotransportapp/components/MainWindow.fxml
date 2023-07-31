@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import fr.isep.jotransportapp.components.TitleTextField?>
-<?import javafx.geometry.Insets?>
+<?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import java.lang.String?>
-<?import fr.isep.jotransportapp.components.TripProposal?>
 <AnchorPane xmlns:fx="http://javafx.com/fxml"
             fx:controller="fr.isep.jotransportapp.components.MainController"
             stylesheets="@../styles/Main.css">
@@ -57,27 +56,27 @@
                 <padding>
                     <Insets top="50.0"/>
                 </padding>
-        <StackPane alignment="TOP_LEFT" styleClass="tripResults" >
-            <ListView fx:id="tripProposalList" maxWidth="960" prefWidth="960">
-                <padding>
-                    <Insets top="50.0"/>
-                </padding>
-            </ListView>
-            <HBox styleClass="tripResultsHeader" prefHeight="50" maxHeight="50" alignment="CENTER_LEFT" spacing="40">
-                <padding>
-                    <Insets left="20.0" right="20.0"/>
-                </padding>
+                <StackPane alignment="TOP_LEFT" styleClass="tripResults">
+                    <ListView fx:id="tripProposalList" maxWidth="960" prefWidth="960" fixedCellSize="50">
+                        <padding>
+                            <Insets top="50.0"/>
+                        </padding>
+                    </ListView>
+                    <HBox styleClass="tripResultsHeader" prefHeight="50" maxHeight="50" alignment="CENTER_LEFT"
+                          spacing="40">
+                        <padding>
+                            <Insets left="20.0" right="20.0"/>
+                        </padding>
 
-                <Label fx:id="departureStation" styleClass="headerTitles" />
-                <Pane prefWidth="435"/>
-                <Label fx:id="affluence" styleClass="headerTitles"/>
-                <Label fx:id="price" styleClass="headerTitles"/>
-                <Label fx:id="duration" styleClass="headerTitles"/>
-            </HBox>
-        </StackPane>
+                        <Label fx:id="departureStation" styleClass="headerTitles"/>
+                        <Pane prefWidth="435"/>
+                        <Label fx:id="affluence" styleClass="headerTitles"/>
+                        <Label fx:id="price" styleClass="headerTitles"/>
+                        <Label fx:id="duration" styleClass="headerTitles"/>
+                    </HBox>
+                </StackPane>
             </VBox>
         </HBox>
-        <TripProposal fx:id="temp"/>
     </VBox>
     <AnchorPane fx:id="searchAnchor" visible="false">
         <ListView fx:id="searchResults" prefWidth="960" fixedCellSize="50" prefHeight="300"/>

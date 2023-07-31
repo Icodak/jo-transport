@@ -9,7 +9,6 @@ public class LineDetails {
     public Line line;
 
 
-
     public List<String> stations;
 
     public LineDetails(Line line, List<String> stations) {

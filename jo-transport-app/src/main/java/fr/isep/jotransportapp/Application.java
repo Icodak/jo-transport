@@ -8,7 +8,6 @@ import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.util.List;
 
 public class Application extends javafx.application.Application {
     public static final int WIDTH = 1280;
