@@ -1,26 +1,20 @@
 @font-face {
-    font-family: 'Quicksand-Regular';
     src: url('../fonts/Quicksand-Regular.ttf');
 }
 
 @font-face {
-    font-family: 'Quicksand-Medium';
-    src: url('../fonts/Quicksand-Medium.ttf');
-}
-
-@font-face {
-    font-family: 'Quicksand-SemiBold';
     src: url('../fonts/Quicksand-SemiBold.ttf');
 }
 
 .root {
-    -fx-font-family: 'Quicksand-Regular';
+    -fx-font-family: 'Quicksand';
+    -fx-font-smoothing-type: 'lcd';
     -fx-background-color: #2F2137;
     -fx-font-size: 20;
 }
 
 .text-field {
-    -fx-font-family: 'Quicksand-Regular';
+    -fx-font-family: 'Quicksand';
     -fx-font-size: 20;
     -fx-background-color: transparent;
     -fx-padding: 8px 32px;
@@ -32,7 +26,7 @@
 }
 
 .header {
-    -fx-font-family: 'Quicksand-Regular';
+    -fx-font-family: 'Quicksand SemiBold';
     -fx-text-fill: white;
     -fx-font-size: 24;
 }
@@ -150,6 +144,8 @@
 }
 
 #detailsTitle {
+    -fx-font-family: 'Quicksand SemiBold';
+    -fx-font-smoothing-type: 'gray';
     -fx-font-size: 24;
     -fx-text-fill: black;
 }
