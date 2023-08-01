@@ -129,7 +129,11 @@ public class MainVM {
                 summary.tripPrice,
                 summary.tripMinutesDuration,
                 () -> {
-                    observableTripDetailsVms.setAll(summary.lineDetails.stream().map(lineDetails -> new TripDetailsVM(lineDetails.line, lineDetails.stations)).toList());
+                    observableTripDetailsVms.setAll(
+                            summary.lineDetails.stream().map(lineDetails -> new TripDetailsVM(
+                                    new LineCardVM(lineDetails.line.name, lineDetails.line.color),
+                                    lineDetails.stations
+                            )).toList());
                 }
         );
     }

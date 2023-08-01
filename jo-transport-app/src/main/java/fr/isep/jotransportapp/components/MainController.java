@@ -94,7 +94,8 @@ public class MainController {
 
         detailsTitle.setText(viewModel.detailsTitle);
 
-        // TODO factory for details
+        detailsList.setItems(viewModel.observableTripDetailsVms);
+        detailsList.setCellFactory(new TripDetailsFactory());
     }
 
     private double computeListViewHeight(ListView<?> listView, Double cellHeight, Double padding) {

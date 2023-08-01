@@ -149,3 +149,8 @@
     -fx-font-size: 24;
     -fx-text-fill: black;
 }
+
+.station {
+    -fx-text-fill: #525252;
+    -fx-font-size: 18;
+}
