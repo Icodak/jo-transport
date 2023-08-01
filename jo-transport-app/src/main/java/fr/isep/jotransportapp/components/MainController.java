@@ -6,6 +6,8 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
+import javafx.scene.control.ScrollPane;
+import javafx.scene.input.ScrollEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 
@@ -37,6 +39,8 @@ public class MainController {
     @FXML
     public ListView<TripDetailsVM> detailsList;
     @FXML
+    public AnchorPane root;
+    @FXML
     private TitleTextField departure;
 
     @FXML
@@ -46,6 +50,10 @@ public class MainController {
 
     @FXML
     private ListView<SearchResultVM> searchResults;
+
+
+    @FXML
+    public ScrollPane test;
 
     public void bind(MainVM viewModel) {
         departure.bind(viewModel.departureVM);
@@ -96,6 +104,26 @@ public class MainController {
 
         detailsList.setItems(viewModel.observableTripDetailsVms);
         detailsList.setCellFactory(new TripDetailsFactory());
+
+        //test.setOnScroll(this::onScroll);
+
+    }
+
+
+    private void onScroll(ScrollEvent event) {
+        double deltaY = event.getDeltaY();
+        System.out.println(deltaY);
+
+        // Obtenez la position Y actuelle de la racine (AnchorPane)
+        double currentY = root.getLayoutY();
+
+        // Calculer la nouvelle position Y en fonction du défilement
+        double newY = currentY + deltaY;
+
+        // Limitez la nouvelle position Y entre 0 et la taille de la racine
+        newY = Math.max(root.getHeight() - 1080, newY); // Assurez-vous que newY ne soit pas inférieur à 0
+        newY = Math.min(0, newY); // Assurez-vous que newY ne dépasse pas la hauteur de la racine
+        root.setLayoutY(newY);
     }
 
     private double computeListViewHeight(ListView<?> listView, Double cellHeight, Double padding) {

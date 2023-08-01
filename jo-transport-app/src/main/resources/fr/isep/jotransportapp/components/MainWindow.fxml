@@ -7,11 +7,12 @@
 <?import java.lang.String?>
 <AnchorPane xmlns:fx="http://javafx.com/fxml"
             fx:controller="fr.isep.jotransportapp.components.MainController"
-            stylesheets="@../styles/Main.css">
+            stylesheets="@../styles/Main.css"
+fx:id="root">
     <VBox prefWidth="Infinity" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+
         <!-- Header section -->
         <HBox alignment="CENTER" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" styleClass="headerSection">
-
             <!-- Blue vertical line -->
             <VBox spacing="20.0" alignment="CENTER">
                 <padding>
@@ -48,9 +49,7 @@
                     </styleClass>
                 </Button>
             </VBox>
-
         </HBox>
-
         <HBox alignment="CENTER" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" spacing="100">
             <VBox>
                 <padding>
@@ -62,17 +61,14 @@
                             <Insets top="50.0"/>
                         </padding>
                     </ListView>
-                    <HBox styleClass="tripResultsHeader" prefHeight="50" maxHeight="50" alignment="CENTER_LEFT"
-                          spacing="40">
+                    <HBox styleClass="tripResultsHeader" prefHeight="50" maxHeight="50" alignment="CENTER_LEFT">
                         <padding>
                             <Insets left="20.0" right="20.0"/>
                         </padding>
-
-                        <Label fx:id="departureStation" styleClass="headerTitles"/>
-                        <Pane prefWidth="435"/>
-                        <Label fx:id="affluence" styleClass="headerTitles"/>
-                        <Label fx:id="price" styleClass="headerTitles"/>
-                        <Label fx:id="duration" styleClass="headerTitles"/>
+                        <HBox prefWidth="620" alignment="CENTER_LEFT"><Label fx:id="departureStation" styleClass="headerTitles"/></HBox>
+                        <HBox prefWidth="100" alignment="CENTER"> <Label fx:id="affluence" styleClass="headerTitles"/></HBox>
+                        <HBox prefWidth="100" alignment="CENTER"> <Label fx:id="price" styleClass="headerTitles"/></HBox>
+                        <HBox prefWidth="100" alignment="CENTER"> <Label fx:id="duration" styleClass="headerTitles"/></HBox>
                     </HBox>
                 </StackPane>
             </VBox>
@@ -83,7 +79,9 @@
                     <Insets top="50.0"/>
                 </padding>
                 <VBox fx:id="summary" styleClass="summary" prefWidth="300" alignment="TOP_CENTER">
-
+                    <padding>
+                        <Insets top="20.0" />
+                    </padding>
                     <Label fx:id="detailsTitle"/>
                     <ListView fx:id="detailsList" styleClass="summary"/>
                 </VBox>

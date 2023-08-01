@@ -8,21 +8,23 @@
 <fx:root xmlns:fx="http://javafx.com/fxml/1"
          type="Pane"
          xmlns="http://javafx.com/javafx/19">
-    <HBox spacing="16" fx:id="container" prefHeight="50" prefWidth="960" styleClass="grayOnHover">
+    <HBox fx:id="container" prefHeight="50" prefWidth="960" styleClass="grayOnHover">
         <padding>
             <Insets left="20.0" right="20.0" top="10.0" bottom="10.0"/>
         </padding>
         <!-- Left side container -->
-        <HBox fx:id="leftContainer" spacing="30" prefWidth="660" maxWidth="660">
+        <HBox fx:id="leftContainer" spacing="30" prefWidth="620" maxWidth="620">
             <HBox fx:id="lineContainer" spacing="10"/>
             <Label fx:id="tripName"/>
         </HBox>
 
         <!-- Left side container -->
-        <HBox fx:id="rightContainer" spacing="50" prefWidth="300" alignment="CENTER_RIGHT">
-            <ImageView fx:id="affluence"/>
-            <Label fx:id="price"/>
-            <Label fx:id="duration"/>
+        <HBox fx:id="rightContainer" prefWidth="300" alignment="CENTER_RIGHT">
+            <HBox prefWidth="100" alignment="CENTER" ><ImageView fx:id="affluence"/></HBox>
+            <HBox prefWidth="100" alignment="CENTER"> <Label fx:id="price"/></HBox>
+            <HBox prefWidth="100" alignment="CENTER"><Label fx:id="duration"/></HBox>
+
+
         </HBox>
     </HBox>
 </fx:root>
