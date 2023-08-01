@@ -3,10 +3,7 @@ package fr.isep.jotransportapp.components;
 import fr.isep.jotransportapp.viewModels.*;
 import javafx.collections.ListChangeListener;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.ListView;
-import javafx.scene.control.ScrollPane;
+import javafx.scene.control.*;
 import javafx.scene.input.ScrollEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
@@ -44,6 +41,16 @@ public class MainController {
     public ScrollPane scrollPaneResults;
     @FXML
     public ScrollPane scrollPaneSearch;
+    @FXML
+    public Label sortLabel;
+    @FXML
+    public ToggleGroup toggleGroup;
+    @FXML
+    public ToggleButton priceSort;
+    @FXML
+    public ToggleButton timeSort;
+    @FXML
+    public ToggleButton balancedSort;
     @FXML
     private TitleTextField departure;
     @FXML
@@ -105,6 +112,13 @@ public class MainController {
 
         scrollPaneResults.setOnScroll(this::onScroll);
         scrollPaneSearch.setOnScroll(this::onScroll);
+
+
+        sortLabel.setText(viewModel.sortLabel);
+
+        balancedSort.setText(viewModel.balancedSort);
+        priceSort.setText(viewModel.priceSort);
+        timeSort.setText(viewModel.timeSort);
 
     }
 

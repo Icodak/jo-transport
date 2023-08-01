@@ -89,6 +89,24 @@
     -fx-text-fill: black;
 }
 
+.toggle-button {
+    -fx-border-radius: 32;
+    -fx-border-width: 0;
+    -fx-background-radius: 32;
+    -fx-background-color: #231123;
+    -fx-label-padding: 0 15;
+    -fx-text-fill: white;
+}
+
+.whiteText {
+    -fx-text-fill: white;
+}
+
+.toggle-button:pressed, .toggle-button:selected {
+    -fx-background-color: #0FF9CE;
+    -fx-text-fill: black;
+}
+
 #searchResults {
     -fx-padding: 16 0 0 0;
     -fx-background-radius: 32;
@@ -159,4 +177,13 @@
 
 .scroll-pane, .scroll-pane > .viewport {
     -fx-background-color: transparent;
+}
+
+.buttonContainer {
+    -fx-border-radius: 32;
+    -fx-border-color: white;
+    -fx-border-width: 2;
+    -fx-background-color: #231123;
+    -fx-text-fill: white;
+    -fx-background-radius: 32;
 }

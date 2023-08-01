@@ -37,6 +37,10 @@ public class MainVM {
     public String priceTitle = "Prix";
     public String durationTitle = "Durée";
     public String detailsTitle = "Détail du trajet";
+    public String sortLabel = "Trier les résultats par";
+    public String balancedSort = "Equilibré";
+    public String priceSort = "Prix";
+    public String timeSort = "Temps";
 
     MainService mainService = new MainServiceImpl();
 
