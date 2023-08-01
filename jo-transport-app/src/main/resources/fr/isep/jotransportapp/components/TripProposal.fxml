@@ -10,11 +10,15 @@
          xmlns="http://javafx.com/javafx/19">
     <HBox fx:id="container" prefHeight="50" prefWidth="960" styleClass="grayOnHover">
         <padding>
-            <Insets left="20.0" right="20.0" top="10.0" bottom="10.0"/>
+            <Insets left="20.0" />
         </padding>
         <!-- Left side container -->
-        <HBox fx:id="leftContainer" spacing="30" prefWidth="620" maxWidth="620">
-            <HBox fx:id="lineContainer" spacing="10"/>
+        <HBox fx:id="leftContainer" spacing="30" prefWidth="620" maxWidth="620" alignment="CENTER_LEFT">
+            <HBox fx:id="lineContainer" spacing="10"  alignment="CENTER_LEFT">
+                <padding>
+                    <Insets top="10.0" />
+                </padding>
+            </HBox>
             <Label fx:id="tripName"/>
         </HBox>
 
