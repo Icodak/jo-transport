@@ -8,85 +8,102 @@
 <AnchorPane xmlns:fx="http://javafx.com/fxml"
             fx:controller="fr.isep.jotransportapp.components.MainController"
             stylesheets="@../styles/Main.css"
-fx:id="root">
-    <VBox prefWidth="Infinity" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+>
+    <VBox prefWidth="Infinity" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" fx:id="root">
 
         <!-- Header section -->
-        <HBox alignment="CENTER" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" styleClass="headerSection">
-            <!-- Blue vertical line -->
-            <VBox spacing="20.0" alignment="CENTER">
-                <padding>
-                    <Insets bottom="140.0" left="20.0" right="20.0" top="85.0"/>
-                </padding>
-                <Pane styleClass="highlighted" prefWidth="16" VBox.vgrow="ALWAYS"/>
-            </VBox>
+        <ScrollPane AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" fx:id="scrollPaneSearch" fitToWidth="true">
+            <HBox alignment="CENTER" styleClass="headerSection">
 
-            <!-- Text Field section -->
-            <VBox alignment="CENTER" spacing="10.0" prefWidth="1050">
-                <padding>
-                    <Insets bottom="40.0" left="20.0" right="20.0" top="20.0"/>
-                </padding>
-                <!-- Departure -->
-                <TitleTextField fx:id="departure"/>
-                <!-- Steps -->
-                <ListView fx:id="stepContainer" HBox.hgrow="ALWAYS"/>
-                <!-- Add step -->
-                <Button fx:id="addStep">
-                    <styleClass>
-                        <String fx:value="highlighted"/>
-                        <String fx:value="button"/>
-                    </styleClass>
-                </Button>
-                <!-- Arrival -->
-                <TitleTextField fx:id="arrival"/>
-                <HBox>
-                    <Label fx:id="hint" styleClass="smallText"/>
-                </HBox>
-                <Button fx:id="sendRequest">
-                    <styleClass>
-                        <String fx:value="highlighted"/>
-                        <String fx:value="button"/>
-                    </styleClass>
-                </Button>
-            </VBox>
-        </HBox>
-        <HBox alignment="CENTER" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" spacing="100">
-            <VBox>
-                <padding>
-                    <Insets top="50.0"/>
-                </padding>
-                <StackPane alignment="TOP_LEFT" styleClass="tripResults">
-                    <ListView fx:id="tripProposalList" maxWidth="960" prefWidth="960" fixedCellSize="50">
-                        <padding>
-                            <Insets top="50.0"/>
-                        </padding>
-                    </ListView>
-                    <HBox styleClass="tripResultsHeader" prefHeight="50" maxHeight="50" alignment="CENTER_LEFT">
-                        <padding>
-                            <Insets left="20.0" right="20.0"/>
-                        </padding>
-                        <HBox prefWidth="620" alignment="CENTER_LEFT"><Label fx:id="departureStation" styleClass="headerTitles"/></HBox>
-                        <HBox prefWidth="100" alignment="CENTER"> <Label fx:id="affluence" styleClass="headerTitles"/></HBox>
-                        <HBox prefWidth="100" alignment="CENTER"> <Label fx:id="price" styleClass="headerTitles"/></HBox>
-                        <HBox prefWidth="100" alignment="CENTER"> <Label fx:id="duration" styleClass="headerTitles"/></HBox>
-                    </HBox>
-                </StackPane>
-            </VBox>
-
-            <!-- Summary -->
-            <VBox>
-                <padding>
-                    <Insets top="50.0"/>
-                </padding>
-                <VBox fx:id="summary" styleClass="summary" prefWidth="300" alignment="TOP_CENTER">
+                <!-- Blue vertical line -->
+                <VBox spacing="20.0" alignment="CENTER">
                     <padding>
-                        <Insets top="20.0" />
+                        <Insets bottom="140.0" left="20.0" right="20.0" top="85.0"/>
                     </padding>
-                    <Label fx:id="detailsTitle"/>
-                    <ListView fx:id="detailsList" styleClass="summary"/>
+                    <Pane styleClass="highlighted" prefWidth="16" VBox.vgrow="ALWAYS"/>
                 </VBox>
-            </VBox>
-        </HBox>
+
+                <!-- Text Field section -->
+                <VBox alignment="CENTER" spacing="10.0" prefWidth="1050">
+                    <padding>
+                        <Insets bottom="40.0" left="20.0" right="20.0" top="20.0"/>
+                    </padding>
+                    <!-- Departure -->
+                    <TitleTextField fx:id="departure"/>
+                    <!-- Steps -->
+                    <ListView fx:id="stepContainer" HBox.hgrow="ALWAYS"/>
+                    <!-- Add step -->
+                    <Button fx:id="addStep">
+                        <styleClass>
+                            <String fx:value="highlighted"/>
+                            <String fx:value="button"/>
+                        </styleClass>
+                    </Button>
+                    <!-- Arrival -->
+                    <TitleTextField fx:id="arrival"/>
+                    <HBox>
+                        <Label fx:id="hint" styleClass="smallText"/>
+                    </HBox>
+                    <Button fx:id="sendRequest">
+                        <styleClass>
+                            <String fx:value="highlighted"/>
+                            <String fx:value="button"/>
+                        </styleClass>
+                    </Button>
+                </VBox>
+
+            </HBox>
+        </ScrollPane>
+        <ScrollPane AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" fx:id="scrollPaneResults" fitToWidth="true"
+                    styleClass="transparent">
+
+            <HBox alignment="CENTER" spacing="100">
+                <VBox>
+                    <padding>
+                        <Insets top="50.0"/>
+                    </padding>
+                    <StackPane alignment="TOP_LEFT" styleClass="tripResults">
+                        <ListView fx:id="tripProposalList" maxWidth="960" prefWidth="960" fixedCellSize="50">
+                            <padding>
+                                <Insets top="50.0"/>
+                            </padding>
+                        </ListView>
+                        <HBox styleClass="tripResultsHeader" prefHeight="50" maxHeight="50" alignment="CENTER_LEFT">
+                            <padding>
+                                <Insets left="20.0" right="20.0"/>
+                            </padding>
+                            <HBox prefWidth="620" alignment="CENTER_LEFT">
+                                <Label fx:id="departureStation" styleClass="headerTitles"/>
+                            </HBox>
+                            <HBox prefWidth="100" alignment="CENTER">
+                                <Label fx:id="affluence" styleClass="headerTitles"/>
+                            </HBox>
+                            <HBox prefWidth="100" alignment="CENTER">
+                                <Label fx:id="price" styleClass="headerTitles"/>
+                            </HBox>
+                            <HBox prefWidth="100" alignment="CENTER">
+                                <Label fx:id="duration" styleClass="headerTitles"/>
+                            </HBox>
+                        </HBox>
+                    </StackPane>
+                </VBox>
+
+                <!-- Summary -->
+                <VBox>
+                    <padding>
+                        <Insets top="50.0"/>
+                    </padding>
+                    <VBox fx:id="summary" styleClass="summary" prefWidth="300" alignment="TOP_CENTER">
+                        <padding>
+                            <Insets top="20.0"/>
+                        </padding>
+                        <Label fx:id="detailsTitle"/>
+                        <ListView fx:id="detailsList" styleClass="summary"/>
+                    </VBox>
+                </VBox>
+            </HBox>
+
+        </ScrollPane>
     </VBox>
     <AnchorPane fx:id="searchAnchor" visible="false">
         <ListView fx:id="searchResults" prefWidth="960" fixedCellSize="50" prefHeight="300"/>

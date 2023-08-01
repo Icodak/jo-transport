@@ -20,9 +20,15 @@
 
         <!-- Left side container -->
         <HBox fx:id="rightContainer" prefWidth="300" alignment="CENTER_RIGHT">
-            <HBox prefWidth="100" alignment="CENTER" ><ImageView fx:id="affluence"/></HBox>
-            <HBox prefWidth="100" alignment="CENTER"> <Label fx:id="price"/></HBox>
-            <HBox prefWidth="100" alignment="CENTER"><Label fx:id="duration"/></HBox>
+            <HBox prefWidth="100" alignment="CENTER">
+                <ImageView fx:id="affluence"/>
+            </HBox>
+            <HBox prefWidth="100" alignment="CENTER">
+                <Label fx:id="price"/>
+            </HBox>
+            <HBox prefWidth="100" alignment="CENTER">
+                <Label fx:id="duration"/>
+            </HBox>
 
 
         </HBox>

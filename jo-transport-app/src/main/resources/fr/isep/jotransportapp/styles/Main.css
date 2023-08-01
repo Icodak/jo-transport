@@ -159,6 +159,6 @@
     -fx-font-size: 18;
 }
 
-.scroll {
-    -fx-background-color: rgba(255, 246, 116, 0.25);
+.scroll-pane, .scroll-pane > .viewport {
+    -fx-background-color: transparent;
 }

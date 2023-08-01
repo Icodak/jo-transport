@@ -8,7 +8,6 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/fr/isep/jotransportapp/components/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/isep/jotransportapp/components/MainController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/fr/isep/jotransportapp/components/MainWindow.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/fr/isep/jotransportapp/components/MainWindow.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/fr/isep/jotransportapp/components/TripProposal.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/fr/isep/jotransportapp/components/TripProposal.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/fr/isep/jotransportapp/styles/Main.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/fr/isep/jotransportapp/styles/Main.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -131,7 +130,7 @@
       <workItem from="1690736402328" duration="5184000" />
       <workItem from="1690754316639" duration="588000" />
       <workItem from="1690793368189" duration="14326000" />
-      <workItem from="1690875844761" duration="8403000" />
+      <workItem from="1690875844761" duration="10889000" />
     </task>
     <servers />
   </component>

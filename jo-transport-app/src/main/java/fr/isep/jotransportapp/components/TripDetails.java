@@ -39,8 +39,8 @@ public class TripDetails extends Pane {
     public void bind(TripDetailsVM viewModel) {
         firstStation.setText(viewModel.firstStation);
         firstLine.bind(viewModel.lineCardVM);
-        verticalPane.setStyle("-fx-background-color: " + ColorHelpers.toRGBCode(viewModel.lineCardVM.color ));
-        viewModel.stations.subList(1,viewModel.stations.size()).forEach(station -> {
+        verticalPane.setStyle("-fx-background-color: " + ColorHelpers.toRGBCode(viewModel.lineCardVM.color));
+        viewModel.stations.subList(1, viewModel.stations.size()).forEach(station -> {
             Label stationLabel = new Label();
             stationLabel.setText(station);
             stationLabel.getStyleClass().add("station");

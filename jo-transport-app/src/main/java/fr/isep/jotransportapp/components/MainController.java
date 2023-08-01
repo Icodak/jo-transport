@@ -39,21 +39,19 @@ public class MainController {
     @FXML
     public ListView<TripDetailsVM> detailsList;
     @FXML
-    public AnchorPane root;
+    public VBox root;
+    @FXML
+    public ScrollPane scrollPaneResults;
+    @FXML
+    public ScrollPane scrollPaneSearch;
     @FXML
     private TitleTextField departure;
-
     @FXML
     private ListView<TitleTextFieldVM> stepContainer;
     @FXML
     private TitleTextField arrival;
-
     @FXML
     private ListView<SearchResultVM> searchResults;
-
-
-    @FXML
-    public ScrollPane test;
 
     public void bind(MainVM viewModel) {
         departure.bind(viewModel.departureVM);
@@ -105,24 +103,19 @@ public class MainController {
         detailsList.setItems(viewModel.observableTripDetailsVms);
         detailsList.setCellFactory(new TripDetailsFactory());
 
-        //test.setOnScroll(this::onScroll);
+        scrollPaneResults.setOnScroll(this::onScroll);
+        scrollPaneSearch.setOnScroll(this::onScroll);
 
     }
 
 
     private void onScroll(ScrollEvent event) {
         double deltaY = event.getDeltaY();
-        System.out.println(deltaY);
-
-        // Obtenez la position Y actuelle de la racine (AnchorPane)
         double currentY = root.getLayoutY();
-
-        // Calculer la nouvelle position Y en fonction du défilement
         double newY = currentY + deltaY;
 
-        // Limitez la nouvelle position Y entre 0 et la taille de la racine
-        newY = Math.max(root.getHeight() - 1080, newY); // Assurez-vous que newY ne soit pas inférieur à 0
-        newY = Math.min(0, newY); // Assurez-vous que newY ne dépasse pas la hauteur de la racine
+        newY = Math.max(root.getPrefHeight() - 1080, newY);
+        newY = Math.min(0, newY);
         root.setLayoutY(newY);
     }
 
