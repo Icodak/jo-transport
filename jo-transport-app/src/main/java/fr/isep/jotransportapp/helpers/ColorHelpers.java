@@ -11,7 +11,9 @@ public class ColorHelpers {
     }
 
     public static Color fromRGBCode(String rgbCode) {
-        if (rgbCode == null || !rgbCode.matches("#[0-9A-Fa-f]{6}")) {
+        rgbCode = rgbCode.replace("0x","#");
+        rgbCode = rgbCode.replace(";","");
+        if (!(rgbCode.matches("#[0-9A-Fa-f]{6}") || rgbCode.matches("#[0-9A-Fa-f]{8}"))) {
             throw new IllegalArgumentException("Invalid decimal code : " + rgbCode);
         }
 
@@ -19,6 +21,8 @@ public class ColorHelpers {
         int green = Integer.parseInt(rgbCode.substring(3, 5), 16);
         int blue = Integer.parseInt(rgbCode.substring(5, 7), 16);
 
-        return Color.rgb(red, green, blue);
+        double alpha = rgbCode.length() == 9 ? Integer.parseInt(rgbCode.substring(7, 9), 16) / 255.0 : 1.0;
+
+        return Color.rgb(red, green, blue, alpha);
     }
 }
