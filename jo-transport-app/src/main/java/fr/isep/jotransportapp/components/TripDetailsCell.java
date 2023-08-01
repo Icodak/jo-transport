@@ -1,7 +1,6 @@
 package fr.isep.jotransportapp.components;
 
 import fr.isep.jotransportapp.viewModels.TripDetailsVM;
-import fr.isep.jotransportapp.viewModels.TripProposalVM;
 import javafx.scene.Node;
 import javafx.scene.control.ListCell;
 

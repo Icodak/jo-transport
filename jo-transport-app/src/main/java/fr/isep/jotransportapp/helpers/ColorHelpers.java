@@ -11,8 +11,8 @@ public class ColorHelpers {
     }
 
     public static Color fromRGBCode(String rgbCode) {
-        rgbCode = rgbCode.replace("0x","#");
-        rgbCode = rgbCode.replace(";","");
+        rgbCode = rgbCode.replace("0x", "#");
+        rgbCode = rgbCode.replace(";", "");
         if (!(rgbCode.matches("#[0-9A-Fa-f]{6}") || rgbCode.matches("#[0-9A-Fa-f]{8}"))) {
             throw new IllegalArgumentException("Invalid decimal code : " + rgbCode);
         }

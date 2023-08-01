@@ -8,12 +8,12 @@ import java.util.List;
 import java.util.Objects;
 
 public class SearchResultVM {
+    private final String uuid;
     public String title;
     public Image image;
     public List<LineCardVM> lines;
     public SimpleStringProperty uuidProperty = new SimpleStringProperty("");
     public SimpleStringProperty titleProperty = new SimpleStringProperty("");
-    private final String uuid;
 
     SearchResultVM(TransportTypes type, String title, List<LineCardVM> lines, String uuid) {
         switch (type) {

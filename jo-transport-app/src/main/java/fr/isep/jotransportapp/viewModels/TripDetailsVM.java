@@ -1,7 +1,5 @@
 package fr.isep.jotransportapp.viewModels;
 
-import fr.isep.jotransportapp.models.Line;
-
 import java.util.List;
 
 public class TripDetailsVM {

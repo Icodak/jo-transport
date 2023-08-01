@@ -30,12 +30,12 @@ public class MainController {
     public Label duration;
     @FXML
     public ListView<TripProposalVM> tripProposalList;
-   @FXML
+    @FXML
     public Label detailsTitle;
-   @FXML
+    @FXML
     public VBox summary;
-   @FXML
-   public ListView<TripDetailsVM> detailsList;
+    @FXML
+    public ListView<TripDetailsVM> detailsList;
     @FXML
     private TitleTextField departure;
 

@@ -1,14 +1,10 @@
 package fr.isep.jotransportapp.components;
 
 import fr.isep.jotransportapp.helpers.ColorHelpers;
-import fr.isep.jotransportapp.viewModels.SearchResultVM;
 import fr.isep.jotransportapp.viewModels.TripDetailsVM;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.geometry.Pos;
 import javafx.scene.control.Label;
-import javafx.scene.image.ImageView;
-import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 
@@ -43,12 +39,12 @@ public class TripDetails extends Pane {
     public void bind(TripDetailsVM viewModel) {
         firstStation.setText(viewModel.firstStation);
         firstLine.bind(viewModel.lineCardVM);
-        verticalPane.setStyle("-fx-background-color: "+ ColorHelpers.fromRGBCode(viewModel.lineCardVM.color +";"));
+        verticalPane.setStyle("-fx-background-color: " + ColorHelpers.fromRGBCode(viewModel.lineCardVM.color + ";"));
         viewModel.stations.forEach(station -> {
             Label stationLabel = new Label();
             stationLabel.setText(station);
             stationLabel.getStyleClass().add("station");
-           listList.getChildren().add(stationLabel);
+            listList.getChildren().add(stationLabel);
         });
 
     }

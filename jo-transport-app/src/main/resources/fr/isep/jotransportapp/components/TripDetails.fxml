@@ -1,13 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 
+<?import fr.isep.jotransportapp.components.LineCard?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.Pane?>
-<?import javafx.scene.layout.VBox?>
-<?import fr.isep.jotransportapp.components.LineCard?>
+<?import javafx.scene.layout.*?>
 <fx:root xmlns:fx="http://javafx.com/fxml/1"
          type="Pane"
          xmlns="http://javafx.com/javafx/19">
