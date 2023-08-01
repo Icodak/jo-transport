@@ -67,11 +67,19 @@ public class MainServiceImpl implements MainService {
                 new TripSummary(
                         List.of(
                                 new LineDetails(
+                                        new Line("N", ColorHelpers.fromRGBCode("#319794")),
+                                        List.of("Versailles", "Vanves")
+                                ),
+                                new LineDetails(
                                         new Line("U", ColorHelpers.fromRGBCode("#FF6677")),
-                                        List.of("Raspail", "Montparnasse-Bienvenue", "Victor Hugo", "Glaciere")
+                                        List.of("Vanves-Malakoff", "St-Cyr", "Bennes", "Pluton")
+                                ),
+                                new LineDetails(
+                                        new Line("135", ColorHelpers.fromRGBCode("#0034FF")),
+                                        List.of("Albert Camus", "Jean Monnet")
                                 )
                         ),
-                        "Raspail",
+                        "Versailles",
                         AffluenceLevel.NONE,
                         2.9,
                         12,
@@ -80,7 +88,7 @@ public class MainServiceImpl implements MainService {
                 new TripSummary(
                         List.of(
                                 new LineDetails(
-                                        new Line("U", ColorHelpers.fromRGBCode("#FF6677")),
+                                        new Line("8", ColorHelpers.fromRGBCode("#aa6622")),
                                         List.of("Raspail", "Montparnasse-Bienvenue", "Victor Hugo", "Glaciere")
                                 )
                         ),

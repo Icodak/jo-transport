@@ -91,6 +91,10 @@
     -fx-padding: 16 0;
 }
 
+.list-cell:pressed, .list-cell:focused, .list-cell:selected {
+    -fx-text-fill: black;
+}
+
 #searchResults {
     -fx-padding: 16 0 0 0;
     -fx-background-radius: 32;
@@ -140,7 +144,7 @@
     -fx-border-radius: 32;
 }
 
-#summary {
+.summary {
     -fx-background-color: white;
     -fx-background-radius: 32;
 }

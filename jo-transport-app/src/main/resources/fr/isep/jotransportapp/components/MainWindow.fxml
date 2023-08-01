@@ -82,10 +82,10 @@
                 <padding>
                     <Insets top="50.0"/>
                 </padding>
-                <VBox fx:id="summary" prefWidth="300" alignment="TOP_CENTER">
+                <VBox fx:id="summary" styleClass="summary" prefWidth="300" alignment="TOP_CENTER">
 
                     <Label fx:id="detailsTitle"/>
-                    <ListView fx:id="detailsList"/>
+                    <ListView fx:id="detailsList" styleClass="summary"/>
                 </VBox>
             </VBox>
         </HBox>

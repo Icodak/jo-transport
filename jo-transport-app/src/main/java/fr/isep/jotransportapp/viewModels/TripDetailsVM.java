@@ -17,6 +17,4 @@ public class TripDetailsVM {
         this.stations = stations;
         firstStation = stations.stream().findFirst().orElse("");
     }
-
-
 }
