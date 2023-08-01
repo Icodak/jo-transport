@@ -29,7 +29,7 @@ public class Application extends javafx.application.Application {
         MainVM viewModel = new MainVM(scene);
         MainController mainController = loader.getController();
         mainController.bind(viewModel);
-        
+
         stage.setScene(scene);
         stage.show();
     }
