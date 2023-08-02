@@ -1,5 +1,6 @@
 package fr.isep.jotransportapp.components;
 
+import fr.isep.jotransportapp.models.TransportTypes;
 import fr.isep.jotransportapp.viewModels.*;
 import javafx.collections.ListChangeListener;
 import javafx.fxml.FXML;
@@ -52,6 +53,20 @@ public class MainController {
     @FXML
     public ToggleButton balancedSort;
     @FXML
+    public Label filterLabel;
+    @FXML
+    public Label busLabel;
+    @FXML
+    public ToggleButton busToggle;
+    @FXML
+    public Label metroLabel;
+    @FXML
+    public ToggleButton metroToggle;
+    @FXML
+    public Label trainLabel;
+    @FXML
+    public ToggleButton trainToggle;
+    @FXML
     private TitleTextField departure;
     @FXML
     private ListView<TitleTextFieldVM> stepContainer;
@@ -59,6 +74,7 @@ public class MainController {
     private TitleTextField arrival;
     @FXML
     private ListView<SearchResultVM> searchResults;
+
 
     public void bind(MainVM viewModel) {
         departure.bind(viewModel.departureVM);
@@ -124,6 +140,21 @@ public class MainController {
         priceSort.setOnAction(e -> viewModel.onSort(SortType.PRICE));
         timeSort.setOnAction(e -> viewModel.onSort(SortType.TIME));
 
+        filterLabel.setText(viewModel.filterText);
+        busLabel.setText(viewModel.busText);
+        metroLabel.setText(viewModel.metroText);
+        trainLabel.setText(viewModel.trainText);
+
+
+        busToggle.selectedProperty().addListener((observable, oldValue, newValue) -> {
+            viewModel.onFilter(TransportTypes.BUS, newValue);
+        });
+        metroToggle.selectedProperty().addListener((observable, oldValue, newValue) -> {
+            viewModel.onFilter(TransportTypes.METRO, newValue);
+        });
+        trainToggle.selectedProperty().addListener((observable, oldValue, newValue) -> {
+            viewModel.onFilter(TransportTypes.TRAIN, newValue);
+        });
     }
 
 

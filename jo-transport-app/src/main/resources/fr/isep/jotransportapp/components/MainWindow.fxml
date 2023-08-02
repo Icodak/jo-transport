@@ -62,19 +62,38 @@
                     <padding>
                         <Insets top="50.0"/>
                     </padding>
-                    <HBox alignment="CENTER_LEFT" spacing="30" >
+                    <HBox alignment="CENTER_LEFT" spacing="30">
                         <Label fx:id="sortLabel" styleClass="whiteText"/>
                         <StackPane>
-                        <HBox spacing="5" styleClass="buttonContainer">
-                            <ToggleButton fx:id="priceSort">
-                                <toggleGroup>
-                                    <ToggleGroup fx:id="toggleGroup" />
-                                </toggleGroup>
+                            <HBox spacing="5" styleClass="buttonContainer">
+                                <ToggleButton fx:id="priceSort">
+                                    <toggleGroup>
+                                        <ToggleGroup fx:id="toggleGroup"/>
+                                    </toggleGroup>
 
-                            </ToggleButton>
-                            <ToggleButton toggleGroup="$toggleGroup" fx:id="timeSort" />
-                            <ToggleButton toggleGroup="$toggleGroup" fx:id="balancedSort"/>
-                        </HBox>
+                                </ToggleButton>
+                                <ToggleButton toggleGroup="$toggleGroup" fx:id="timeSort"/>
+                                <ToggleButton toggleGroup="$toggleGroup" fx:id="balancedSort" selected="true"/>
+                            </HBox>
+                        </StackPane>
+                    </HBox>
+
+                    <HBox alignment="CENTER_LEFT" spacing="30" prefHeight="50">
+                        <Label fx:id="filterLabel" styleClass="whiteText"/>
+                        <StackPane>
+                            <HBox spacing="10" alignment="CENTER_LEFT" styleClass="buttonContainer">
+                                <padding>
+                                    <Insets left="20.0" right="20.0"/>
+                                </padding>
+
+                                <Label fx:id="busLabel" styleClass="whiteText"/>
+
+                                <ToggleButton fx:id="busToggle" styleClass="filterButton"/>
+                                <Label fx:id="metroLabel" styleClass="whiteText"/>
+                                <ToggleButton fx:id="metroToggle" styleClass="filterButton"/>
+                                <Label fx:id="trainLabel" styleClass="whiteText"/>
+                                <ToggleButton fx:id="trainToggle" styleClass="filterButton"/>
+                            </HBox>
                         </StackPane>
                     </HBox>
 

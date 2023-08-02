@@ -13,9 +13,9 @@ import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.collections.transformation.FilteredList;
 import javafx.scene.Scene;
 
+import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Objects;
@@ -43,17 +43,17 @@ public class MainVM {
     public String durationTitle = "Durée";
     public String detailsTitle = "Détail du trajet";
     public String sortLabel = "Trier les résultats par";
-    public String balancedSort = "Equilibré";
+    public String balancedSort = "Prix/Temps";
     public String priceSort = "Prix";
     public String timeSort = "Temps";
-
-    private SortType sortType = SortType.BALANCED;
-
-
+    public String filterText = "Filtrer";
+    public String busText = "Bus";
+    public String metroText = " |   Metro";
+    public String trainText = " |   Train";
+    public List<TransportTypes> bannedTransportTypes = new ArrayList<>();
     List<TripProposalVM> tripProposalVMList;
-    public List<TransportTypes> bannedTransportTypes = List.of();
-
     MainService mainService = new MainServiceImpl();
+    private SortType sortType = SortType.BALANCED;
 
     public MainVM(Scene scene) {
         setupBindings(scene);
@@ -67,7 +67,7 @@ public class MainVM {
 
     void updateTripProposals() {
         // Sorts and filter the displayed trip proposals
-        Predicate<TripProposalVM> predicate =  vm ->
+        Predicate<TripProposalVM> predicate = vm ->
                 vm.transportTypes.stream().noneMatch(type -> bannedTransportTypes.contains(type));
 
         List<TripProposalVM> sortedList = switch (sortType) {
@@ -80,7 +80,7 @@ public class MainVM {
                     .filter(predicate)
                     .toList();
             case BALANCED -> tripProposalVMList.stream()
-                    .sorted(Comparator.comparingDouble(vm -> -vm.price / vm.duration))
+                    .sorted(Comparator.comparingDouble(vm -> (vm.price / vm.duration)))
                     .filter(predicate)
                     .toList();
         };
@@ -179,6 +179,17 @@ public class MainVM {
 
     public void onSort(SortType sortType) {
         this.sortType = sortType;
+        updateTripProposals();
+    }
+
+    public void onFilter(TransportTypes transportType, Boolean doBan) {
+        System.out.println(transportType);
+        System.out.println(doBan);
+        if (doBan) {
+            bannedTransportTypes.add(transportType);
+        } else {
+            bannedTransportTypes.remove(transportType);
+        }
         updateTripProposals();
     }
 }

@@ -187,3 +187,19 @@
     -fx-text-fill: white;
     -fx-background-radius: 32;
 }
+
+.filterButton {
+    -fx-max-height: 20;
+    -fx-min-height: 20;
+    -fx-max-width: 20;
+    -fx-min-width: 20;
+    -fx-background-radius: 5;
+    -fx-border-radius: 5;
+    -fx-border-width: 2;
+    -fx-border-color: white;
+    -fx-background-color: #0FF9CE;
+}
+
+.filterButton:selected {
+    -fx-background-color: #737373;
+}
