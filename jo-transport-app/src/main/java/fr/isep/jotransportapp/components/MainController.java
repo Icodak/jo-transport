@@ -120,6 +120,10 @@ public class MainController {
         priceSort.setText(viewModel.priceSort);
         timeSort.setText(viewModel.timeSort);
 
+        balancedSort.setOnAction(e -> viewModel.onSort(SortType.BALANCED));
+        priceSort.setOnAction(e -> viewModel.onSort(SortType.PRICE));
+        timeSort.setOnAction(e -> viewModel.onSort(SortType.TIME));
+
     }
 
 

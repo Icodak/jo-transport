@@ -1,5 +1,6 @@
 package fr.isep.jotransportapp.viewModels;
 
+import fr.isep.jotransportapp.models.TransportTypes;
 import fr.isep.jotransportapp.models.TripSummary;
 import fr.isep.jotransportapp.models.parameters.SearchParameters;
 import fr.isep.jotransportapp.models.parameters.TripParameters;
@@ -12,9 +13,13 @@ import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
 import javafx.scene.Scene;
 
+import java.util.Comparator;
+import java.util.List;
 import java.util.Objects;
+import java.util.function.Predicate;
 
 public class MainVM {
     public final SimpleStringProperty stepButtonTitle = new SimpleStringProperty("+ Ajouter une étape");
@@ -42,6 +47,12 @@ public class MainVM {
     public String priceSort = "Prix";
     public String timeSort = "Temps";
 
+    private SortType sortType = SortType.BALANCED;
+
+
+    List<TripProposalVM> tripProposalVMList;
+    public List<TransportTypes> bannedTransportTypes = List.of();
+
     MainService mainService = new MainServiceImpl();
 
     public MainVM(Scene scene) {
@@ -53,6 +64,29 @@ public class MainVM {
         bindTitleTextField(arrivalVM);
         scene.onMouseClickedProperty().addListener((e, o, n) -> isSearchResultVisible.set(false));
     }
+
+    void updateTripProposals() {
+        // Sorts and filter the displayed trip proposals
+        Predicate<TripProposalVM> predicate =  vm ->
+                vm.transportTypes.stream().noneMatch(type -> bannedTransportTypes.contains(type));
+
+        List<TripProposalVM> sortedList = switch (sortType) {
+            case TIME -> tripProposalVMList.stream()
+                    .sorted(Comparator.comparingDouble(vm -> -vm.price))
+                    .filter(predicate)
+                    .toList();
+            case PRICE -> tripProposalVMList.stream()
+                    .sorted(Comparator.comparingInt(vm -> -vm.duration))
+                    .filter(predicate)
+                    .toList();
+            case BALANCED -> tripProposalVMList.stream()
+                    .sorted(Comparator.comparingDouble(vm -> -vm.price / vm.duration))
+                    .filter(predicate)
+                    .toList();
+        };
+        observableTripProposalVms.setAll(sortedList);
+    }
+
 
     void bindTitleTextField(TitleTextFieldVM titleTextFieldVM) {
 
@@ -111,6 +145,7 @@ public class MainVM {
         isSearchResultVisible.set(false);
     }
 
+
     public void sendRequest() {
         TripResponse response = mainService.getTrips(new TripParameters(
                 departureVM.tripUuid.get(),
@@ -118,9 +153,8 @@ public class MainVM {
                 observableStepVms.stream().map(vm -> vm.tripUuid.get()).toList()
         ));
 
-        observableTripProposalVms.setAll(
-                response.tripSummaries.stream().map(this::tripSummaryToTripProposalVM).toList()
-        );
+        tripProposalVMList = response.tripSummaries.stream().map(this::tripSummaryToTripProposalVM).toList();
+        updateTripProposals();
 
         isSearchResultVisible.set(false);
     }
@@ -138,7 +172,13 @@ public class MainVM {
                                     new LineCardVM(lineDetails.line.name, lineDetails.line.color),
                                     lineDetails.stations
                             )).toList());
-                }
+                },
+                summary.usedTransportTypes
         );
+    }
+
+    public void onSort(SortType sortType) {
+        this.sortType = sortType;
+        updateTripProposals();
     }
 }

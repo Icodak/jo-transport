@@ -1,6 +1,7 @@
 package fr.isep.jotransportapp.viewModels;
 
 import fr.isep.jotransportapp.models.AffluenceLevel;
+import fr.isep.jotransportapp.models.TransportTypes;
 import javafx.scene.image.Image;
 
 import java.util.List;
@@ -17,6 +18,7 @@ public class TripProposalVM {
     public String formattedDuration;
     public Integer duration;
     public Runnable onClick;
+    public List<TransportTypes> transportTypes;
 
     public TripProposalVM(
             String name,
@@ -24,7 +26,8 @@ public class TripProposalVM {
             List<LineCardVM> lines,
             Double price,
             Integer duration,
-            Runnable onClick) {
+            Runnable onClick,
+            List<TransportTypes> transportTypes) {
         this.name = name;
         this.affluenceLevel = affluenceLevel;
         this.lines = lines;
@@ -43,6 +46,7 @@ public class TripProposalVM {
         this.duration = duration;
         formattedDuration = formatDuration(duration);
         this.onClick = onClick;
+        this.transportTypes = transportTypes;
     }
 
     private String formatPrice(Double price) {
