@@ -1,6 +1,10 @@
 package fr.isep.jotransportapp;
 
 import fr.isep.jotransportapp.components.MainController;
+import fr.isep.jotransportapp.models.Graph;
+import fr.isep.jotransportapp.models.Line;
+import fr.isep.jotransportapp.models.Station;
+import fr.isep.jotransportapp.util.CSVReader;
 import fr.isep.jotransportapp.viewModels.MainVM;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Rectangle2D;
@@ -8,13 +12,30 @@ import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
+import org.apache.commons.csv.CSVRecord;
 
 import java.io.IOException;
+import java.util.List;
 
 public class Application extends javafx.application.Application {
     public static final String APP_NAME = "Simulateur de transports en commun";
 
     public static void main(String[] args) {
+        String csvFilePath = "jo-transport-app/src/main/resources/fr/isep/jotransportapp/emplacement-des-gares-idf.csv";
+        CSVReader csvReader = new CSVReader(csvFilePath);
+
+        try {
+            List<CSVRecord> records = csvReader.readRecords();
+            for (CSVRecord record : records) {
+                String stationId = record.get(2);
+                String stationName = record.get(3);
+                String lineName = record.get(12);
+                String lineId = record.get(10);
+                System.out.println("StationId: " + stationId + ", Station: " + stationName + ", LineId:" + lineId + ", Line: " + lineName);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         launch();
     }
 

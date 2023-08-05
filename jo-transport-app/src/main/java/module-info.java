@@ -1,6 +1,7 @@
 module fr.isep.jotransportapp {
     requires javafx.controls;
     requires javafx.fxml;
+    requires org.apache.commons.csv;
 
 
     opens fr.isep.jotransportapp to javafx.fxml;
