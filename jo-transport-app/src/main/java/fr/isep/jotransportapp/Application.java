@@ -33,6 +33,30 @@ public class Application extends javafx.application.Application {
                 String lineId = record.get(10);
                 System.out.println("StationId: " + stationId + ", Station: " + stationName + ", LineId:" + lineId + ", Line: " + lineName);
             }
+            Graph graph = new Graph();
+            for (CSVRecord record : records) {
+                String stationId = record.get("gares_id");
+                String stationName = record.get("nom_long");
+                Station station = new Station(stationId, stationName);
+                graph.addStation(station);
+
+                String lineId = record.get("idrefliga");
+                String lineName = record.get("res_com");
+                Line line = new Line(lineId, lineName);
+                graph.addLine(line);
+            }
+            // Test :
+            System.out.println("Stations dans le graphe :");
+            for (String stationId : graph.getAllStationIds()) {
+                Station station = graph.getStationById(stationId);
+                System.out.println("Station : " + station.getName() + ", ID : " + station.getStationId());
+            }
+
+            System.out.println("\nLignes dans le graphe :");
+            for (String lineId : graph.getAllLineIds()) {
+                Line line = graph.getLineById(lineId);
+                System.out.println("Ligne : " + line.name + ", ID : " + line.getLineId());
+            }
         } catch (IOException e) {
             e.printStackTrace();
         }
