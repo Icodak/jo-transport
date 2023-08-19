@@ -15,52 +15,117 @@ import javafx.stage.Stage;
 import org.apache.commons.csv.CSVRecord;
 
 import java.io.IOException;
-import java.util.List;
+import java.util.*;
 
 public class Application extends javafx.application.Application {
     public static final String APP_NAME = "Simulateur de transports en commun";
 
     public static void main(String[] args) {
-        String csvFilePath = "jo-transport-app/src/main/resources/fr/isep/jotransportapp/emplacement-des-gares-idf.csv";
+        String csvFilePath = "src/main/resources/fr/isep/jotransportapp/station-locations.csv";
         CSVReader csvReader = new CSVReader(csvFilePath);
 
         try {
             List<CSVRecord> records = csvReader.readRecords();
-            for (CSVRecord record : records) {
-                String stationId = record.get(2);
-                String stationName = record.get(3);
-                String lineName = record.get(12);
-                String lineId = record.get(10);
-                System.out.println("StationId: " + stationId + ", Station: " + stationName + ", LineId:" + lineId + ", Line: " + lineName);
-            }
             Graph graph = new Graph();
+
+            // Add stations and associate lines
             for (CSVRecord record : records) {
                 String stationId = record.get("gares_id");
                 String stationName = record.get("nom_long");
-                Station station = new Station(stationId, stationName);
-                graph.addStation(station);
+                String geoPoint = record.get(0); // Geo Point as column name doesn't work
+                String[] parts = geoPoint.split(",");
+                double latitude = Double.parseDouble(parts[0].trim());
+                double longitude = Double.parseDouble(parts[1].trim());
 
                 String lineId = record.get("idrefliga");
                 String lineName = record.get("res_com");
-                Line line = new Line(lineId, lineName);
-                graph.addLine(line);
-            }
-            // Test :
-            System.out.println("Stations dans le graphe :");
-            for (String stationId : graph.getAllStationIds()) {
-                Station station = graph.getStationById(stationId);
-                System.out.println("Station : " + station.getName() + ", ID : " + station.getStationId());
+
+                String terMetroValue = record.get("termetro");
+                String terRerValue = record.get("terrer");
+                String terTramValue = record.get("tertram");
+                String terTrainValue = record.get("tertrain");
+                String terValValue = record.get("terval");
+                boolean isTerminus = !terMetroValue.equals("0") ||
+                        !terRerValue.equals("0") ||
+                        !terTramValue.equals("0") ||
+                        !terTrainValue.equals("0") ||
+                        !terValValue.equals("0");
+
+                Station station = new Station(stationId, stationName, latitude, longitude);
+                station.setLineId(lineId);
+                station.setTerminus(isTerminus);
+                graph.addStation(station);
+
+                Line line = graph.getLineById(lineId);
+                if (line == null) {
+                    line = new Line(lineId, lineName);
+                    graph.addLine(line);
+                }
+                line.addStation(station);
             }
 
-            System.out.println("\nLignes dans le graphe :");
+            graph.parseAndSetupTerminusDistances();
+
             for (String lineId : graph.getAllLineIds()) {
                 Line line = graph.getLineById(lineId);
-                System.out.println("Ligne : " + line.name + ", ID : " + line.getLineId());
+                List<Station> stations = line.getStations();
+
+                List<String> stationIds = new ArrayList<>();
+                for (Station station : stations) {
+                    stationIds.add(station.getStationId());
+                }
+                String startStationId = stationIds.get(0); // Choosing the first station as the start station
+                Station startStation = graph.getStationById(startStationId);
+
+                // Calculate distances from startStation to each station
+                Map<String, Double> distances = new HashMap<>();
+                for (String stationId : stationIds) {
+                    Station station = graph.getStationById(stationId);
+                    double distance = station.getDistanceToTerminus(); // Use terminus distances
+                    distances.put(stationId, distance);
+                }
+
+                // Sort stationIds based on distances
+                stationIds.sort(Comparator.comparingDouble(distances::get));
+
+                Station previousStation = startStation;
+                for (String stationId : stationIds) {
+                    Station neighborStation = graph.getStationById(stationId);
+                    if (!neighborStation.equals(previousStation)) {
+                        double distanceToNeighbor = previousStation.getDistanceToNeighbor(neighborStation);
+                        previousStation.addNeighbor(neighborStation, distanceToNeighbor);
+                        neighborStation.addNeighbor(previousStation, distanceToNeighbor);
+                        previousStation = neighborStation;
+                    }
+                }
+
             }
+            testPath(graph, "160", "583"); // CFrom Château de Vincennes to Nation
         } catch (IOException e) {
             e.printStackTrace();
         }
         launch();
+    }
+
+    public static void testPath(Graph graph, String startStationId, String endStationId) {
+        Station startStation = graph.getStationById(startStationId);
+        Station endStation = graph.getStationById(endStationId);
+
+        if (startStation != null && endStation != null) {
+            List<Station> path = graph.findShortestPath(startStationId, endStationId);
+            System.out.println(path.size());
+
+            if (path != null) {
+                System.out.println("Path between " + startStation.getName() + " and " + endStation.getName() + ": ");
+                for (Station station : path) {
+                    System.out.println(station.getName());
+                }
+            } else {
+                System.out.println("No path found between " + startStation.getName() + " and " + endStation.getName());
+            }
+        } else {
+            System.out.println("Specified stations don't exist in the graph.");
+        }
     }
 
     @Override
