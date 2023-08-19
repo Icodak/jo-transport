@@ -97,7 +97,7 @@ public class MainVM {
                 SearchResultVM searchResultVM = new SearchResultVM(
                         desc.type,
                         desc.title,
-                        desc.lines.stream().map(line -> new LineCardVM(line.name, line.color)).toList(),
+                        desc.lines.stream().map(line -> new LineCardVM(line.getName(), line.getColor())).toList(),
                         desc.uuid
                 );
                 searchResultVM.uuidProperty.addListener((e, o, n) -> clickedUuid.set(n));
@@ -163,13 +163,13 @@ public class MainVM {
         return new TripProposalVM(
                 summary.departureStationName,
                 summary.affluenceLevel,
-                summary.lineDetails.stream().map(lineDetails -> new LineCardVM(lineDetails.line.name, lineDetails.line.color)).toList(),
+                summary.lineDetails.stream().map(lineDetails -> new LineCardVM(lineDetails.line.getName(), lineDetails.line.getColor())).toList(),
                 summary.tripPrice,
                 summary.tripMinutesDuration,
                 () -> {
                     observableTripDetailsVms.setAll(
                             summary.lineDetails.stream().map(lineDetails -> new TripDetailsVM(
-                                    new LineCardVM(lineDetails.line.name, lineDetails.line.color),
+                                    new LineCardVM(lineDetails.line.getName(), lineDetails.line.getColor()),
                                     lineDetails.stations
                             )).toList());
                 },
