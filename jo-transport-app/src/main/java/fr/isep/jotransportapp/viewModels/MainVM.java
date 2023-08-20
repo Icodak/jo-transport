@@ -1,5 +1,6 @@
 package fr.isep.jotransportapp.viewModels;
 
+import fr.isep.jotransportapp.models.Graph;
 import fr.isep.jotransportapp.models.TransportTypes;
 import fr.isep.jotransportapp.models.TripSummary;
 import fr.isep.jotransportapp.models.parameters.SearchParameters;
@@ -25,8 +26,8 @@ public class MainVM {
     public final SimpleStringProperty stepButtonTitle = new SimpleStringProperty("+ Ajouter une étape");
     public final SimpleStringProperty sendButtonTitle = new SimpleStringProperty("Rechercher un trajet");
     public final SimpleStringProperty hint = new SimpleStringProperty("Saisissez au moins un départ et une arrivée");
-    public TitleTextFieldVM departureVM = new TitleTextFieldVM("Départ", "Gare, line, arrêt ...");
-    public TitleTextFieldVM arrivalVM = new TitleTextFieldVM("Arrivée", "Gare, line, arrêt ...");
+    public TitleTextFieldVM departureVM = new TitleTextFieldVM("Départ", "Gare, arrêt ...");
+    public TitleTextFieldVM arrivalVM = new TitleTextFieldVM("Arrivée", "Gare, arrêt ...");
     public ObservableList<TitleTextFieldVM> observableStepVms = FXCollections.observableArrayList();
     public ObservableList<SearchResultVM> observableResultsVms = FXCollections.observableArrayList();
     public ObservableList<TripProposalVM> observableTripProposalVms = FXCollections.observableArrayList();
@@ -52,10 +53,11 @@ public class MainVM {
     public String trainText = " |   Train";
     public List<TransportTypes> bannedTransportTypes = new ArrayList<>();
     List<TripProposalVM> tripProposalVMList;
-    MainService mainService = new MainServiceImpl();
+    private final MainService mainService;
     private SortType sortType = SortType.BALANCED;
 
-    public MainVM(Scene scene) {
+    public MainVM(Scene scene, Graph graph) {
+        this.mainService = new MainServiceImpl(graph);
         setupBindings(scene);
     }
 
@@ -93,14 +95,14 @@ public class MainVM {
         titleTextFieldVM.textEventProperty.addListener((event, oldValue, newValue) -> {
             // Search and set results
             SearchResponse searchResults = mainService.getResults(new SearchParameters(newValue.text));
-            observableResultsVms.setAll(searchResults.lines.stream().map(desc -> {
+            observableResultsVms.setAll(searchResults.stations.stream().map(desc -> {
                 SearchResultVM searchResultVM = new SearchResultVM(
                         desc.type,
-                        desc.title,
-                        desc.lines.stream().map(line -> new LineCardVM(line.getName(), line.getColor())).toList(),
-                        desc.uuid
+                        desc.stationName,
+                        desc.getLines().stream().map(line -> new LineCardVM(line.getName(), line.getColor())).toList()
+                        //desc.uuid
                 );
-                searchResultVM.uuidProperty.addListener((e, o, n) -> clickedUuid.set(n));
+                //searchResultVM.uuidProperty.addListener((e, o, n) -> clickedUuid.set(n));
                 searchResultVM.titleProperty.addListener((e, o, n) -> clickedTitle.set(n));
                 return searchResultVM;
             }).toList());
@@ -134,7 +136,7 @@ public class MainVM {
     }
 
     public void onAddStep() {
-        TitleTextFieldVM titleTextFieldVM = new TitleTextFieldVM("", "Gare, line, arrêt ...");
+        TitleTextFieldVM titleTextFieldVM = new TitleTextFieldVM("", "Gare, arrêt ...");
         titleTextFieldVM.hasCross.set(true);
         titleTextFieldVM.hasClicked.addListener((e, oldValue, newValue) -> {
             observableStepVms.remove(titleTextFieldVM);
