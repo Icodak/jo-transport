@@ -2,26 +2,25 @@ package fr.isep.jotransportapp.models;
 
 import fr.isep.jotransportapp.util.DistanceCalculator;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class Station {
-    private String stationId;
-    private String name;
+    private final String stationId;
+    private final String name;
     private final Map<Station, Double> neighbors = new HashMap<>(); // Nearby stations and their distances
     private boolean isTerminus;
     private double distanceToTerminus;
     private String lineId;
-    private double latitude;
-    private double longitude;
+    private final double latitude;
+    private final double longitude;
+    private final Map<Line, Boolean> lines; // Map of lines and their terminus status
 
     public Station(String stationId, String name, double latitude, double longitude) {
         this.stationId = stationId;
         this.name = name;
         this.latitude = latitude;
         this.longitude = longitude;
+        this.lines = new HashMap<>();
     }
 
     public void addNeighbor(Station neighbor, double distanceToNeighbor) {
@@ -30,9 +29,7 @@ public class Station {
     public List<Station> getNeighbors() {
         return new ArrayList<>(neighbors.keySet());
     }
-    public List<Double> getDistances() {
-        return new ArrayList<>(neighbors.values());
-    }
+
     public String getLineId() {
         return lineId;
     }
@@ -51,26 +48,15 @@ public class Station {
     public String getName() {
         return name;
     }
-    public void setName(String name) {
-        this.name = name;
+    public void addLine(Line line, boolean isTerminus) {
+        lines.put(line, isTerminus);
     }
-
-    public void setLatitude(double latitude) {
-        this.latitude = latitude;
+    public Set<Line> getLines() {
+        return lines.keySet();
     }
-
-    public void setLongitude(double longitude) {
-        this.longitude = longitude;
+    public boolean isTerminus(Line line) {
+        return lines.getOrDefault(line, false);
     }
-
-    public void setStationId(String stationId) {
-        this.stationId = stationId;
-    }
-
-    public boolean isTerminus() {
-        return isTerminus;
-    }
-
     public void setTerminus(boolean terminus) {
         isTerminus = terminus;
     }
@@ -93,7 +79,6 @@ public class Station {
                 ", name='" + name + '\'' +
                 ", isTerminus=" + isTerminus +
                 ", distanceToTerminus=" + distanceToTerminus +
-                ", lineId='" + lineId + '\'' +
                 '}';
     }
 }

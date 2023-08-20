@@ -7,9 +7,9 @@ import java.util.List;
 
 public class Line {
     private String lineId;
-    private String name;
-    private Color color;
-    private List<Station> stations;
+    private final String name;
+    private final Color color;
+    private final List<Station> stations;
 
     public Line(String name, Color color) {
         this.name = name;
@@ -17,9 +17,10 @@ public class Line {
         this.stations = new ArrayList<>();
     }
 
-    public Line(String lineId, String name) {
+    public Line(String lineId, String name, Color color) {
         this.lineId = lineId;
         this.name = name;
+        this.color = color;
         this.stations = new ArrayList<>();
     }
 
@@ -36,14 +37,6 @@ public class Line {
 
     public String getName() {
         return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public void setStations(List<Station> stations) {
-        this.stations = stations;
     }
 
     public Color getColor() {

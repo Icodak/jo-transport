@@ -4,47 +4,40 @@ import fr.isep.jotransportapp.helpers.ColorHelpers;
 import fr.isep.jotransportapp.models.*;
 import fr.isep.jotransportapp.models.parameters.SearchParameters;
 import fr.isep.jotransportapp.models.parameters.TripParameters;
-import fr.isep.jotransportapp.models.responses.LineDescription;
 import fr.isep.jotransportapp.models.responses.SearchResponse;
+import fr.isep.jotransportapp.models.responses.StationDescription;
 import fr.isep.jotransportapp.models.responses.TripResponse;
 
+import java.util.ArrayList;
 import java.util.List;
-import java.util.UUID;
+import java.util.Set;
 
 public class MainServiceImpl implements MainService {
 
+    private final Graph graph;
+
+    public MainServiceImpl(Graph graph) {
+        this.graph = graph;
+    }
+
     @Override
     public SearchResponse getResults(SearchParameters parameters) {
-        // TODO change this to call the real implementation
-        return new SearchResponse(
-                List.of(
-                        new LineDescription(
-                                List.of(
-                                        new Line("N", ColorHelpers.fromRGBCode("#0FF9A4"))),
-                                "Gare Montparnasse",
-                                TransportTypes.TRAIN,
-                                UUID.randomUUID().toString()
-                        ),
-                        new LineDescription(
-                                List.of(
-                                        new Line("132", ColorHelpers.fromRGBCode("#FF479F")),
-                                        new Line("513", ColorHelpers.fromRGBCode("#FBFF47")),
-                                        new Line("868", ColorHelpers.fromRGBCode("#47E9FF"))
-                                ),
-                                "Gare routière d’Asnières",
-                                TransportTypes.BUS,
-                                UUID.randomUUID().toString()
-                        ),
-                        new LineDescription(
-                                List.of(
-                                        new Line("6", ColorHelpers.fromRGBCode("#FF6847"))),
-                                "Garnier",
-                                TransportTypes.METRO,
-                                UUID.randomUUID().toString()
-                        )
-                )
+        if (graph == null) {
+            throw new IllegalStateException("Graph has not been set. Call setGraph() before calling getResults()");
+        }
 
-        );
+        List<StationDescription> stationDescriptions = new ArrayList<>();
+
+        // Iterate through each station in the graph
+        for (Station station : graph.getAllStations()) {
+            String stationName = station.getName();
+            Set<Line> associatedLines = station.getLines();
+            System.out.println(associatedLines);
+
+            StationDescription stationDescription = new StationDescription(stationName, new ArrayList<>(associatedLines), TransportTypes.METRO);
+            stationDescriptions.add(stationDescription);
+        }
+        return new SearchResponse(stationDescriptions);
     }
 
     @Override

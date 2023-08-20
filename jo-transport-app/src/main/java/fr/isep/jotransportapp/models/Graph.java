@@ -40,10 +40,6 @@ public class Graph {
         return new ArrayList<>(lines.values());
     }
 
-    public Set<String> getAllStationIds() {
-        return stations.keySet();
-    }
-
     public Set<String> getAllLineIds() {
         return lines.keySet();
     }
@@ -61,11 +57,14 @@ public class Graph {
         List<Line> lines = getAllLines();
 
         for (Line line : lines) {
+            System.out.println(line);
             List<Station> terminusStations = line.getStations().stream()
-                    .filter(Station::isTerminus)
+                    .filter(station -> station.isTerminus(line)) // Station::isTerminus
                     .toList();
+            System.out.println("Terminus stations for line " + line.getLineId() + ": " + terminusStations);
 
             Station referenceTerminus = terminusStations.get(new Random().nextInt(terminusStations.size()));
+            System.out.println("Reference Terminus for line " + line.getLineId() + ": " + referenceTerminus);
 
             for (Station station : line.getStations()) {
                 double distanceToReferenceTerminus = calculateDistance(
@@ -73,6 +72,7 @@ public class Graph {
                         station.getLongitude(),
                         referenceTerminus.getLatitude(),
                         referenceTerminus.getLongitude());
+                System.out.println("Distance to Reference Terminus for station " + station.getName() + ": " + distanceToReferenceTerminus);
                 station.setDistanceToTerminus(distanceToReferenceTerminus);
             }
         }
