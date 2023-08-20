@@ -23,4 +23,13 @@ public class StationDescription {
     public List<Line> getLines() {
         return lines;
     }
+
+    @Override
+    public String toString() {
+        return "StationDescription{" +
+                "type=" + type +
+                ", stationName='" + stationName + '\'' +
+                //", lines=" + lines +
+                '}';
+    }
 }

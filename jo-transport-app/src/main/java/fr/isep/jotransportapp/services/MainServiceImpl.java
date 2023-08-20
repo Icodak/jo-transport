@@ -30,14 +30,19 @@ public class MainServiceImpl implements MainService {
 
         // Iterate through each station in the graph
         for (Station station : graph.getAllStations()) {
-            String stationName = station.getName();
-            Set<Line> associatedLines = station.getLines();
-            System.out.println(associatedLines);
+            if (parametersMatchesStation(parameters, station)) {
+                String stationName = station.getName();
+                Set<Line> associatedLines = station.getLines();
 
-            StationDescription stationDescription = new StationDescription(stationName, new ArrayList<>(associatedLines), TransportTypes.METRO);
-            stationDescriptions.add(stationDescription);
+                StationDescription stationDescription = new StationDescription(stationName, new ArrayList<>(associatedLines), TransportTypes.METRO);
+                stationDescriptions.add(stationDescription);
+            }
         }
         return new SearchResponse(stationDescriptions);
+    }
+
+    private boolean parametersMatchesStation(SearchParameters parameters, Station station) {
+        return station.getName().toLowerCase().contains(parameters.locationName);
     }
 
     @Override

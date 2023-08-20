@@ -8,4 +8,11 @@ public class SearchResponse {
     public SearchResponse(List<StationDescription> lines) {
         this.stations = lines;
     }
+
+    @Override
+    public String toString() {
+        return "SearchResponse{" +
+                "stations=" + stations +
+                '}';
+    }
 }

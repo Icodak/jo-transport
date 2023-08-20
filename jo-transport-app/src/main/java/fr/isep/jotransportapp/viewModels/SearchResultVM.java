@@ -32,5 +32,15 @@ public class SearchResultVM {
         titleProperty.set(title);
         //uuidProperty.set(uuid);
     }
+
+    @Override
+    public String toString() {
+        return "SearchResultVM{" +
+                "title='" + title + '\'' +
+                ", image=" + image +
+                ", lines=" + lines +
+                ", titleProperty=" + titleProperty +
+                '}';
+    }
 }
 
