@@ -13,4 +13,12 @@ public class LineDetails {
         this.line = line;
         this.stations = stations;
     }
+
+    @Override
+    public String toString() {
+        return "LineDetails{" +
+                "line=" + line +
+                ", stations=" + stations +
+                '}';
+    }
 }

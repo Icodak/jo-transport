@@ -1,6 +1,5 @@
 package fr.isep.jotransportapp.services;
 
-import fr.isep.jotransportapp.helpers.ColorHelpers;
 import fr.isep.jotransportapp.models.*;
 import fr.isep.jotransportapp.models.parameters.SearchParameters;
 import fr.isep.jotransportapp.models.parameters.TripParameters;
@@ -50,74 +49,43 @@ public class MainServiceImpl implements MainService {
         List<TripSummary> tripSummaries = new ArrayList<>();
 
         List<Station> shortestTrip = graph.findShortestPath(parameters.departureUuid, parameters.arrivalUuid);
-        System.out.println("SHORTEST PATH: " + shortestTrip);
+
+        List<LineDetails> lineDetails = new ArrayList<>();
+        List<String> currentStations = new ArrayList<>();
+        Line currentLine = null;
+
         for (int i = 0; i < shortestTrip.size() - 1; i++) {
             Station sourceStation = shortestTrip.get(i);
             Station destinationStation = shortestTrip.get(i + 1);
 
-            // Create LineDetails for this segment (could involve multiple lines)
-            List<LineDetails> lineDetails = new ArrayList<>();
-            // Add line details based on the stations and lines involved in this segment
+            Line stationLine = Station.getLineBetweenStations(sourceStation, destinationStation);
 
-            TripSummary tripSummary = new TripSummary(
-                    lineDetails,
-                    sourceStation.getName(),
-                    AffluenceLevel.MEDIUM, // TODO: Replace with actual affluence level
-                    1.20, // TODO: Replace with actual cost
-                    26, // TODO: Replace with actual duration
-                    List.of(TransportTypes.METRO) // TODO: Replace with actual transport types
-            );
-            tripSummaries.add(tripSummary);
+            if (currentLine == null || !currentLine.equals(stationLine)) {
+                if (!currentStations.isEmpty()) {
+                    lineDetails.add(new LineDetails(currentLine, new ArrayList<>(currentStations)));
+                    currentStations.clear();
+                }
+
+                currentLine = stationLine;
+            }
+
+            currentStations.add(sourceStation.getName());
         }
+
+        // Add the last LineDetails
+        if (!currentStations.isEmpty()) {
+            lineDetails.add(new LineDetails(currentLine, new ArrayList<>(currentStations)));
+        }
+
+        TripSummary tripSummary = new TripSummary(
+                lineDetails,
+                currentStations.get(0),
+                AffluenceLevel.MEDIUM, // TODO: Replace with actual affluence level
+                1.20, // TODO: Replace with actual cost
+                26, // TODO: Replace with actual duration
+                List.of(TransportTypes.METRO) // TODO: Replace with actual transport types
+        );
+        tripSummaries.add(tripSummary);
         return new TripResponse(tripSummaries);
-        /*return new TripResponse(List.of(
-                new TripSummary(
-                        List.of(
-                                new LineDetails(
-                                        new Line("U", ColorHelpers.fromRGBCode("#FF6677")),
-                                        List.of("Raspail", "Montparnasse-Bienvenue", "Victor Hugo", "Glaciere")
-                                )
-                        ),
-                        "Raspail",
-                        AffluenceLevel.MEDIUM,
-                        1.20,
-                        26,
-                        List.of(TransportTypes.TRAIN)
-                ),
-                new TripSummary(
-                        List.of(
-                                new LineDetails(
-                                        new Line("N", ColorHelpers.fromRGBCode("#319794")),
-                                        List.of("Versailles", "Vanves")
-                                ),
-                                new LineDetails(
-                                        new Line("U", ColorHelpers.fromRGBCode("#FF6677")),
-                                        List.of("Vanves-Malakoff", "St-Cyr", "Bennes", "Pluton")
-                                ),
-                                new LineDetails(
-                                        new Line("135", ColorHelpers.fromRGBCode("#3ADEFF")),
-                                        List.of("Albert Camus", "Jean Monnet")
-                                )
-                        ),
-                        "Versailles",
-                        AffluenceLevel.NONE,
-                        2.9,
-                        12,
-                        List.of(TransportTypes.TRAIN, TransportTypes.BUS)
-                ),
-                new TripSummary(
-                        List.of(
-                                new LineDetails(
-                                        new Line("8", ColorHelpers.fromRGBCode("#FFB41E")),
-                                        List.of("Raspail", "Montparnasse-Bienvenue", "Victor Hugo", "Glaciere")
-                                )
-                        ),
-                        "Raspail",
-                        AffluenceLevel.LOW,
-                        4.6,
-                        8,
-                        List.of(TransportTypes.METRO)
-                )
-        ));*/
     }
 }

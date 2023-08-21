@@ -35,6 +35,21 @@ public class Station {
         return lines.getOrDefault(line, false);
     }
 
+    public static Line getLineBetweenStations(Station sourceStation, Station destinationStation) {
+        Set<Line> sourceLines = sourceStation.getLines();
+        Set<Line> destinationLines = destinationStation.getLines();
+
+        // Find the common lines between the source and destination stations
+        for (Line line : sourceLines) {
+            if (destinationLines.contains(line)) {
+                return line;
+            }
+        }
+
+        // If no common line is found, return null
+        return null;
+    }
+
     public String getLineId() {
         return lineId;
     }

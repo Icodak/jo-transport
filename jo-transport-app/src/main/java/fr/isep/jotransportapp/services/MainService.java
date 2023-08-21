@@ -10,4 +10,3 @@ public interface MainService {
 
     TripResponse getTrips(TripParameters parameters);
 }
-
