@@ -14,12 +14,29 @@ public class TripSummary {
 
     public List<TransportTypes> usedTransportTypes;
 
-    public TripSummary(List<LineDetails> lineDetails, String departureStationName, AffluenceLevel affluenceLevel, Double tripPrice, Integer tripMinutesDuration, List<TransportTypes> usedTransportTypes) {
+    public TripSummary(List<LineDetails> lineDetails,
+                       String departureStationName,
+                       AffluenceLevel affluenceLevel,
+                       Double tripPrice,
+                       Integer tripMinutesDuration,
+                       List<TransportTypes> usedTransportTypes) {
         this.lineDetails = lineDetails;
         this.departureStationName = departureStationName;
         this.affluenceLevel = affluenceLevel;
         this.tripPrice = tripPrice;
         this.tripMinutesDuration = tripMinutesDuration;
         this.usedTransportTypes = usedTransportTypes;
+    }
+
+    @Override
+    public String toString() {
+        return "TripSummary{" +
+                "lineDetails=" + lineDetails +
+                ", departureStationName='" + departureStationName + '\'' +
+                ", affluenceLevel=" + affluenceLevel +
+                ", tripPrice=" + tripPrice +
+                ", tripMinutesDuration=" + tripMinutesDuration +
+                ", usedTransportTypes=" + usedTransportTypes +
+                '}';
     }
 }

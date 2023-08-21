@@ -17,6 +17,9 @@ import org.apache.commons.csv.CSVRecord;
 
 import java.io.IOException;
 import java.util.*;
+import java.util.stream.Collectors;
+
+import static fr.isep.jotransportapp.util.DistanceCalculator.calculateDistance;
 
 public class Application extends javafx.application.Application {
     public static final String APP_NAME = "Simulateur de transports en commun";
@@ -48,33 +51,32 @@ public class Application extends javafx.application.Application {
 
                 // Check if the station with the same name exists in the map
                 Station station = stationMap.get(stationName);
-
                 if (station == null) {
-                    // Creat a new station and add it to the map
+                    // Create a new station and add it to the map
                     station = new Station(stationId, stationName, latitude, longitude);
                     stationMap.put(stationName, station);
                 }
 
                 Line line = graph.getLineById(lineId);
                 if (line == null) {
-                    line = new Line(lineId, lineName, ColorHelpers.fromRGBCode("#319794"));
+                    line = new Line(lineId, lineName);
                     graph.addLine(line);
                 }
 
                 station.setLineId(lineId);
-                station.setTerminus(isTerminus);
+                station.setLineTerminus(line, isTerminus);
                 station.addLine(line, isTerminus); // Add the line to the station's lines collection
                 line.addStation(station); // Add the current station to the line's stations collection
             }
-            for (Station station : stationMap.values()) {
-                graph.addStation(station);
-            }
+        }
+
+        for (Station station : stationMap.values()) {
+            graph.addStation(station);
         }
 
         graph.parseAndSetupTerminusDistances();
 
-        for (String lineId : graph.getAllLineIds()) {
-            Line line = graph.getLineById(lineId);
+        for (Line line : graph.getAllLines()) {
             List<Station> stations = line.getStations();
 
             List<String> stationIds = new ArrayList<>();
@@ -86,15 +88,15 @@ public class Application extends javafx.application.Application {
 
             // Calculate distances from startStation to each station
             Map<String, Double> distances = new HashMap<>();
-            for (String stationId : stationIds) {
-                Station station = graph.getStationById(stationId);
-                double distance = station.getDistanceToTerminus(); // Use terminus distances
-                distances.put(stationId, distance);
+            for (Station station : stations) {
+                double distance = startStation.getDistanceToNeighbor(station);
+                distances.put(station.getStationId(), distance);
             }
 
             // Sort stationIds based on distances
             stationIds.sort(Comparator.comparingDouble(distances::get));
 
+            // Loop through the sorted stationIds and set up neighbors
             Station previousStation = startStation;
             for (String stationId : stationIds) {
                 Station neighborStation = graph.getStationById(stationId);
@@ -105,6 +107,7 @@ public class Application extends javafx.application.Application {
                     previousStation = neighborStation;
                 }
             }
+
         }
         return graph;
     }
@@ -114,7 +117,6 @@ public class Application extends javafx.application.Application {
 
         if (startStation != null && endStation != null) {
             List<Station> path = graph.findShortestPath(startStationId, endStationId);
-            System.out.println(path.size());
 
             if (path != null) {
                 System.out.println("Path between " + startStation.getName() + " and " + endStation.getName() + ": ");
@@ -131,7 +133,6 @@ public class Application extends javafx.application.Application {
 
     @Override
     public void start(Stage stage) throws IOException {
-        // Load CSV file and create graph
         String csvFilePath = "src/main/resources/fr/isep/jotransportapp/station-locations.csv";
         CSVReader csvReader = new CSVReader(csvFilePath);
         List<CSVRecord> records = csvReader.readRecords();

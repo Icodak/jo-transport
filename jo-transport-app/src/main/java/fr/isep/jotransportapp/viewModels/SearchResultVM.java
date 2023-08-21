@@ -8,14 +8,14 @@ import java.util.List;
 import java.util.Objects;
 
 public class SearchResultVM {
-    //private final String uuid;
+    private final String uuid;
     public String title;
     public Image image;
     public List<LineCardVM> lines;
-    //public SimpleStringProperty uuidProperty = new SimpleStringProperty("");
+    public SimpleStringProperty uuidProperty = new SimpleStringProperty("");
     public SimpleStringProperty titleProperty = new SimpleStringProperty("");
 
-    SearchResultVM(TransportTypes type, String title, List<LineCardVM> lines) {
+    SearchResultVM(TransportTypes type, String title, List<LineCardVM> lines, String uuid) {
         switch (type) {
             case TRAIN ->
                     image = new Image(Objects.requireNonNull(getClass().getResource("/fr/isep/jotransportapp/images/train.png")).toString());
@@ -26,11 +26,12 @@ public class SearchResultVM {
         }
         this.title = title;
         this.lines = lines;
+        this.uuid = uuid;
     }
 
     public void onClick() {
         titleProperty.set(title);
-        //uuidProperty.set(uuid);
+        uuidProperty.set(uuid);
     }
 
     @Override

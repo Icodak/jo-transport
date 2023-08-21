@@ -13,4 +13,11 @@ public class TripResponse {
     public TripResponse(List<TripSummary> tripSummaries) {
         this.tripSummaries = tripSummaries;
     }
+
+    @Override
+    public String toString() {
+        return "TripResponse{" +
+                "tripSummaries=" + tripSummaries +
+                '}';
+    }
 }

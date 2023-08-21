@@ -49,4 +49,12 @@ public class TripProposal extends Pane {
         });
         setOnMousePressed(e -> viewModel.onClick.run());
     }
+
+    @Override
+    public String toString() {
+        return "TripProposal{" +
+                "lineContainer=" + lineContainer +
+                ", tripName=" + tripName +
+                '}';
+    }
 }

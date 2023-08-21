@@ -9,11 +9,13 @@ public class StationDescription {
     public TransportTypes type;
     public String stationName;
     private List<Line> lines;
+    public String uuid;
 
-    public StationDescription(String stationName, List<Line> lines, TransportTypes type) {
+    public StationDescription(String stationName, List<Line> lines, TransportTypes type, String uuid) {
         this.stationName = stationName;
         this.lines = lines;
         this.type = type;
+        this.uuid = uuid;
     }
 
     public String getStationName() {

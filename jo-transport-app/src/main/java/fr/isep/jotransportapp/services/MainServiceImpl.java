@@ -34,7 +34,7 @@ public class MainServiceImpl implements MainService {
                 String stationName = station.getName();
                 Set<Line> associatedLines = station.getLines();
 
-                StationDescription stationDescription = new StationDescription(stationName, new ArrayList<>(associatedLines), TransportTypes.METRO);
+                StationDescription stationDescription = new StationDescription(stationName, new ArrayList<>(associatedLines), TransportTypes.METRO, station.getStationId());
                 stationDescriptions.add(stationDescription);
             }
         }
@@ -47,8 +47,30 @@ public class MainServiceImpl implements MainService {
 
     @Override
     public TripResponse getTrips(TripParameters parameters) {
-        // TODO change this to call the real implementation
-        return new TripResponse(List.of(
+        List<TripSummary> tripSummaries = new ArrayList<>();
+
+        List<Station> shortestTrip = graph.findShortestPath(parameters.departureUuid, parameters.arrivalUuid);
+        System.out.println("SHORTEST PATH: " + shortestTrip);
+        for (int i = 0; i < shortestTrip.size() - 1; i++) {
+            Station sourceStation = shortestTrip.get(i);
+            Station destinationStation = shortestTrip.get(i + 1);
+
+            // Create LineDetails for this segment (could involve multiple lines)
+            List<LineDetails> lineDetails = new ArrayList<>();
+            // Add line details based on the stations and lines involved in this segment
+
+            TripSummary tripSummary = new TripSummary(
+                    lineDetails,
+                    sourceStation.getName(),
+                    AffluenceLevel.MEDIUM, // TODO: Replace with actual affluence level
+                    1.20, // TODO: Replace with actual cost
+                    26, // TODO: Replace with actual duration
+                    List.of(TransportTypes.METRO) // TODO: Replace with actual transport types
+            );
+            tripSummaries.add(tripSummary);
+        }
+        return new TripResponse(tripSummaries);
+        /*return new TripResponse(List.of(
                 new TripSummary(
                         List.of(
                                 new LineDetails(
@@ -96,6 +118,6 @@ public class MainServiceImpl implements MainService {
                         8,
                         List.of(TransportTypes.METRO)
                 )
-        ));
+        ));*/
     }
 }

@@ -59,12 +59,12 @@ public class Graph {
         for (Line line : lines) {
             System.out.println(line);
             List<Station> terminusStations = line.getStations().stream()
-                    .filter(station -> station.isTerminus(line)) // Station::isTerminus
+                    .filter(station -> station.isTerminusForLine(line))
                     .toList();
-            System.out.println("Terminus stations for line " + line.getLineId() + ": " + terminusStations);
+            System.out.println("Terminus stations for line " + line.getName() + ": " + terminusStations);
 
             Station referenceTerminus = terminusStations.get(new Random().nextInt(terminusStations.size()));
-            System.out.println("Reference Terminus for line " + line.getLineId() + ": " + referenceTerminus);
+            System.out.println("Reference Terminus for line " + line.getName() + ": " + referenceTerminus);
 
             for (Station station : line.getStations()) {
                 double distanceToReferenceTerminus = calculateDistance(
@@ -82,6 +82,9 @@ public class Graph {
         Station startStation = getStationById(startStationId);
         Station endStation = getStationById(endStationId);
 
+        System.out.println("Neighbors of Start Station: " + startStation.getNeighborStations());
+
+
         if (startStation == null || endStation == null) {
             System.out.println("Start or end station not found.");
             return null;
@@ -96,14 +99,12 @@ public class Graph {
 
         while (!priorityQueue.isEmpty()) {
             Station currentStation = priorityQueue.poll();
-            System.out.println(currentStation);
-            System.out.println(endStation);
 
             if (currentStation.equals(endStation)) {
                 break; // Reached the destination station, exit the loop
             }
 
-            for (Station neighborStation : currentStation.getNeighbors()) {
+            for (Station neighborStation : currentStation.getNeighborStations()) {
                 double edgeWeight = currentStation.getDistanceToNeighbor(neighborStation);
                 double newDistance = distances.get(currentStation) + edgeWeight;
 
@@ -133,7 +134,7 @@ public class Graph {
         for (Station station : stations.values()) {
             System.out.print("Station: " + station.getName() + " (ID: " + station.getStationId() + ")");
 
-            List<Station> neighbors = station.getNeighbors();
+            List<Station> neighbors = station.getNeighborStations();
             if (neighbors.isEmpty()) {
                 System.out.println(" has no neighbors.");
             } else {

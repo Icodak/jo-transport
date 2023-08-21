@@ -26,8 +26,13 @@ public class Station {
     public void addNeighbor(Station neighbor, double distanceToNeighbor) {
         neighbors.put(neighbor, distanceToNeighbor);
     }
-    public List<Station> getNeighbors() {
+
+    public List<Station> getNeighborStations() {
         return new ArrayList<>(neighbors.keySet());
+    }
+
+    public boolean isTerminusForLine(Line line) {
+        return lines.getOrDefault(line, false);
     }
 
     public String getLineId() {
@@ -54,20 +59,15 @@ public class Station {
     public Set<Line> getLines() {
         return lines.keySet();
     }
-    public boolean isTerminus(Line line) {
-        return lines.getOrDefault(line, false);
-    }
-    public void setTerminus(boolean terminus) {
-        isTerminus = terminus;
+
+    public void setLineTerminus(Line line, boolean isTerminus) {
+        lines.put(line, isTerminus);
     }
 
     public void setDistanceToTerminus(double distance) {
         this.distanceToTerminus = distance;
     }
 
-    public double getDistanceToTerminus() {
-        return distanceToTerminus;
-    }
     public double getDistanceToNeighbor(Station neighborStation) {
         return DistanceCalculator.calculateDistance(this.getLatitude(), this.getLongitude(), neighborStation.getLatitude(), neighborStation.getLongitude());
     }
@@ -77,7 +77,6 @@ public class Station {
         return "Station{" +
                 "stationId='" + stationId + '\'' +
                 ", name='" + name + '\'' +
-                ", isTerminus=" + isTerminus +
                 ", distanceToTerminus=" + distanceToTerminus +
                 '}';
     }

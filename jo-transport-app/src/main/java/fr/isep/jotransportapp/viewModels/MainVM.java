@@ -99,10 +99,10 @@ public class MainVM {
                 SearchResultVM searchResultVM = new SearchResultVM(
                         desc.type,
                         desc.stationName,
-                        desc.getLines().stream().map(line -> new LineCardVM(line.getName(), line.getColor())).toList()
-                        //desc.uuid
+                        desc.getLines().stream().map(line -> new LineCardVM(line.getName(), line.getColor())).toList(),
+                        desc.uuid
                 );
-                //searchResultVM.uuidProperty.addListener((e, o, n) -> clickedUuid.set(n));
+                searchResultVM.uuidProperty.addListener((e, o, n) -> clickedUuid.set(n));
                 searchResultVM.titleProperty.addListener((e, o, n) -> clickedTitle.set(n));
                 return searchResultVM;
             }).toList());
@@ -154,8 +154,9 @@ public class MainVM {
                 arrivalVM.tripUuid.get(),
                 observableStepVms.stream().map(vm -> vm.tripUuid.get()).toList()
         ));
-
+        System.out.println(response);
         tripProposalVMList = response.tripSummaries.stream().map(this::tripSummaryToTripProposalVM).toList();
+        System.out.println(tripProposalVMList);
         updateTripProposals();
 
         isSearchResultVisible.set(false);
