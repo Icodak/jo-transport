@@ -3,9 +3,16 @@ package fr.isep.jotransportapp.models.responses;
 import java.util.List;
 
 public class SearchResponse {
-    public List<LineDescription> lines;
+    public List<StationDescription> stations;
 
-    public SearchResponse(List<LineDescription> lines) {
-        this.lines = lines;
+    public SearchResponse(List<StationDescription> lines) {
+        this.stations = lines;
+    }
+
+    @Override
+    public String toString() {
+        return "SearchResponse{" +
+                "stations=" + stations +
+                '}';
     }
 }

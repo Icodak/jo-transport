@@ -30,8 +30,18 @@ public class SearchResultVM {
     }
 
     public void onClick() {
-        uuidProperty.set(uuid);
         titleProperty.set(title);
+        uuidProperty.set(uuid);
+    }
+
+    @Override
+    public String toString() {
+        return "SearchResultVM{" +
+                "title='" + title + '\'' +
+                ", image=" + image +
+                ", lines=" + lines +
+                ", titleProperty=" + titleProperty +
+                '}';
     }
 }
 
